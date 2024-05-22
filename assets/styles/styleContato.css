@@ -1,0 +1,86 @@
+.container {
+    width: 100%;
+    margin: 50px auto;
+    background-color: #fefefe;
+    border-radius: 25px;
+    box-shadow: 0 0 10px #ad88c6(53, 0, 102, 0.301);
+    border: 2px solid #ad88c6; /* Adicionando a borda */
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: bold; /* Adicionando negrito */
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px 0px;
+    margin-bottom: 15px;
+    border: 1px solid #ad88c6;
+    border-radius: 10px;
+    border-radius: 25px; /* Adicionando o border-radius */
+}
+
+textarea{resize: none;
+}
+
+input[type="submit"] {
+    background-color: #ad88c6;
+    color: white;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-right: 25px; /* Adicionando margem à direita */
+}
+
+input[type="reset"] {
+    background-color: #ad88c6; /* Cor vermelha para o botão de limpar */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #43105e;
+}
+
+input[type="submit"]:focus {
+    outline: none;
+}
+
+input[type="submit"]:active {
+    background-color: #3e8e41;
+}
+input[type="text"] {
+    width: 100%; /* Define a largura da caixa de texto como 300 pixels */
+}
+@media (max-width:400px){
+    .container{
+        padding: 0;
+        width: 98%;
+    }
+}
+
+.button{
+    padding-bottom: 8%;
+}
+
