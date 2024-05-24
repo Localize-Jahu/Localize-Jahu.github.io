@@ -1,18 +1,18 @@
 .container {
     width: 100%;
     margin: 50px auto;
-    background-color: #fefefe;
     border-radius: 25px;
     box-shadow: 0 0 10px #ad88c6(53, 0, 102, 0.301);
-    border: 2px solid #ad88c6; /* Adicionando a borda */
+    border: 2px solid #ad88c6;
+    /* Adicionando a borda */
 }
 
-h1 {
+.container h1 {
     text-align: center;
+    padding: 3%;
 }
 
 form {
-    margin-top: 60px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,36 +22,42 @@ form {
 label {
     display: block;
     margin-bottom: 4px;
-    font-weight: bold; /* Adicionando negrito */
+    font-weight: bold;
+    /* Adicionando negrito */
 }
 
 input[type="text"],
 input[type="tel"],
 input[type="email"],
 textarea {
-    width: 100%;
+    width: 98%;
     padding: 10px 0px;
-    margin-bottom: 15px;
+    margin-bottom: 3%;
     border: 1px solid #ad88c6;
     border-radius: 10px;
-    border-radius: 25px; /* Adicionando o border-radius */
+    border-radius: 25px;
+    /* Adicionando o border-radius */
 }
 
-textarea{resize: none;
+textarea {
+    resize: none;
+    height: 200px;
 }
 
 input[type="submit"] {
-    background-color: #ad88c6;
+    background-color: var(--cor2);
     color: white;
     padding: 10px 30px;
     border: none;
     border-radius: 15px;
     cursor: pointer;
-    margin-right: 25px; /* Adicionando margem à direita */
+    margin-right: 25px;
+    /* Adicionando margem à direita */
 }
 
 input[type="reset"] {
-    background-color: #ad88c6; /* Cor vermelha para o botão de limpar */
+    background-color: var(--cor2);
+    /* Cor vermelha para o botão de limpar */
     color: white;
     padding: 10px 20px;
     border: none;
@@ -60,27 +66,25 @@ input[type="reset"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #43105e;
+    background-color: var(--cor3);
 }
 
 input[type="submit"]:focus {
     outline: none;
 }
 
-input[type="submit"]:active {
-    background-color: #3e8e41;
-}
 input[type="text"] {
-    width: 100%; /* Define a largura da caixa de texto como 300 pixels */
+    width: 98%;
+    /* Define a largura da caixa de texto como 300 pixels */
 }
-@media (max-width:400px){
-    .container{
+
+@media (max-width:400px) {
+    .container {
         padding: 0;
         width: 98%;
     }
 }
 
-.button{
-    padding-bottom: 8%;
+.button {
+    padding-bottom: 3%;
 }
-
