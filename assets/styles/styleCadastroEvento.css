@@ -5,7 +5,13 @@ body {
 
 } 
 
-
+.corpo{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
 #inicio-data, #fim-data {
     display: inline-block;
     justify-content: center;
@@ -21,9 +27,8 @@ body {
 }
 
 form {
-    padding: 20px;
-    width: 900px;
-    height: 950px;
+    margin: 20px;
+    width: 98%;
     border: 5px solid #AD88C6;  
     border-radius: 30px;
     
@@ -32,7 +37,7 @@ form {
 input {
     border: 1px solid #AD88C6;
     border-radius: 30px;
-    margin: 5px 10px;
+   
 }
 
 textarea {
@@ -62,7 +67,7 @@ button h3 {
 }
 
 input[type="text"] {
-    width: 900px;
+    width: 98%;
     height: 30px;
 }
 
@@ -78,6 +83,51 @@ h2{
     margin: 5px 10px;
 }
 
+/* #cep  {
+    display: inline-block;
+    justify-content: center;
+    width: 90px;
+    height: 30px;
+    
+} */
+
+.local_bairro {
+    width: 350px;
+    height: 30px;
+}
+
+.local_cep {
+    width: 250px;
+    height: 30px;
+
+}
+.local_rua {
+    width: 100%;
+    height: 30px;
+
+}
+
+.local_numero {
+    width: 90px;
+    height: 30px;
+
+}
+
+#local1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 10px;
+}
+
+#rua {
+    width: 51%;
+    padding: 5px 10px 0 0px;
+}
+
+#bairro {
+    padding: 0px 10px;
+}
 
 
 
@@ -93,15 +143,23 @@ h2{
         form {
        display: flex;
        flex-direction: column;
-       width: 300px;
-       height: 900px;
+       width: 98%;
+      
 
       
     }
 
 
-    input[type="text"] {
+   .nome_evento {
         width: 275px;
+
+    }
+    .local_cep, .local_bairro {
+        width: 150px;
+
+    }
+    #rua {
+        width: 55%; 
 
     }
 
