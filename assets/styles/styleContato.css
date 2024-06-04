@@ -29,6 +29,7 @@ label {
 input[type="text"],
 input[type="tel"],
 input[type="email"],
+input [type="Assunto"],
 textarea {
     width: 98%;
     padding: 10px 0px;
