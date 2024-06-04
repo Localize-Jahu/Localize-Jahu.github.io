@@ -1,0 +1,115 @@
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    width: 60%;
+    border: 5px solid #AD88C6;  
+    border-radius: 30px;
+}
+
+input {
+    border: 1px solid #AD88C6;
+}
+
+input[type="text"] {
+    width: 84%;
+    height: 33px;
+    border-radius: 10px;
+}
+
+.esqueceu{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.preencha{
+    margin-top: 150px;
+    font-size: 32px;
+}
+
+.email{
+    font-weight: bold;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.texto{
+    margin-top: 20px;
+}
+
+label{
+    margin-top: 100px;
+}
+
+input[type="submit"] {
+    background-color: var(--cor2);
+    color: white;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-right: 25px;
+}
+
+input[type="reset"] {
+    background-color: var(--cor2);
+    color: white;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover, input[type="reset"]:hover {
+    background-color: var(--cor3);
+}
+
+input[type="submit"]:focus, input[type="reset"]:focus {
+    outline: none;
+}
+
+.button {
+    padding-bottom: 3%;
+    padding-top: 15%;
+}
+
+@media (max-width: 720px){
+    .redefine{
+        width: 80%;
+    }
+
+    .button{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 10%;
+    }
+
+    .texto{
+        text-align: center;
+    }
+
+    input[type="submit"], input[type="reset"]{
+        padding: 10px;
+    }
+}
+
+@media (max-width: 1400px){
+    .button{
+        padding-top: 10%;
+    }
+
+    .texto{
+        text-align: center;
+        font-size: 23px;
+    }
+
+   form{
+       width: 80%;
+   }
+}

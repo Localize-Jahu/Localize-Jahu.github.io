@@ -64,7 +64,7 @@
         <article>
 
            <!-- Corpo -->
-           <div id="corpo">
+           <div class="corpo">
                 
             <h1>Cadastro de Eventos</h1>
         
@@ -77,7 +77,7 @@
             
             <Label>
                 <h2>Nome do Evento:</h2> 
-                 <input type="text" name="txt_nome"/>
+                 <input type="text" name="txt_nome" class="nome_evento"/>
                  <!-- <textarea name="txt_nome" rows="2" cols="100"></textarea> -->
             </Label>
         </div>
@@ -88,7 +88,30 @@
             <div class="local">
             <label class="label-50">
                <h2>Local do Evento:</h2>
-                 <input type="text" name="txt_local"/>
+               <div id="local">
+                   <div id="local1">
+                    <div id="cep">
+                        <h3>CEP:</h3>
+                        <input type="text" name="txt_cep" class="local_cep"/>
+                    </div>
+                         <div id="bairro">           
+                        <h3>Bairro:</h3>
+                        <input type="text" name="txt_bairro" class="local_bairro"/>
+                    </div>
+                </div>
+                    <div id="local1">
+                    <div id="rua">
+                        <h3>Rua:</h3>
+                        <input type="text" name="txt_rua" class="local_rua"/>
+                    </div>
+
+                    <div id="numero">
+                        <h3> Numero: </h3>
+                        <input type="number" name="txt_numero" class="local_numero"/>
+                    </div>
+                </div>
+               </div>
+                 <!-- <input type="text" name="txt_local"/> -->
                  <!-- <textarea name="txt_local" rows="2" cols="100"></textarea> -->
             </label>
         </div>
@@ -149,7 +172,7 @@
         <label class="label-50">
            <h2>Descrição do Evento:</h2>
            <div class="area">
-             <textarea name="txt_area", rows="10" cols="110"></textarea> 
+             <textarea name="txt_area", rows="10" cols="50"></textarea> 
             </div>
         </label>
         <br> 
@@ -206,6 +229,7 @@
                     <img class="img-subir" src="assets/images/setaCima.png" alt="Seta apontando para cima">
                 </a>
             </div>
+        </div>
     </footer>
 
     <script src="assets/scripts/script.js" defer></script>
