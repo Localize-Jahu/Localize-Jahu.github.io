@@ -195,7 +195,7 @@ input[type="checkbox"]:checked::before {
     transform: scaleX(1);
 }
 
-.botao-acessar{
+.botao-acessar {
     font-family: "Roboto", sans-serif;
     text-decoration: none;
     color: var(--cor3);
@@ -210,7 +210,7 @@ input[type="checkbox"]:checked::before {
     font-size: 16px;
 }
 
-.botao-acessar:hover{
+.botao-acessar:hover {
     background-color: var(--cor2);
     color: #FFFFFF;
     border-color: var(--cor2);
@@ -229,7 +229,7 @@ input[type="checkbox"]:checked::before {
     top: 0;
 }
 
-.botao-voltar:hover{
+.botao-voltar:hover {
     scale: 1.1;
 }
 
@@ -284,40 +284,50 @@ input[type="checkbox"]:checked::before {
 
 
 @media (max-width: 1026px) {
- .containers{
-    width: 60%;
- }
+    .containers {
+        width: 60%;
+    }
 }
 
 
 @media (max-width: 831px) {
-    .containers{
-       width: 70%;
+    .containers {
+        width: 70%;
     }
 }
+
 @media (max-width: 733px) {
-    .containers{
-       width: 80%;
+    .containers {
+        width: 80%;
     }
 }
+
 @media (max-width: 641px) {
-    .containers{
+    .containers {
         width: 90%;
     }
 }
+
 @media (max-width: 570px) {
-    .containers{
+    .containers {
         width: 95%;
     }
 }
 
 @media (max-width: 540px) {
-    .containers{
+    .containers {
         width: 100%;
     }
 }
+
 @media (max-width: 523px) {
-    .containers{
+    .fundo {
+        background: rgb(76, 68, 82);
+        background: linear-gradient(0deg, rgba(76, 68, 82, 1) 0%, rgba(173, 136, 198, 1) 100%);
+    }
+
+    .containers {
+        background: transparent;
         width: 100%;
         flex-direction: column-reverse;
         height: auto;
@@ -327,35 +337,45 @@ input[type="checkbox"]:checked::before {
         top: 0;
 
     }
-    .container-direita{
+
+    .container-direita {
+        background: transparent;
         width: 100%;
         height: auto;
         border: none;
         border-radius: 0;
     }
-    .container-esquerda{
+
+    .container-esquerda {
+        background: transparent;
         width: 100%;
         height: auto;
         border: none;
         border-radius: 0;
     }
-    form{
+
+    form {
         border: none;
         border-radius: 0;
         margin-top: 32px;
     }
-    .img-fechar{
-       position: fixed;
-       right: 0;
-       top: 0;
+
+    .botao-voltar {
+        position: fixed;
+        right: 0;
+        top: 0;
     }
-    .logo{
-        padding-top:64px;
+
+    .logo {
+        padding-top: 64px;
     }
-    .containers h1{
+
+    .containers h1 {
         display: none;
     }
-    .botao-acessar{
+
+    .botao-acessar {
         margin-bottom: 64px;
     }
+
 }
