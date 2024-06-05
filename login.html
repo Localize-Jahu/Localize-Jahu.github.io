@@ -7,100 +7,50 @@
     <title>Localize Jahu - Home</title>
 
     <link rel="shortcut icon" type="imagex/png" href="assets/images/logo_4C4452.ico">
-    <link rel="stylesheet" href="assets/styles/style.css">
-    <link rel="stylesheet" href="assets/styles/styleHome.css">
+    <link rel="stylesheet" href="assets/styles/styleLogin.css">
 </head>
 
 <body>
 
     <div class="fundo"></div>
+    <div class="containers">
+        <div class="container-esquerda">
+            <h1>Localize Jahu</h1>
 
-    <nav>
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a href="index.html" class="a-logo">
-                    <img src="assets/images/logo_4C4452.png" alt="Logo da Localize Jahu">
-                </a>
-            </div>
-            <div class="menu">
-                <div class="menu-item">
-                    <a class="nav-link " href="index.html">Home</a>
+            <form action="#" method="post">
+                <div class="div-email">
+                    <label for="email">E-mail:</label>
+                    <input type="email" name="email" class="input-tipo" id="email">
                 </div>
-                <div class="menu-item">
-                    <a class="nav-link" href="cadastroEvento.html">Crie seu Evento</a>
+                <div class="div-senha">
+                    <label for="senha">Senha:</label>
+                    <input type="password" name="senha" class="input-tipo" id="senha">
                 </div>
-                <div class="menu-item">
-                    <a class="nav-link " href="sobreNos.html">Sobre Nós</a>
+                <div class="div-lembrar">
+                    <input type="checkbox" name="lembrar" class="input-lembrar" id="lembrar">
+                    <label class="label-lembrar" for="lembrar">Lembrar de mim</label>
                 </div>
-                <div class="menu-item">
-                    <a class="nav-link" href="contato.html">Contato</a>
-                </div>
-                <div class="menu-item">
-                    <a class="nav-login" href="login.html">Login</a>
-                </div>
-            </div>
-            <div class="menu-icon">
-                <a href="#" class="menu-abrir" id="menu-abrir" onclick="abrirNav();">
-                    <img src="assets/images/menu.png" alt="Icone de Menu">
-                </a>
-                <a href="javascript:void(0)" class="menu-fechar" id="menu-fechar" onclick="fecharNav();"><img
-                        src="assets/images/fechar.png" alt=""></a>
-            </div>
-        </div>
-        <!-- Menu Celular -->
-        <div id="navCelular" class="overlay">
+                <a href="esqueceuSenha.html" class="esqueceu-senha">Esqueceu sua senha?</a>
+                <br>
+                <input type="submit" value="Acessar" class="botao-entrar">
 
-            <div class="overlay-conteudo">
-                <a class="overlay-link" href="index.html">Home</a>
-                <a class="overlay-link" href="login.html">Login</a>
-                <a class="overlay-link" href="cadastroEvento.html">Crie seu Evento</a>
-                <a class="overlay-link" href="sobreNos.html">Sobre Nós</a>
-                <a href="contato.html">Contato</a>
-            </div>
+            </form>
 
         </div>
+        <div class="container-direita">
 
-    </nav>
+            <a href="index.html" class="botao-voltar"><img src="assets/images/fechar-login.png" alt="Botão Fechar"
+                    class="img-fechar"></a>
 
-    <main>
-        <article>
+            <img class="logo" src="assets/images/logo_4C4452.png" alt="Logo Localize Jahu">
+            <h2>Bem vindo!</h2>
+            <h3>Não possui cadastro?</h3>
 
-            <!-- Corpo -->
+            <a href="cadastroUsuario.html" class="botao-cadastro">Cadastre-se</a>
 
-
-        </article>
-    </main>
-
-    <footer>
-        <div class="rodape-container">
-            <div class="rodape-logo">
-                <img src="assets/images/logo_4C4452.png" alt="Logo da Localize Jahu" class="logo1">
-                <img src="assets/images/logo2_4C4452.png" alt="Logo da Localize Jahu" class="logo2">
-            </div>
-            <div class="rodape-menu">
-
-                <div>
-                    <a class="rodape-link1" href="index.html">Home</a>
-                </div>
-                <div>
-                    <a class="rodape-link" href="cadastroEvento.html">Crie seu Evento</a>
-                </div>
-                <div>
-                    <a class="rodape-link" href="sobreNos.html">Sobre Nós</a>
-                </div>
-                <div>
-                    <a class="rodape-link" href="contato.html">Contato</a>
-                </div>
-            </div>
-            <div class="div-subir">
-                <a id="irTopo" href="#" class="a-subir">
-                    <img class="img-subir" src="assets/images/setaCima.png" alt="Seta apontando para cima">
-                </a>
-            </div>
         </div>
-    </footer>
+    </div>
 
-    <script src="assets/scripts/script.js" defer></script>
 
 </body>
 
