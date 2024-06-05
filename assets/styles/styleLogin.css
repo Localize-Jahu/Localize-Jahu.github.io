@@ -34,8 +34,8 @@ body {
 
 .containers {
     width: 50%;
-    height: 55%;
-    background-color: #FFFFFF;
+    height: 450px;
+    background-color: var(--cor2);
     display: flex;
     border: 5px solid rgba(173, 136, 198, 1);
     border-radius: 36px;
