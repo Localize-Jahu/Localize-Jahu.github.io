@@ -27,6 +27,8 @@ strong{
 
 .hora{
     display: flex;
+    /* align-items: center;
+    justify-content: center; */
     padding: 20px;
     padding-top: 50px;
     padding-left: 40px;
@@ -56,6 +58,12 @@ strong{
     border: 5px solid transparent;
     border-radius: 15px;
     background: linear-gradient(to bottom, #AD88C6, #4C4452) border-box; 
+}
+
+@media(max-width:500px){
+    .hora{
+        padding-right: 100px;
+    }
 }
 
 @media (max-width: 820px){
@@ -121,14 +129,11 @@ strong{
     .descricao{
         padding-top: 40px;
         text-align: justify;
-        width: 90%;
     }
 
     .ima{
         padding-bottom: 80px;
     }
 }
-
-
 
 
