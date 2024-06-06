@@ -97,9 +97,13 @@ input[type="submit"]:focus, input[type="reset"]:focus {
     input[type="submit"], input[type="reset"]{
         padding: 10px;
     }
+
+    form{
+        width: 80%;
+    }
 }
 
-@media (max-width: 1400px){
+@media (min-height: 1024px){
     .button{
         padding-top: 10%;
     }
@@ -110,6 +114,6 @@ input[type="submit"]:focus, input[type="reset"]:focus {
     }
 
    form{
-       width: 80%;
+       width: 60%;
    }
 }
