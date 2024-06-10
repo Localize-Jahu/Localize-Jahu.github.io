@@ -333,10 +333,8 @@ input[type="checkbox"]:checked::before {
         flex-direction: column-reverse;
         height: auto;
         border: none;
-        display: relative;
         right: 0;
         top: 0;
-
     }
 
     .container-direita {
