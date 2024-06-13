@@ -23,57 +23,81 @@
                 </a>
             </div>
             <div class="menu">
-                <a class="nav-link" href="index.html">Home</a>
-                <div class="nav-separacao">|</div>
-                <a class="nav-link" href="cadastroEvento.html">Crie seu Evento</a>
-                <div class="nav-separacao">|</div>
-                <a class="nav-link" href="sobreNos.html">Sobre Nós</a>
-                <div class="nav-separacao">|</div>
-                <a class="nav-link" href="contato.html">Contato</a>
+                <div class="menu-item">
+                    <a class="nav-link " href="index.html">Home</a>
+                </div>
+                <div class="menu-item ">
+                    <a class="nav-link" href="cadastroEvento.html">Crie seu Evento</a>
+                </div>
+                <div class="menu-item active-menu   ">
+                    <a class="nav-link " href="sobreNos.html">Sobre Nós</a>
+                </div>
+                <div class="menu-item">
+                    <a class="nav-link" href="contato.html">Contato</a>
+                </div>
+                <div class="menu-item">
+                    <a class="nav-login" href="login.html">Login</a>
+                </div>
             </div>
             <div class="menu-icon">
-                <img src="assets/images/menu.png" alt="Icone de Menu">
+                <a href="#" class="menu-abrir" id="menu-abrir" onclick="abrirNav();">
+                    <img src="assets/images/menu.png" alt="Icone de Menu">
+                </a>
+                <a href="javascript:void(0)" class="menu-fechar" id="menu-fechar" onclick="fecharNav();"><img
+                        src="assets/images/fechar.png" alt=""></a>
             </div>
+        </div>
+        <!-- Menu Celular -->
+        <div id="navCelular" class="overlay">
+
+            <div class="overlay-conteudo">
+                <a class="overlay-link" href="index.html">Home</a>
+                <a class="overlay-link" href="login.html">Login</a>
+                <a class="overlay-link" href="cadastroEvento.html">Crie seu Evento</a>
+                <a class="overlay-link" href="sobreNos.html">Sobre Nós</a>
+                <a href="contato.html">Contato</a>
+            </div>
+
         </div>
     </nav>
 
 
     <main>
         <article>
-        <div id = "corpo">
-            <header>
-            <h1>Sobre nós</h1>
-            </header>
+            <div id="corpo">
+                <header>
+                    <h1>Sobre nós</h1>
+                </header>
 
-            <br> 
-            <br>
-            <br> 
+                <br>
+                <br>
+                <br>
 
-            <div id="imagem"> 
+                <div id="imagem">
+                    <p>
+                        <img src="images/corroxa.jpg" alt="membroslocalize" width="1000" height="800">
+                    </p>
+                </div>
+
+                <br>
+                <br>
+                <br>
+
                 <p>
-                <img src="images/corroxa.jpg" alt="membroslocalize" width="1000" height="800">
+                    Nós somos um grupo de cinco estudantes com o propósito de promover a
+                    Cultura local em Jaú, visando amplificar a visibilidade das expressões culturais,
+                    propiciando a diversidade artística, instigando a participação da comunidade
+                    em atividades culturais na cidade de Jaú e região. Nosso site permite a
+                    divulgação e exibição dos próximos eventos, possibilitando também um meio
+                    de contato conosco para mais informações.
                 </p>
+
+                <br>
+                <br>
             </div>
 
-                <br> 
-                <br>
-                <br>
-
-                <p>
-                Nós somos um grupo de cinco estudantes com o propósito de promover a
-Cultura local em Jaú, visando amplificar a visibilidade das expressões culturais,
-propiciando a diversidade artística, instigando a participação da comunidade
-em atividades culturais na cidade de Jaú e região. Nosso site permite a
-divulgação e exibição dos próximos eventos, possibilitando também um meio
-de contato conosco para mais informações.
-               </p>
-
-             <br>
-             <br>
-        </div>     
-
-        <div id="borda">
-        </div>
+            <div id="borda">
+            </div>
 
             <div class="wrapper">
 
@@ -145,7 +169,7 @@ de contato conosco para mais informações.
                     <img class="img-subir" src="assets/images/setaCima.png" alt="Seta apontando para cima">
                 </a>
             </div>
-    </div>
+        </div>
     </footer>
 </body>
 
