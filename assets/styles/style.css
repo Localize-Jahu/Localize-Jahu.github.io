@@ -1,4 +1,5 @@
 /* Por Evelyn Cassinotte */
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 :root {
@@ -10,7 +11,6 @@
 html {
     scroll-behavior: smooth;
 }
-
 
 /* Tipografia */
 
@@ -182,7 +182,7 @@ nav {
     transform: scaleX(1);
 }
 
-.nav-login{
+.nav-login {
     background-color: #FFFFFF;
     border-radius: 30px;
     width: 89px;
@@ -198,8 +198,8 @@ nav {
     margin: 0 16px;
 }
 
-.nav-login:hover{
-    color: #FFFFFF;    
+.nav-login:hover {
+    color: #FFFFFF;
     animation-iteration-count: 1;
     animation: detalhe 0.5s;
     background-color: #4C4452;
@@ -421,18 +421,21 @@ article {
 
 @media (max-width: 1007px) {
 
-    .nav-link, .nav-login {
+    .nav-link,
+    .nav-login {
         margin: 0 10px;
         padding: 0;
     }
-    .nav-login{
+
+    .nav-login {
         width: 52px;
     }
 }
 
 @media (max-width: 877px) {
 
-    .nav-link, .nav-login1 {
+    .nav-link,
+    .nav-login1 {
         margin: 0 4px;
     }
 }
