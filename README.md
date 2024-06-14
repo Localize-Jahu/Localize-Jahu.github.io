@@ -9,7 +9,7 @@
 Aplicação Web que destaca artistas locais e eventos da comunidade na região de Jaú.
 
 ## Autoras
-- [Alisa Gabriel](https://github.com/AlissaGabriel), 
+- [Alissa Gabriel](https://github.com/AlissaGabriel), 
 - [Evelyn Nataly Aparecida Cassinotte](https://github.com/Evelyn-Cass),
 - [Lara Nicoly Ronchesel Ramos](https://github.com/llnick),
 - [Raissa Geovana Araujo](https://github.com/raissaaraujo1),
