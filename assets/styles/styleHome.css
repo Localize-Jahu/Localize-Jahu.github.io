@@ -1,5 +1,6 @@
-/* Div de Titulo */
+/* Por Evelyn Cassinotte */
 
+/* Div de Titulo */
 .div-titulo {
   display: flex;
   align-items: center;
@@ -356,11 +357,6 @@
 }
 
 
-.address {
-  font-style: normal;
-}
-
-
 .card-rua,
 .card-bairro {
   margin: 0.3em 0;
@@ -392,7 +388,8 @@
   from {
     background: var(--cor3);
     opacity: 0;
-  } 
+  }
+
   to {
     background: var(--cor3);
   }
@@ -401,7 +398,7 @@
 
 
 .card-detalhes:hover {
-  
+
   animation: detalhe 1s;
   animation-iteration-count: 1;
   background: var(--cor3);
@@ -449,10 +446,10 @@
 
 @media (max-width: 1420px) and (min-width: 700px) {
 
-  .hora{
+  .hora {
     max-width: 87%;
     width: 100%;
-    border-radius: 0  ;
+    border-radius: 0;
   }
 
 
@@ -535,10 +532,10 @@
 
 @media (max-width: 400px) {
 
-  .hora{
+  .hora {
     max-width: 87%;
     width: 100%;
-    border-radius: 0  ;
+    border-radius: 0;
   }
 
 

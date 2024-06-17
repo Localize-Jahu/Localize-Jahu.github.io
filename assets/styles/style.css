@@ -1,3 +1,5 @@
+/* Por Evelyn Cassinotte */
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 :root {
@@ -9,7 +11,6 @@
 html {
     scroll-behavior: smooth;
 }
-
 
 /* Tipografia */
 
@@ -73,9 +74,6 @@ a {
 * {
     padding: 0;
     margin: 0;
-
-
-
 }
 
 body {
@@ -134,11 +132,11 @@ nav {
     height: 54%;
 }
 
-.menu-item{
+.menu-item {
     display: flex;
     align-items: center;
 
-    border-image:  linear-gradient(180deg, rgba(169,133,194,0) 35%, rgba(175,164,181,1) 50%, rgba(76,68,82,0) 65%) 1;
+    border-image: linear-gradient(180deg, rgba(169, 133, 194, 0) 35%, rgba(175, 164, 181, 1) 50%, rgba(76, 68, 82, 0) 65%) 1;
     border-width: 1px;
     border-style: solid;
     border-top: 0;
@@ -146,13 +144,14 @@ nav {
     border-bottom: 0;
 }
 
-.menu-item:first-child{
+.menu-item:first-child,
+.menu-item:last-child {
     border: none;
 }
 
-.active-menu{
+.active-menu {
     background-color: var(--cor2);
-    background: linear-gradient(180deg, rgba(173,136,198,0) 0%, rgba(173,136,198,1) 54%, rgba(76,68,82,0) 100%);
+    background: linear-gradient(180deg, rgba(173, 136, 198, 0) 0%, rgba(173, 136, 198, 1) 54%, rgba(76, 68, 82, 0) 100%);
 }
 
 
@@ -181,6 +180,29 @@ nav {
 
 .nav-link:hover::before {
     transform: scaleX(1);
+}
+
+.nav-login {
+    background-color: #FFFFFF;
+    border-radius: 30px;
+    width: 89px;
+    height: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--cor3);
+    margin: 0 16px;
+}
+
+.nav-login:hover {
+    color: #FFFFFF;
+    animation-iteration-count: 1;
+    animation: detalhe 0.5s;
+    background-color: #4C4452;
 }
 
 .menu-icon {
@@ -397,22 +419,28 @@ article {
 
 /* Responsividade */
 
-@media (max-width: 820px) {
+@media (max-width: 1007px) {
 
-    .nav-link {
-        margin: 0 8px;
+    .nav-link,
+    .nav-login {
+        margin: 0 10px;
         padding: 0;
+    }
+
+    .nav-login {
+        width: 52px;
     }
 }
 
-@media (max-width: 740px) {
+@media (max-width: 877px) {
 
-    .nav-link {
+    .nav-link,
+    .nav-login1 {
         margin: 0 4px;
     }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 797px) {
 
     .fundo {
         width: 100%;

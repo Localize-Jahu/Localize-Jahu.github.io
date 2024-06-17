@@ -4,14 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Localize Jahu - Contato</title>
+    <title>Localize Jahu - Cadastro Usuário</title>
 
     <link rel="shortcut icon" type="imagex/png" href="assets/images/logo_4C4452.ico">
     <link rel="stylesheet" href="assets/styles/style.css">
-    <link rel="stylesheet" href="assets/styles/styleContato.css">
+    <link rel="stylesheet" href="assets/styles/styleCadastroUsuario.css">
 </head>
 
 <body>
+
     <div class="fundo"></div>
 
     <nav>
@@ -31,7 +32,7 @@
                 <div class="menu-item">
                     <a class="nav-link " href="sobreNos.html">Sobre Nós</a>
                 </div>
-                <div class="menu-item active-menu">
+                <div class="menu-item">
                     <a class="nav-link" href="contato.html">Contato</a>
                 </div>
                 <div class="menu-item">
@@ -57,35 +58,97 @@
                 <a href="contato.html">Contato</a>
             </div>
 
-        </nav>
+        </div>
+
+    </nav>
 
     <main>
         <article>
 
+           <!-- Corpo -->
+           <div class="corpo">
+                
+            <h1>Cadastro de Usuário</h1>
+        
+        <br>
+
+            <!--Nome Completo e Email-->
+            <form method="get">
+            
+            <div class="nome">
+                <h2>Nome Completo</h2> 
+                 <input type="text" name="txt_nome" class="nome_completo">
+        </div>
+
+        <div class="nome"> 
+                <h2>Email</h2> 
+                 <input type="text" name="txt_email" class="email">
+        </div>
+            
+        
+                <!--Telefone e CPF-->
+        
             <div class="container">
-                <h1>FORMULÁRIO DE CONTATO</h1>
-                <form action="processar_formulario.php" method="post">
-                    <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name="nome" maxlength="30" required>
-
-                    <label for="telefone">Telefone:</label>
-                    <input type="text" id="Telefone" name="Telefone" maxlength="15" required>
-
-                    <label for="email">E-mail:</label>
-                    <input type="text" id="email" name="email" maxlength="30" required>
-
-                    <label for="Assunto"> Assunto: </label>
-                    <input type="text" id="Assunto" name="Assunto" maxlength="30" required>
-
-                    <label for="descricao"> Descrição:</label>
-                    <textarea id="descricao" name="descricao" rows="4" cols="50" maxlength="100"></textarea>
-
-                    <div class="button">
-                        <input type="submit" value="Enviar">
-                        <input type="submit" value="Limpar">
+               <div id="tel-cpf">
+                   <div id="telefone-cpf">
+                    <div id="label-tel">
+                        <h3>Telefone</h3>
+                        <input type="number" name="telefone" class="telefone">
                     </div>
-                </form>
-            </div>
+                         <div id="label-cpf">           
+                        <h3>CPF</h3>
+                        <input type="number" name="cpf" class="cpf">
+                    </div>
+                </div>
+             </div>
+        </div>
+
+            
+              
+                <div class="nome"> 
+                    
+                        <h2>Nome de Usuário</h2> 
+                         <input type="text" name="txt_usuario" class="nome_usuario">
+                    
+                    
+                </div>
+                <!-- Senha -->
+                <div class="container2">
+                   
+                       <div id="senha">
+                           <div id="senhas">
+                            <div id="label-senha1">
+                                <h3>Senha</h3>
+                                <input type="password" name="senha" class="criar-senha">
+                            </div>
+                                 <div id="label-senha2">           
+                                <h3>Confirme Senha</h3>
+                                <input type="password" name="senha" class="confirme-senha">
+                            </div>
+                        </div>
+                     </div>
+        
+                </div>
+        
+            <!--Botão Enviar-->
+        <p class="center">
+            <button type="reset"> Enviar </button>
+        </p>
+
+        <br>
+
+            <!--Botão Limpar-->
+        <p class="center">
+            <button class="limpar" type="reset"> Limpar </button>
+        </p>
+      
+      </form>
+
+    </div>
+
+     <br>
+     <br>
+     <br>
 
 
         </article>
@@ -119,6 +182,7 @@
             </div>
         </div>
     </footer>
+
     <script src="assets/scripts/script.js" defer></script>
 
 </body>
