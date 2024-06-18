@@ -12,9 +12,8 @@
 </head>
 
 <body>
-    <span id="topo"></span>
     <div class="fundo"></div>
-
+    
     <nav>
         <div class="nav-container">
             <div class="nav-logo">
@@ -26,10 +25,10 @@
                 <div class="menu-item">
                     <a class="nav-link " href="index.html">Home</a>
                 </div>
-                <div class="menu-item ">
+                <div class="menu-item">
                     <a class="nav-link" href="cadastroEvento.html">Crie seu Evento</a>
                 </div>
-                <div class="menu-item active-menu   ">
+                <div class="menu-item">
                     <a class="nav-link " href="sobreNos.html">Sobre Nós</a>
                 </div>
                 <div class="menu-item">
@@ -47,6 +46,7 @@
                         src="assets/images/fechar.png" alt=""></a>
             </div>
         </div>
+
         <!-- Menu Celular -->
         <div id="navCelular" class="overlay">
 
@@ -59,6 +59,7 @@
             </div>
 
         </div>
+
     </nav>
 
 
@@ -68,22 +69,7 @@
                 <header>
                     <h1>Sobre nós</h1>
                 </header>
-
-                <br>
-                <br>
-                <br>
-
-                <div id="imagem">
-                    <p>
-                        <img src="images/corroxa.jpg" alt="membroslocalize" width="1000" height="800">
-                    </p>
-                </div>
-
-                <br>
-                <br>
-                <br>
-
-                <p>
+                <p class="texto">
                     Nós somos um grupo de cinco estudantes com o propósito de promover a
                     Cultura local em Jaú, visando amplificar a visibilidade das expressões culturais,
                     propiciando a diversidade artística, instigando a participação da comunidade
@@ -91,59 +77,55 @@
                     divulgação e exibição dos próximos eventos, possibilitando também um meio
                     de contato conosco para mais informações.
                 </p>
-
-                <br>
-                <br>
             </div>
 
-            <div id="borda">
-            </div>
-
-            <div class="wrapper">
-
-                <div class="grid-container">
-                    <div class="grid-item">Alissa</div>
-                    <br>
-                    <p>Descrição</p>
-                    <br>
-                    <div id="circulo_um"></div>
-
-                    <div class="grid-item">Evellyn</div>
-                    <br>
-                    <p>Descrição</p>
-                    <br>
-                    <div id="circulo_dois"></div>
-
-                    <div class="grid-item">Lara</div>
-                    <br>
-                    <p>Descrição</p>
-                    <br>
-                    <div id="circulo_tres"></div>
-
-                    <div class="grid-item">Raissa</div>
-                    <br>
-                    <p>Descrição</p>
-                    <br>
-                    <div id="circulo_quatro"></div>
-
-                    <div class="grid-item">Thais</div>
-                    <p>Descrição</p>
-                    <br>
-                    <div id="circulo_cinco"></div>
-                    <br>
-                    <br>
-                    <br>
+            <div id="wrapper">
+                <div id="borda">
+                    <div class="foto1">
+                        <img src="assets/images/alissa.jpg" alt="Foto Alissa">
+                        <p class="texto2"> <strong>Alissa</strong></p>
+                        <p class="texto2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos fuga accusantium
+                            dolorum. Consectetur cumque illum obcaecati voluptatem officia earum soluta deleniti maxime,
+                            minus ducimus, nobis iusto molestiae, necessitatibus placeat. Consequuntur.</p>
+                    </div>
+                    <div class="foto1">
+                        <img src="assets/images/evellyn.png" alt="Foto Evellyn">
+                        <p class="texto2"><strong>Evellyn</strong></p>
+                        <p class="texto2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit ipsum quaerat
+                            recusandae. Culpa explicabo hic, molestias tenetur quasi minima voluptate vitae amet
+                            necessitatibus consequatur sit architecto itaque labore deserunt perspiciatis.</p>
+                    </div>
+                    <div class="foto1">
+                        <img src="assets/images/lara.jpeg" alt="Foto Lara">
+                        <p class="texto2"><strong>Lara</strong></p>
+                        <p class="texto2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint eos quidem
+                            ratione
+                            nam, a, praesentium exercitationem eaque, numquam necessitatibus debitis quos minus quia
+                            doloremque! Officiis sed animi modi molestias. Adipisci.</p>
+                    </div>
+                    <div class="foto1">
+                        <img src="assets/images/raissa.jpg" alt="Foto Raissa">
+                        <p class="texto2"><strong>Raissa</strong></p>
+                        <p class="texto2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, accusamus?
+                            Officia, dolores nobis, sit labore accusantium tenetur reprehenderit esse molestiae
+                            perspiciatis
+                            culpa autem amet eum earum vero saepe assumenda modi.</p>
+                    </div>
+                    <div class="foto1" id="foto">
+                        <img class="thais" src="assets/images/thais.jpg" alt="Foto Thais">
+                        <p class="texto2"><strong>Thais</strong></p>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium animi
+                            officiis sapiente voluptate assumenda sint veritatis, labore fugit dignissimos doloribus
+                            itaque
+                            dolorem laboriosam natus molestiae nam. Odio quod sapiente quis.</p>
+                    </div>
                 </div>
             </div>
-            <br>
-            <br>
-            <br>
-            
+
         </article>
 
     </main>
-    <br>
-    <br>
+
     <footer>
         <div class="rodape-container">
             <div class="rodape-logo">
@@ -166,12 +148,15 @@
                 </div>
             </div>
             <div class="div-subir">
-                <a href="#topo" class="a-subir">
+                <a id="irTopo" href="#" class="a-subir">
                     <img class="img-subir" src="assets/images/setaCima.png" alt="Seta apontando para cima">
                 </a>
             </div>
         </div>
     </footer>
+
+
+    <script src="assets/scripts/script.js" defer></script>
 </body>
 
 </html>
