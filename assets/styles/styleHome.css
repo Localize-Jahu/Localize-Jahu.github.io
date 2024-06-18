@@ -243,10 +243,12 @@
   height: auto;
   padding: 3%;
   margin-left: 1%;
-  background: rgb(173, 136, 198,0.9);
+  background: rgb(173, 136, 198, 0.9);
   color: var(--cor3);
   position: absolute;
   bottom: 5%;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
 }
 
 .carousel-titulo p {
@@ -264,14 +266,11 @@
 .img-carrossel {
   width: 98%;
   height: 98%;
-
   background: linear-gradient(to bottom, var(--cor2), var(--cor3)) border-box;
   color: #313149;
   border: 5px solid transparent;
   border-radius: 15px;
   display: inline-block;
-
-
 }
 
 /* Cards */
@@ -465,6 +464,7 @@
     font-size: .8em;
     margin: 0;
     text-align: center;
+    border-radius: 0%;
   }
 
   .carousel-titulo p {
