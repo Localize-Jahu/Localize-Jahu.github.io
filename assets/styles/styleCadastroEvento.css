@@ -120,9 +120,16 @@ h2{
     margin: 5px 10px;
 }
 
+#local2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 10px;
+}
+
 #rua {
     width: 51%;
-    padding: 5px 10px 0 0px;
+    padding: 0px 10px; 
 }
 
 #bairro {
