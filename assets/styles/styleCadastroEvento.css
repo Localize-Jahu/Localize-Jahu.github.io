@@ -150,7 +150,7 @@ h2{
         form {
        display: flex;
        flex-direction: column;
-       width: 98%;
+       width: 85%;
       
 
       
@@ -179,6 +179,8 @@ h2{
         width: 95%;  
     }
 
-
+    textarea {
+        margin:5px;
+    }
       
 }
