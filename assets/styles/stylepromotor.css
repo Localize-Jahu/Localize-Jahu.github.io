@@ -1,0 +1,13 @@
+#imagem {
+    display: flex;
+   align-items: center;
+    border-radius: 100%;
+    width: 200px;
+    height: 200px;
+    background-color: white ;
+    border: 5px solid #AD88C6;
+}
+
+.criar, .editar, .tit-tel, .tit-insta, .tit-face {
+    display: inline-block;
+}
