@@ -1,13 +1,131 @@
-#imagem {
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+    text-align: center;
+
+} 
+
+.corpo{
+    width: 100%;
     display: flex;
-   align-items: center;
-    border-radius: 100%;
-    width: 200px;
-    height: 200px;
-    background-color: white ;
-    border: 5px solid #AD88C6;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    margin: 20px;
+    width: 98%;
+    border: 5px solid #AD88C6;  
+    border-radius: 30px;
 }
 
-.criar, .editar, .tit-tel, .tit-insta, .tit-face {
+#imagem {
+    border: 5px solid #AD88C6;  
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    background-color: white;
+}
+
+.info {
+    margin: 20px;
+    width: 90%;
+    border: 5px solid #AD88C6;  
+    border-radius: 30px;
+    background-color: white;
+
+}
+
+input {
+    border: 1px solid #AD88C6;
+    border-radius: 30px;
+    width: 50%;
+    height: 30px;
+   
+}
+
+textarea {
+    border: 1px solid #AD88C6;
+    border-radius: 30px;
+    margin: 10px 15px;
+    width: 70%;
+    
+}
+
+button:hover {
+    border: 1px solid var(--cor1);
+    border-radius: 30px;
+    background-color: var(--cor3);
+}
+
+.nome_publico {
+    width: 98%;
+    height: 30px;
+}
+
+
+.tit-insta, .tit-tel, .tit-face, .insta, .tel .face {
     display: inline-block;
+    margin: 10px 15px;
+}
+
+
+.insta, .tel, .face {
+    width: 50%;
+}
+
+button {
+    border: 1px solid #AD88C6;
+    border-radius: 30px;
+    background-color: #AD88C6;
+    padding: 0 5px 0 5px;
+    margin-bottom: 5px;
+    color: white;
+}
+
+
+@media (max-width: 820px) {
+    
+       
+        #corpo {
+        display: flex;
+        flex-direction: column;
+   
+    }
+
+        form {
+       display: flex;
+       flex-direction: column;
+       width: 85%;
+      
+
+      
+    }
+
+
+   .nome_evento {
+        width: 275px;
+
+    }
+    .local_cep, .local_bairro {
+        width: 150px;
+
+    }
+    #rua {
+        width: 55%; 
+
+    }
+
+    input[type="date"], 
+    input[type="time"] {
+    width: 100px;
+    }
+
+    textarea {
+        width: 95%;  
+    }
+
+    textarea {
+        margin:5px;
+    }
+      
 }
