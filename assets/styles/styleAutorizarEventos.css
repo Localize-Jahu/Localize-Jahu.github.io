@@ -12,15 +12,20 @@
 }
 
 .imagem-evento {
-    width: 40%;
+    width: 35%;
     border: 5px solid #AD88C6;  
     border-radius: 30px;
-    margin: 20px;
+    margin: 10px;
 }
 
 .logoData, .logoHora, .logoLocal, .textData, .textHora, .textLocal {
-    display: inline-block;
-    margin: 8px;
+   display: inline-block;
+   vertical-align: middle;
+}
+
+.data, .local, .hora {
+    padding-bottom: 40px;
+    padding-right: 8px;
 }
 
 .evento {
@@ -46,3 +51,19 @@ hr {
     border-radius: 30px;
     padding: 8px;
 }
+
+/* @media (max-width: 820px) {
+    .corpo {
+        width: 90%;
+    }
+
+    .imagem-evento {
+        width:40%;
+        height: 60%;;
+    }
+
+    .conteudo {
+        width:95%;
+    }
+
+} */
