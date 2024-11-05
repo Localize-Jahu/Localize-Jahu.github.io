@@ -85,47 +85,11 @@ button {
 
 @media (max-width: 820px) {
     
-       
-        #corpo {
-        display: flex;
-        flex-direction: column;
-   
-    }
+       .tit-insta, .tit-face, .tit-tel, .face, .insta, .tel {
+        margin: 8px 12px;
+       }
 
-        form {
-       display: flex;
-       flex-direction: column;
-       width: 85%;
-      
-
-      
-    }
-
-
-   .nome_evento {
-        width: 275px;
-
-    }
-    .local_cep, .local_bairro {
-        width: 150px;
-
-    }
-    #rua {
-        width: 55%; 
-
-    }
-
-    input[type="date"], 
-    input[type="time"] {
-    width: 100px;
-    }
-
-    textarea {
-        width: 95%;  
-    }
-
-    textarea {
-        margin:5px;
-    }
-      
+       .nome_publico {
+         width: 70%;
+       }
 }
