@@ -1,6 +1,3 @@
-
-alert("Essa página corresponde ao Projeto Interdisciplinar do Primeiro Semestre do Curso de Desenvolvimento de Software Multiplataforma. As novas versões contém PHP e não são suportadas pelo GitHub Pages. Para ver as novas versões, acesse o repositório do GitHub:https://github.com/Localize-Jahu/Localize-Jahu.github.io/tree/main");
-
 /*!
   * CodePen by Heitor3500 - https://codepen.io/Heitor3500/pen/VweKPKo
   * Bootstrap v4.5.0 (https://getbootstrap.com/)
