@@ -1,4 +1,3 @@
-// Por Evelyn Cassinotte
 function abrirNav() {
     document.getElementById("navCelular").style.width = "100%";
     document.getElementById("menu-fechar").style.display = "block";
@@ -17,3 +16,7 @@ function irTopo() {
 
 }
 
+function abrirDropdown() {
+    const dropdownContent = document.getElementById("navCelularDropdown");
+    dropdownContent.style.display = "block";
+};
