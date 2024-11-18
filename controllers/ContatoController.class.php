@@ -3,13 +3,12 @@ class ContatoController
 {
     public function inicio()
     {
-        require_once "views/cabecalho.html";
 
-        echo "
-            <title>Localize Jahu - Contato</title>
-            <link rel='stylesheet' href='assets/styles/styleContato.css'>
-            ";
+        $titulo = ' - Contato';
+        $style = "<link rel='stylesheet' href='assets/styles/styleContato.css'>";
+        $script = '';
 
+        require_once "views/cabecalho.php";
         require_once "views/barraNavegacao.html";
         require_once "views/Contato.html";
         require_once "views/rodape.html";

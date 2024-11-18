@@ -8,4 +8,7 @@
     <link rel="shortcut icon" type="imagex/png" href="assets/images/logo_4C4452.ico">
     <link rel="stylesheet" href="assets/styles/style.css">
 
+        <title>Localize Jahu<?php echo $titulo ?> </title>
+        <?php echo $style ?>
+        <?php echo $script ?>
 

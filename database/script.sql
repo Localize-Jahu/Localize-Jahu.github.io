@@ -38,11 +38,6 @@ CREATE TABLE categoria (
 	descritivo VARCHAR(80) NOT NULL UNIQUE
 );
 
-CREATE TABLE estado (
-	id_estado INT(10) AUTO_INCREMENT PRIMARY KEY,
-	descritivo VARCHAR(80)
-);
-
 -- Evento
 
 CREATE TABLE evento (
@@ -54,12 +49,10 @@ CREATE TABLE evento (
 	bairro VARCHAR(80) NOT NULL,
 	cidade VARCHAR(80) NOT NULL,
 	uf CHAR(2),
-	condicao INT(1) NOT NULL,
+	estado ENUM('ativo','desativado','pendente','finalizado','cancelado') NOT NULL,
 	imagem LONGBLOB,
 	id_categoria INT(10) NOT NULL,
-	FOREIGN KEY (id_categoria) REFERENCES categoria (id_categoria),
-	id_estado INT(10) NOT NULL,
-	FOREIGN KEY (id_estado) REFERENCES estado (id_estado)
+	FOREIGN KEY (id_categoria) REFERENCES categoria (id_categoria)
 );
 
 CREATE TABLE responsavel(
