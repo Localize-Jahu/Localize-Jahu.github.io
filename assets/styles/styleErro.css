@@ -1,0 +1,10 @@
+.erro {
+    width: 400px;
+    border-radius: 10px;
+    margin-bottom: 32px;
+}
+
+main {
+    flex-direction: column;
+    align-items: center;
+}
