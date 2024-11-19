@@ -52,16 +52,11 @@ CREATE TABLE evento (
 	estado ENUM('ativo','desativado','pendente','finalizado','cancelado') NOT NULL,
 	imagem LONGBLOB,
 	id_categoria INT(10) NOT NULL,
-	FOREIGN KEY (id_categoria) REFERENCES categoria (id_categoria)
-);
-
-CREATE TABLE responsavel(
-	id_responsavel INT(10) AUTO_INCREMENT PRIMARY KEY,
-	id_evento INT(10) NOT NULL,
-	FOREIGN KEY (id_evento) REFERENCES evento (id_evento),
+	FOREIGN KEY (id_categoria) REFERENCES categoria (id_categoria),
 	id_promotor INT(10) NOT NULL,
 	FOREIGN KEY (id_promotor) REFERENCES promotor (id_promotor)
 );
+
 
 CREATE TABLE ocorrencia(
 	id_ocorrencia INT(10) AUTO_INCREMENT PRIMARY KEY,
