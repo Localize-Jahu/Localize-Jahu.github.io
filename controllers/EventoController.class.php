@@ -6,8 +6,8 @@ class EventoController
 
 
         $titulo = ' - Cadastrar Evento';
-        $style = "<link rel='stylesheet' href='assets/styles/styleEventoCadastro.css'>";
-        $script = '';
+        $style = array("assets/styles/styleEventoCadastro.css");
+        $script = array();
 
         require_once "views/cabecalho.php";
         require_once "views/barraNavegacao.html";
@@ -19,8 +19,8 @@ class EventoController
     {
 
         $titulo = ' - Evento';
-        $style = "<link rel='stylesheet' href='assets/styles/styleEventoExibir.css'>";
-        $script = '';
+        $style = array("assets/styles/styleEventoExibir.css");
+        $script = array();
 
         require_once "views/cabecalho.php";
         require_once "views/barraNavegacao.html";

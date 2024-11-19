@@ -5,8 +5,8 @@ class SobreNosController
     {
 
         $titulo = ' - Sobre Nós';
-        $style = "<link rel='stylesheet' href='assets/styles/styleSobreNos.css'>";
-        $script = '';
+        $style = array("assets/styles/styleSobreNos.css");
+        $script = array();
 
         require_once "views/cabecalho.php";
         require_once "views/barraNavegacao.html";

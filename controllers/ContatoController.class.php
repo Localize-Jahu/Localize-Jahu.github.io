@@ -5,8 +5,8 @@ class ContatoController
     {
 
         $titulo = ' - Contato';
-        $style = "<link rel='stylesheet' href='assets/styles/styleContato.css'>";
-        $script = '';
+        $style = array("assets/styles/styleContato.css");
+        $script = array();
 
         require_once "views/cabecalho.php";
         require_once "views/barraNavegacao.html";

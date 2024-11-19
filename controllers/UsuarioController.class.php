@@ -3,7 +3,7 @@ class UsuarioController {
     function cadastrar() {
 
         $titulo = ' - Cadastro';
-        $style = "<link rel='stylesheet' href='assets/styles/styleUsuarioCadastro.css'>";
+        $style = array("assets/styles/styleUsuarioCadastro.css");
         $script = '';
 
         require_once "views/cabecalho.php";
