@@ -20,7 +20,6 @@ class EventoController
         $script = array();
 
         require_once "views/cabecalho.php";
-        require_once "views/barraNavegacao.html";
         require_once "views/eventoExibir.html";
         require_once "views/rodape.html";
     }
