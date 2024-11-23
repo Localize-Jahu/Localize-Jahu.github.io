@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Localize Jahu - Crie seu Evento</title>
+
+    <link rel="shortcut icon" type="imagex/png" href="assets/images/logo_4C4452.ico">
+    <link rel="stylesheet" href="assets/styles/style.css">
+    <link rel="stylesheet" href="assets/styles/stylepromotor.css">
+</head>
+
+<body>
+
+    <div class="fundo"></div>
+
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" class="a-logo">
+                    <img src="assets/images/logo_4C4452.png" alt="Logo da Localize Jahu">
+                </a>
+            </div>
+            <div class="menu">
+                <div class="menu-item">
+                    <a class="nav-link " href="index.html">Home</a>
+                </div>
+                <div class="menu-item active-menu">
+                    <a class="nav-link" href="cadastroEvento.html">Crie seu Evento</a>
+                </div>
+                <div class="menu-item">
+                    <a class="nav-link " href="sobreNos.html">Sobre Nós</a>
+                </div>
+                <div class="menu-item">
+                    <a class="nav-link" href="contato.html">Contato</a>
+                </div>
+                <div class="menu-item">
+                    <a class="nav-login" href="login.html">Login</a>
+                </div>
+            </div>
+            <div class="menu-icon">
+                <a href="#" class="menu-abrir" id="menu-abrir" onclick="abrirNav();">
+                    <img src="assets/images/menu.png" alt="Icone de Menu">
+                </a>
+                <a href="javascript:void(0)" class="menu-fechar" id="menu-fechar" onclick="fecharNav();"><img
+                        src="assets/images/fechar.png" alt=""></a>
+            </div>
+        </div>
+
+        <!-- Menu Celular -->
+        <div id="navCelular" class="overlay">
+
+            <div class="overlay-conteudo">
+                <a class="overlay-link" href="index.html">Home</a>
+                <a class="overlay-link" href="login.html">Login</a>
+                <a class="overlay-link" href="cadastroEvento.html">Crie seu Evento</a>
+                <a class="overlay-link" href="sobreNos.html">Sobre Nós</a>
+                <a href="contato.html">Contato</a>
+            </div>
+
+        </div>
+
+    </nav>
+
+    <main>
+        <article>
+
+            <!-- Corpo -->
+            <div class="corpo">
+                <h1>Meu Perfil</h1>
+
+                <br>
+
+                  <!--Imagem Perfil-->     
+                <div class="foto">
+                    <input type="image" id="imagem">
+                </div>
+
+                <form action="informacoes" class="info">
+                <!--Nome Publico-->
+                <form method="get">
+
+                    <div class="nome">
+                            <h2>Nome Publico</h2>
+                            <input type="text" name="txt_nome" class="nome_publico" >                       
+                    </div>
+
+                    <!-- Biografia -->
+                    <div class="label-50">
+                        <h2>Biografia</h2>
+                        <div class="area">
+                            <textarea name="txt_area" rows="10" cols="50"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Redes Sociais -->
+                     <div class="redes-sociais">
+                        <h2>Minhas Redes Sociais</h2>
+                    <div class="instagram">
+                        <h3 class="tit-insta">Instagram</h3>
+                        <input type="text" name="txt_insta" class="insta" >                       
+                </div>
+                
+                <div class="facebook">
+                    <h3 class="tit-face">Facebook</h3>
+                    <input type="text" name="txt_insta" class="face" >                       
+            </div>
+           
+            <div class="telefone">
+                <h3 class="tit-tel">Telefone</h3>
+                <input type="text" name="txt_tel" class="tel" >                       
+        </div>
+            </div>
+            
+
+                        <!--Botão Enviar-->
+                        <div class="center">
+                            <h2>Deseja desativar seu perfil de Promotor?</h2>
+                            <button type="reset">
+                                Desativar Perfil Promotor 
+                            </button>
+                        </div>
+
+                        <!--Botão Gerenciar Eventos-->
+                        <h2>Gerenciar Eventos</h2>
+                        <div class="gerenciar">
+                        <div class="criar">
+                            <button class="criare" type="reset">
+                                Criar Eventos
+                            </button>
+                        </div>
+
+                        <div class="editar">
+                            <button class="editar" type="reset">
+                                Editar Eventos
+                            </button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+            <br>
+            <br>
+            <br>
+
+
+        </article>
+    </main>
+
+    <footer>
+        <div class="rodape-container">
+            <div class="rodape-logo">
+                <img src="assets/images/logo_4C4452.png" alt="Logo da Localize Jahu" class="logo1">
+                <img src="assets/images/logo2_4C4452.png" alt="Logo da Localize Jahu" class="logo2">
+            </div>
+            <div class="rodape-menu">
+
+                <div>
+                    <a class="rodape-link1" href="index.html">Home</a>
+                </div>
+                <div>
+                    <a class="rodape-link" href="cadastroEvento.html">Crie seu Evento</a>
+                </div>
+                <div>
+                    <a class="rodape-link" href="sobreNos.html">Sobre Nós</a>
+                </div>
+                <div>
+                    <a class="rodape-link" href="contato.html">Contato</a>
+                </div>
+            </div>
+            <div class="div-subir">
+                <a id="irTopo" href="#" class="a-subir">
+                    <img class="img-subir" src="assets/images/setaCima.png" alt="Seta apontando para cima">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/scripts/script.js" defer></script>
+
+</body>
+
+</html>

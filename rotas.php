@@ -21,7 +21,7 @@ class Rotas
             $obj = new $dados[0]();
             return $obj->$method();
         } else {
-            exit("Rota não encontrada");
+            header("location:../localize-jahu/paginaNaoEncontrada");
         }
     }
 }
@@ -46,6 +46,9 @@ $route->get("/contato", array(ContatoController::class, "inicio"));
 //Evento
 $route->get("/eventoCadastro", array(EventoController::class, "cadastrar"));
 $route->get("/eventoExibir", array(EventoController::class, "exibir"));
+
+//Erro
+$route->get("/paginaNaoEncontrada", array(ErroController::class, "naoEncontrado"));
 
 
 

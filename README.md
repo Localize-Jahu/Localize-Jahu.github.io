@@ -13,7 +13,7 @@ Aplicação Web que destaca artistas locais e eventos da comunidade na região d
 - [Evelyn Nataly Aparecida Cassinotte](https://github.com/Evelyn-Cass),
 - [Lara Nicoly Ronchesel Ramos](https://github.com/llnick),
 - [Raissa Geovana Araujo](https://github.com/raissaaraujo1),
-- [Thais Silva de Lima](https://github.com/Thaislima96).
+- [Thais Silva de Lima](https://github.com/Thaislima96) (ex-integrante).
 
 ## Introdução
 
