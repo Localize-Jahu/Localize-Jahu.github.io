@@ -31,6 +31,20 @@ class EventoController
         $style = array("assets/styles/styleCalendario.css");
         $script = array();
 
+        $mes = null;
+        $ano = null;
+
+        if (!$_GET) {
+            $mes = date('n');
+            $ano = date('Y');
+
+
+        } else {
+
+            $mes = intval($_GET['mes']);
+            $ano = intval($_GET['ano']);
+        }
+
         require_once "views/cabecalho.php";
         require_once "views/calendario.php";
         require_once "views/rodape.html";

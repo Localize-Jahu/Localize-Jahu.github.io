@@ -2,7 +2,6 @@
     <article>
 
         <?php
-
         $meses = [
             1 => 'Janeiro',
             2 => 'Fevereiro',
@@ -18,19 +17,46 @@
             12 => 'Dezembro'
         ];
 
-
-        $dia = date('d');
-        $mes = date('n');
-        $ano = date('Y');
-
         $primeiroDia = mktime(0, 0, 0, $mes, 1, $ano);
 
+        $mesTemporario = $mes;
+        $anoTemporario = $ano;
 
-        echo "<H1>" . $meses[$mes] . " de " . $ano . "</h1>";
+        echo "<div class='titulo'>
+            <a href='/localize-jahu/calendario?mes=";
+        if ($mesTemporario == 1) {
+            $mesTemporario = 12;
+            $anoTemporario = $anoTemporario - 1;
+        } else {
+            $mesTemporario = $mesTemporario - 1;
+        }
 
-        ?>
+    
 
-        <?php
+        echo $mesTemporario . "&ano=" . $anoTemporario . "'>
+            <img class='seta' src='assets/images/esquerda.png' alt=''>
+            </a>
+            <h1>
+                " . $meses[$mes] . " de " . $ano . "
+            </h1>
+            <a href='/localize-jahu/calendario?mes=";
+
+        $mesTemporario = $mes;
+        $anoTemporario = $ano;
+
+        if ($mesTemporario == 12) {
+            $mesTemporario = 1;
+            $anoTemporario++;
+        } else {
+            $mesTemporario++;
+        }
+
+        echo $mesTemporario . "&ano=" . $anoTemporario . "'>
+            <img class='seta' src='assets/images/direita.png' alt=''>
+            </a></div>
+
+            ";
+
 
         // definir o número de dias no mês
         $numDias = date('t', $primeiroDia);
@@ -61,10 +87,22 @@
                     ' . $i . '
                 </div>
                 <div class="eventos">
-                    <a href="#" class="evento">
+                    <a href="#" class="evento laranja">
                         teste
                     </a>
+                    <a href="#" class="evento laranja">
+                        teste
+                    </a>
+                    <a href="#" class="evento laranja">
+                        123456789...
+                    </a>
+                    <a href="#" class="eventos-outros">
+                        <div class="outros">
+                            + 2
+                        </div>               
+                    </a>
                 </div>
+
             </td>
             ';
             if ((($i + $celulasVazias) % 7 == 0) and ($i < $numDias)) {

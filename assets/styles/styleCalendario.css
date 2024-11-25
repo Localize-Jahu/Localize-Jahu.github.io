@@ -1,9 +1,29 @@
+.seta {
+    position: relative;
+    left: 0;
 
-.borda{
+    height: 40px;
+    width: 40px;
+}
+
+.titulo {
+    display: flex;
+
+}
+
+h1 {
+    margin: 0 10px 0 10px;
+}
+
+.titulo a {
+    text-decoration: none;
+}
+
+.borda {
     border: 1px solid #9696963b;
- }
+}
 
-.calendario{
+.calendario {
     background-color: #FAFAFA;
     width: 100%;
     margin: 36px 0;
@@ -11,7 +31,7 @@
     border-spacing: 0;
     color: #969696;
 
- }
+}
 
 .nome-dia {
     height: 43px;
@@ -24,13 +44,17 @@
     border-top-left-radius: 10px;
 
 }
+
 .nome-dia:last-child {
 
-    border-top-right-radius: 10px;;
+    border-top-right-radius: 10px;
+    ;
 }
+
 .semana:last-child td:first-child {
     border-bottom-left-radius: 10px;
 }
+
 .semana:last-child td:last-child {
     border-bottom-right-radius: 10px;
 }
@@ -39,9 +63,9 @@
     width: 14%;
     height: 150px;
 
- }
+}
 
- /* .container-calendario{
+/* .container-calendario{
     width: 100%;
     height: 100%;
     position: relative;
@@ -56,6 +80,7 @@
     font-size: 21px;
     margin-bottom: auto;
 }
+
 .eventos {
     display: flex;
     flex-direction: column;
@@ -66,18 +91,72 @@
     width: 100%;
 }
 
-.evento{
-
+.evento {
     display: flex;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    padding: 5px;
-    margin: 10px;
-    border: 1px solid cadetblue;
+    padding: 3px;
+    margin: 0 0 5px 5px;
+    border: 1px solid transparent;
     border-radius: 5px;
-    background-color: aquamarine;
+
     text-transform: capitalize;
     text-decoration: none;
     font-weight: 500;
+    font-size: 12px;
+}
+
+.evento:first-child {
+    margin-top: 5px;
+}
+
+.evento:last-child {
+    margin-bottom: 5px;
+}
+
+.eventos-outros {
+    z-index: 2;
+    width: 100%;
+    height: 0;
+    text-decoration: none;
+
+}
+
+.outros {
+    position: relative;
+    left: calc(100% - 41px);
+    bottom: 27px;
+
+    width: 19px;
+
+    background-color: #96969642;
+    color: #969696;
+    margin: 0 5px 5px 5px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    padding: 3px 5px;
+
+    text-transform: capitalize;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 12px;
+}
+
+
+/* cores */
+
+.laranja {
+    background-color: rgba(237, 149, 42, 0.3);
+    color: rgb(237, 148, 42);
+}
+
+@media (max-width: 1200px) {
+    .eventos-outros {
+        height: auto;
+    }
+
+    .outros {
+        bottom: 0;
+    }
 }
