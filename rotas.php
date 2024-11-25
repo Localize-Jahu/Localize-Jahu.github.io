@@ -46,6 +46,7 @@ $route->get("/contato", array(ContatoController::class, "inicio"));
 //Evento
 $route->get("/eventoCadastro", array(EventoController::class, "cadastrar"));
 $route->get("/eventoExibir", array(EventoController::class, "exibir"));
+$route->get("/calendario", array(EventoController::class, "calendario"));
 
 //Erro
 $route->get("/paginaNaoEncontrada", array(ErroController::class, "naoEncontrado"));

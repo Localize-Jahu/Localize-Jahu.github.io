@@ -40,7 +40,7 @@
                         <div class="dropdown-content">
                             <a href="eventoCadastro">Novo</a>
                             <a href="#">Pesquisar</a>
-                            <a href="#">Calendário</a>
+                            <a href="/localize-jahu/calendario">Calendário</a>
 
                         </div>
                     </div>

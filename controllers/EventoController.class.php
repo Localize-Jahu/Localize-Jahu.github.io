@@ -23,4 +23,16 @@ class EventoController
         require_once "views/eventoExibir.html";
         require_once "views/rodape.html";
     }
+
+    public function calendario()
+    {   
+
+        $titulo = ' - Calendário';
+        $style = array("assets/styles/styleCalendario.css");
+        $script = array();
+
+        require_once "views/cabecalho.php";
+        require_once "views/calendario.php";
+        require_once "views/rodape.html";
+    }
 }
