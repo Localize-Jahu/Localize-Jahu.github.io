@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Promotor</title>
+    <link rel="stylesheet" href="style_promotor.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastro de Promotor</h1>
+        <form action="process_promotor.php" method="POST">
+            <div class="input-group">
+                <input type="text" name="nome_publico" placeholder="Nome Público" required>
+            </div>
+            <div class="input-group">
+                <input type="text" name="telefone_contato" placeholder="Telefone de Contato">
+            </div>
+            <div class="input-group">
+                <input type="email" name="email_contato" placeholder="Email de Contato">
+            </div>
+            <div class="input-group">
+                <textarea name="biografia" placeholder="Biografia (máximo 800 caracteres)" maxlength="800"></textarea>
+            </div>
+            <div class="input-group">
+                <label for="condicao">Condição</label>
+                <select name="condicao" id="condicao" required>
+                    <option value="" disabled selected>Selecione a condição</option>
+                    <option value="1">Ativo</option>
+                    <option value="0">Inativo</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <input type="number" name="id_usuario" placeholder="ID do Usuário Vinculado" required>
+            </div>
+            <div class="buttons">
+                <button type="submit" class="cadastrar">Cadastrar</button>
+                <button type="reset" class="limpar">Limpar</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
