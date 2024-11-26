@@ -1,146 +1,85 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-
 body {
-    text-align: center;
-
-} 
-
-.corpo{
-    width: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #f9f7fc;
     display: flex;
-    align-items: center;
     justify-content: center;
-    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
-form {
-    margin: 20px;
-    width: 800px;
-    border: 5px solid #AD88C6;  
-    border-radius: 30px;   
+.container {
+    background-color: #fff;
+    border: 2px solid #e5dff7;
+    border-radius: 10px;
+    padding: 30px 20px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-input {
-    border: 1px solid #AD88C6;
-    border-radius: 30px;
-   
+h1 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #000;
+    font-weight: bold;
 }
 
-textarea {
-    border: 1px solid #AD88C6;
-    border-radius: 30px;
-    margin: 10px 15px;
-    
+form input {
+    width: calc(100% - 20px);
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.row input {
+    width: 100%;
+}
+
+form .buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 button {
-    border: 1px solid #AD88C6;
-    border-radius: 30px;
-    background-color: #AD88C6;
-    padding: 0 5px 0 5px;
-    margin-bottom: 5px;
-    
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.cadastrar {
+    background-color: #4c2d8d;
+    color: #fff;
+}
+
+.limpar {
+    background-color: #d9d9d9;
+    color: #333;
 }
 
 button:hover {
-    border: 1px solid var(--cor1);
-    border-radius: 30px;
-    background-color: var(--cor3);
+    opacity: 0.8;
 }
 
-button h3 {
-    color:white;
-}
-
-
-.nome_completo, .email, .nome_usuario{
-    width: 400px;
-    height: 30px;
-}
-
-
-h2{
-    margin: 5px 10px;
-}
-
-
-#telefone-cpf {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-   
-}
-
-#label-tel, #label-cpf {
-    display: inline-block;
-    margin: 5px 10px;
-}
-
-
-.telefone, .cpf {
-    display: inline-block;
-    width: 350px;
-    height: 30px;
-    margin: 5px, 10px;
-}
-
-#senhas {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-   
-}
-
-#label-senha1, #label-senha2 {
-    display: inline-block;
-    margin: 5px 10px;
-}
-
-.criar-senha, .confirme-senha {
-    display: inline-block;
-    width: 350px;
-    height: 30px;
-   
-       
-}
-
-
-#bairro {
-    padding: 0px 10px;
-}
-
-
-
-@media (max-width: 820px) {
-    
-       
-        #corpo {
-        display: flex;
+/* Responsividade */
+@media (max-width: 600px) {
+    .row {
         flex-direction: column;
     }
 
-        form {
-       display: flex;
-       flex-direction: column;
-       width: 80%;
-      
-
-      
+    .row input {
+        width: 100%;
     }
-
-
-   .nome_completo, .email, .nome_usuario {
-        width: 90%;
-
-    }
-    .telefone, .cpf {
-        width: 90%;
-
-    }
-    .criar-senha, .confirme-senha {
-        width: 90%; 
-
-    }
-
-     
 }
