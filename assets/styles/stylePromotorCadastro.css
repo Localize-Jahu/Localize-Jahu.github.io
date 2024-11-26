@@ -1,0 +1,95 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f7fc; /* Fundo suave */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #ffffff;
+    border: 1px solid #dcdcdc;
+    border-radius: 15px;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #000;
+    text-transform: uppercase;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: left; /* Para organizar labels alinhadas */
+}
+
+.input-group input,
+.input-group textarea,
+.input-group select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+textarea {
+    height: 80px;
+    resize: none; /* Impede redimensionamento */
+}
+
+label {
+    font-size: 12px;
+    margin-bottom: 5px;
+    display: block;
+    color: #555;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.cadastrar {
+    background-color: #4c2d8d; /* Roxo do botão "Cadastrar" */
+    color: white;
+}
+
+.limpar {
+    background-color: #d9d9d9; /* Cinza claro do botão "Limpar" */
+    color: #333;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .buttons button {
+        width: 100%; /* Botões ocupam largura total no celular */
+    }
+}
