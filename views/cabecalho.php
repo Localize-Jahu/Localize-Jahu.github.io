@@ -38,7 +38,7 @@
                     <div class="dropdown">
                         <a class="nav-link" href="">Eventos</a>
                         <div class="dropdown-content">
-                            <a href="eventoCadastro">Novo</a>
+                            <a href="evento-cadastro">Novo</a>
                             <a href="#">Pesquisar</a>
                             <a href="/localize-jahu/calendario">Calendário</a>
 
@@ -73,7 +73,7 @@
                 <div class="celular-dropdown selecionado" id="celular-dropdown" onclick="abrirDropdown();">
                     <a id="dropbtn" class="overlay-link dropbtn">Eventos</a>
                     <div id="navCelularDropdown" class="celular-dropdown-content">
-                        <a class="overlay-link" href="eventoCadastro"> <img class="baixo-direita" src="assets/images/baixo-direita.png" alt=""> Novo</a>
+                        <a class="overlay-link" href="evento-cadastro"> <img class="baixo-direita" src="assets/images/baixo-direita.png" alt=""> Novo</a>
                         <a class="overlay-link" href="#"> <img class="baixo-direita" src="assets/images/baixo-direita.png" alt=""> Pesquisar</a>
                         <a class="overlay-link" href="#"> <img class="baixo-direita" src="assets/images/baixo-direita.png" alt=""> Calendário</a>
                     </div>
