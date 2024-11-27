@@ -57,7 +57,7 @@ if (!isset($_SESSION)) {
                         echo '
                         <div class="menu-item">
                             <div class="dropdown">
-                                <a class="nav-link " href="">Promotores</a>
+                                <a class="nav-link " href="">Gerenciar</a>
                                 <div class="dropdown-content">
                                     <a href="evento-cadastro">Adicionar Evento</a>
                                     <a href="#">Editar Perfil</a>
@@ -120,9 +120,9 @@ if (!isset($_SESSION)) {
                 <?php if (isset($_SESSION['id_promotor']) && $_SESSION['id_promotor'] != 0) {
 
                 ?>
-                    <div class="celular-dropdown selecionado" id="celular-dropdown" onclick="abrirDropdown('navPromotorDropdown');">
-                        <a id="dropbtn" class="overlay-link dropbtn">Promotores</a>
-                        <div id="navPromotorDropdown" class="celular-dropdown-content">
+                    <div class="celular-dropdown selecionado" id="celular-dropdown" onclick="abrirDropdown('navGerenciarDropdown');">
+                        <a id="dropbtn" class="overlay-link dropbtn">Gerenciar</a>
+                        <div id="navGerenciarDropdown" class="celular-dropdown-content">
                             <a class="overlay-link" href="evento-cadastro"> <img class="baixo-direita" src="assets/images/baixo-direita.png" alt="">Novo Evento</a>
                             <a class="overlay-link" href="#"> <img class="baixo-direita" src="assets/images/baixo-direita.png" alt="">Editar Perfil</a>
                         </div>
