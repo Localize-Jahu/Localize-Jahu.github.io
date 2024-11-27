@@ -124,6 +124,7 @@ INSERT INTO
 	evento (
 		descricao,
 		titulo,
+		imagem,
 		logradouro,
 		cep,
 		bairro,
@@ -138,6 +139,7 @@ VALUES
 	(
 		'Um grande festival de música para todos os públicos.',
 		'Festival de Música',
+		'sem-imagem.png',
 		'Av. das Flores, 123',
 		'17201-000',
 		'Centro',
@@ -151,6 +153,7 @@ VALUES
 	(
 		'Uma exposição de arte moderna.',
 		'Exposição de Arte Moderna',
+		'sem-imagem.png',
 		'Rua das Artes, 45',
 		'17202-100',
 		'Vila Nova',
@@ -164,6 +167,7 @@ VALUES
 	(
 		'Encontro literário com escritores locais.',
 		'Encontro Literário',
+		'sem-imagem.png',
 		'Praça da Leitura, s/n',
 		'17203-200',
 		'Jardim das Letras',
@@ -177,6 +181,7 @@ VALUES
 	(
 		'Workshop de tecnologia para iniciantes.',
 		'Workshop de Tecnologia',
+		'sem-imagem.png',
 		'Rua Tech, 789',
 		'17204-300',
 		'Parque Industrial',
@@ -190,6 +195,7 @@ VALUES
 	(
 		'Corrida beneficente para arrecadar fundos.',
 		'Corrida Beneficente',
+		'sem-imagem.png',
 		'Parque das Palmeiras',
 		'17205-400',
 		'Residencial Verde',

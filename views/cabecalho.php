@@ -61,6 +61,7 @@ if (!isset($_SESSION)) {
                                 <div class="dropdown-content">
                                     <a href="evento-cadastro">Adicionar Evento</a>
                                     <a href="#">Editar Perfil</a>
+                                    <a href="#">Configurações</a>
                                 </div>
                             </div>
                         </div>
