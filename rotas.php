@@ -21,7 +21,7 @@ class Rotas
             $obj = new $dados[0]();
             return $obj->$method();
         } else {
-            header("location:../localize-jahu/pagina-nao-encontrada");
+            header("location:/localize-jahu/pagina-nao-encontrada");
             die();
         }
     }
@@ -34,10 +34,12 @@ $route->get("/", array(InicioController::class, "inicio"));
 
 //Login
 $route->get("/login", array(LoginController::class, "login"));
+$route->post("/login", array(LoginController::class, "login"));
 
-//Usuario
-$route->get("/cadastro", array(UsuarioController::class, "cadastrar"));
-$route->get("/recuperar-senha", array(UsuarioController::class, "recuperarSenha"));
+
+// Usuario
+// $route->get("/cadastro", array(UsuarioController::class, "cadastrar"));
+// $route->get("/recuperar-senha", array(UsuarioController::class, "recuperarSenha"));
 
 //Sobre Nos
 $route->get("/sobre-nos", array(SobreNosController::class, "inicio"));

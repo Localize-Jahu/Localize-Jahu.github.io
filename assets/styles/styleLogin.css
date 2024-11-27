@@ -6,6 +6,15 @@
     --cor3: #4C4452;
 }
 
+/* Cor de fundo do autocomplete */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #846B95 inset;
+}
+
+/* Cor do texto do autocomplete */
+input:-webkit-autofill {
+    -webkit-text-fill-color: white !important;
+}
 * {
     margin: 0;
     padding: 0;
@@ -83,8 +92,13 @@ form {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 64px;
+    margin-top: 32px;
     width: 100%;
+}
+.erro{
+    color: white;
+    font-weight: 400;
+    margin-bottom: 12px;
 }
 
 label {

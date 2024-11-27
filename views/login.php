@@ -17,7 +17,12 @@
         <div class="container-esquerda">
             <h1>Localize Jahu</h1>
 
-            <form action="" method="post">
+            <form action="/localize-jahu/login" method="post">
+            <div class="erro">
+                <?php
+                echo $mensagem
+                ?>
+            </div>
                 <div class="div-email">
                     <label for="email">E-mail:</label>
                     <input type="email" name="email" class="input-tipo" id="email" required>
