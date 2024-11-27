@@ -126,7 +126,7 @@ if (!isset($_SESSION)) {
                             <a class="overlay-link" href="evento-cadastro"> <img class="baixo-direita" src="assets/images/baixo-direita.png" alt="">Novo Evento</a>
                             <a class="overlay-link" href="#"> <img class="baixo-direita" src="assets/images/baixo-direita.png" alt="">Editar Perfil</a>
                         </div>
-                    </div>';
+                    </div>
                 <?php
                 }
                 ?>
