@@ -36,7 +36,7 @@ input[type="text"] {
     height: 33px;
 }
 
-.nome, .local, .data, .hora, .descricao{
+.titulo, .logradouro, .bairro, .cidade, .uf, .cep, .descricao, .categoria, .imagem{
     font-weight: bold;
     font-size: 20px;
     margin-bottom: 20px;
@@ -47,11 +47,12 @@ input[type="text"] {
 input[type="submit"] {
     background-color: var(--cor2);
     color: white;
-    padding: 10px 30px;
+    padding: 10px;
     border: none;
     border-radius: 12px;
     cursor: pointer;
     margin-right: 25px;
+    margin-bottom: 5%;
 }
 
 input[type="reset"] {

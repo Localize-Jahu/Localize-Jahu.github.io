@@ -1,157 +1,108 @@
 <?php
 class Evento
 {
-
     public function __construct(
         private int $id_evento = 0,
-        private string $titulo = "",
-        private string $imagem = "",
         private string $descricao = "",
-        private string $uf = "",
-        private string $cidade = "",
-        private string $bairro = "",
+        private string $titulo = "",
         private string $logradouro = "",
         private string $cep = "",
+        private string $bairro = "",
+        private string $cidade = "",
+        private string $uf = "",
         private string $situacao = "",
+        private string $imagem = "",
         private $categoria = null,
-        private	$promotor = null,
-        int $id_ocorrencia = 0,
-        string $dia = "",  
-        string $horaInicio = "",
-        string $horaTermino = "",
-        $evento = null
-
-    ) {
-        $this->ocorrencias[] = new Ocorrencia($id_ocorrencia, $dia, $horaInicio, $horaTermino, $evento);
-    }
-
-    public function getID(): int
+        private $promotor = null
+    ) {}
+    public function getId_evento()
     {
         return $this->id_evento;
     }
-
-    public function getTitulo(): string
-    {
-        return $this->titulo;
-    }
-
-    public function getImagem(): string
-    {
-        return $this->imagem;
-    }
-
-    public function getDescricao(): string
+    public function getDescricao()
     {
         return $this->descricao;
     }
-
-    public function getUf(): string
+    public function getTitulo()
     {
-        return $this->uf;
+        return $this->titulo;
     }
-
-    public function getCidade(): string
-    {
-        return $this->cidade;
-    }
-
-    public function getBairro(): string
-    {
-        return $this->bairro;
-    }
-
-    public function getLogradouro(): string
+    public function getLogradouro()
     {
         return $this->logradouro;
     }
-
-    public function getCep(): string
+    public function getCep()
     {
         return $this->cep;
     }
-
+    public function getBairro()
+    {
+        return $this->bairro;
+    }
+    public function getCidade()
+    {
+        return $this->cidade;
+    }
+    public function getUf()
+    {
+        return $this->uf;
+    }
+    public function getSituacao()
+    {
+        return $this->situacao;
+    }
+    public function getImagem()
+    {
+        return $this->imagem;
+    }
     public function getCategoria()
     {
         return $this->categoria;
     }
-
-    public function getSituacao(): string
-    {
-        return $this->situacao;
-    }
-
-    public function getOcorrencias(): array
-    {
-        return $this->ocorrencias;
-    }
-
     public function getPromotor()
     {
         return $this->promotor;
     }
-
-    public function setID(int $id_evento): void
+    public function setPromotor($promotor)
     {
-        $this->id_evento = $id_evento;
+        $this->promotor = $promotor;
     }
-
-    public function setTitulo(string $titulo): void
+    public function setTitulo($titulo)
     {
         $this->titulo = $titulo;
     }
-
-    public function setImagem(string $imagem): void
-    {
-        $this->imagem = $imagem;
-    }
-
-    public function setDescricao(string $descricao): void
+    public function setDescricao($descricao)
     {
         $this->descricao = $descricao;
     }
-
-    public function setUf(string $uf): void
+    public function setCep($cep)
     {
-        $this->uf = $uf;
+        $this->cep = $cep;
     }
-
-    public function setCidade(string $cidade): void
-    {
-        $this->cidade = $cidade;
-    }
-
-    public function setBairro(string $bairro): void
+    public function setBairro($bairro)
     {
         $this->bairro = $bairro;
     }
-
-    public function setLogradouro(string $logradouro): void
+    public function setImagem($imagem)
+    {
+        $this->imagem = $imagem;
+    }
+    public function setUf($uf)
+    {
+        $this->uf = $uf;
+    }
+    public function setCidade($cidade)
+    {
+        $this->cidade = $cidade;
+    }
+    public function setSituacao($situacao)
+    {
+        $this->situacao = $situacao;
+    }
+    public function setLogradouro($logradouro)
     {
         $this->logradouro = $logradouro;
     }
 
-    public function setCep(string $cep): void
-    {
-        $this->cep = $cep;
-    }
-
-    public function setSituacao(string $situacao): void
-    {
-        $this->situacao = $situacao;
-    }
-
-    public function setCategoria(Categoria $categoria): void
-    {
-        $this->categoria = $categoria;
-    }
-
-    public function setOcorrencias(int $id_ocorrencia, string $dia, string $horaInicio, string $horaTermino): void
-    {
-        $this->ocorrencias[] = new Ocorrencia($id_ocorrencia, $dia, $horaInicio, $horaTermino);
-    }
-
-    public function setPromotor(Promotor $promotor): void
-    {
-        $this->promotor = $promotor;
-    }
-}
+    
+    } //fim da classe

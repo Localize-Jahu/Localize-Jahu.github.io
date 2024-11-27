@@ -5,7 +5,9 @@
     color: black;
     display: flex;
     margin-top: 20px;
-    margin-left: 210px;
+    justify-content: center;
+    align-items: center;
+    margin-right: 200px;
 }
 
 .subtitulo, .subtitulo2{
@@ -19,10 +21,9 @@ strong{
 
 .data{
     display: flex;
-    align-items: center;
-    justify-content: center;
     padding: 20px;
     padding-top: 50px;
+    padding-left: 40px;
 }
 
 .hora{
@@ -43,6 +44,34 @@ strong{
     padding-left: 40px;
 }
 
+.alterar{
+    background-color: green;
+    color: white;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-right: 25px;
+    text-decoration: none;
+}
+
+.cancelar{
+    background-color: red;
+    color: white;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-right: 25px;
+    text-decoration: none;
+}
+
+.botao{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5%;
+}
 
 .descricao{
     font-size: 28px;
