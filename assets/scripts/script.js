@@ -16,7 +16,7 @@ function irTopo() {
 
 }
 
-function abrirDropdown() {
-    const dropdownContent = document.getElementById("navCelularDropdown");
+function abrirDropdown(content) {
+    const dropdownContent = document.getElementById(content);
     dropdownContent.style.display = "block";
 };

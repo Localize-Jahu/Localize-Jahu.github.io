@@ -100,24 +100,44 @@ var_dump($_SESSION);
 
             <div class="overlay-conteudo">
                 <a class="overlay-link" href="/localize-jahu/">Home</a>
-                <a class="overlay-link" href="login">Login</a>
+                <?php
+                if (!isset($_SESSION['logado'])) {
+                    echo '<a class="overlay-link" href="login">Login</a>';
+                }
+                ?>
                 <!-- eventos -->
 
-                <div class="celular-dropdown selecionado" id="celular-dropdown" onclick="abrirDropdown();">
+                <div class="celular-dropdown selecionado" id="celular-dropdown" onclick="abrirDropdown('navEventosDropdown');">
                     <a id="dropbtn" class="overlay-link dropbtn">Eventos</a>
-                    <div id="navCelularDropdown" class="celular-dropdown-content">
-                        <a class="overlay-link" href="evento-cadastro"> <img class="baixo-direita" src="assets/images/baixo-direita.png" alt=""> Novo</a>
+                    <div id="navEventosDropdown" class="celular-dropdown-content overlay-link">
                         <a class="overlay-link" href="#"> <img class="baixo-direita" src="assets/images/baixo-direita.png" alt=""> Pesquisar</a>
-                        <a class="overlay-link" href="#"> <img class="baixo-direita" src="assets/images/baixo-direita.png" alt=""> Calendário</a>
+                        <a class="overlay-link" href="/localize-jahu/calendario"> <img class="baixo-direita" src="assets/images/baixo-direita.png" alt=""> Calendário</a>
                     </div>
                 </div>
 
+                <!-- promotores -->
 
+                <?php if (isset($_SESSION['id_promotor']) && $_SESSION['id_promotor'] != 0) {
 
-                <a class="overlay-link" href="#">Promotores</a>
-
+                ?>
+                    <div class="celular-dropdown selecionado" id="celular-dropdown" onclick="abrirDropdown('navPromotorDropdown');">
+                        <a id="dropbtn" class="overlay-link dropbtn">Promotores</a>
+                        <div id="navPromotorDropdown" class="celular-dropdown-content">
+                            <a class="overlay-link" href="evento-cadastro"> <img class="baixo-direita" src="assets/images/baixo-direita.png" alt="">Novo Evento</a>
+                            <a class="overlay-link" href="#"> <img class="baixo-direita" src="assets/images/baixo-direita.png" alt="">Editar Perfil</a>
+                        </div>
+                    </div>';
+                <?php
+                }
+                ?>
                 <a class="overlay-link" href="sobreNos">Sobre Nós</a>
-                <a href="contato">Contato</a>
+                <a class="overlay-link" href="contato">Contato</a>
+
+                <?php
+                if (isset($_SESSION['logado']) && $_SESSION['logado'] == true) {
+                    echo '<a class="overlay-link" href="logout">Sair</a>';
+                }
+                ?>
             </div>
 
         </div>
