@@ -7,6 +7,10 @@ class LoginController
 {
     public function login()
     {
+        if (isset($_SESSION["logado"])) {
+            header("location:/localize-jahu/");
+            die();
+        }
         $mensagem = "";
         if ($_POST) {
             //verificar no BD
