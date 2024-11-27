@@ -2,6 +2,7 @@
     <article>
 
         <?php
+
         $meses = [
             1 => 'Janeiro',
             2 => 'Fevereiro',
@@ -15,6 +16,24 @@
             10 => 'Outubro',
             11 => 'Novembro',
             12 => 'Dezembro'
+        ];
+
+        $corClasse = [
+            1 => "festa",  
+            2 => "show",
+            3 => "festival",
+            4 => "exposicao",
+            5 => "encontro",
+            6 => "feira",
+            7 => "workshop-oficina",
+            8 => "curso",
+            9 => "esportivo",
+            10 => "competicao",
+            11 => "caminhada-corrida",
+            12 => "palestra",
+            13 => "religioso",
+            14 => "evento-academico",
+            15 => "palestra-seminario"
         ];
 
         $primeiroDia = mktime(0, 0, 0, $mes, 1, $ano);
@@ -31,7 +50,7 @@
             $mesTemporario = $mesTemporario - 1;
         }
 
-    
+
 
         echo $mesTemporario . "&ano=" . $anoTemporario . "'>
             <img class='seta' src='assets/images/esquerda.png' alt=''>
@@ -82,27 +101,42 @@
                 }
             }
             echo '
-            <td class="dia borda">
+                <td class="dia borda">
                 <div class="numero-dia">
                     ' . $i . '
                 </div>
                 <div class="eventos">
-                    <a href="#" class="evento laranja">
-                        teste
-                    </a>
-                    <a href="#" class="evento laranja">
-                        teste
-                    </a>
-                    <a href="#" class="evento laranja">
-                        123456789...
-                    </a>
-                    <a href="#" class="eventos-outros">
-                        <div class="outros">
-                            + 2
-                        </div>               
-                    </a>
-                </div>
+                ';
 
+                
+                $eventoDAO = new EventoDAO();
+            $evento = $eventoDAO->pesquisarPorDia($i, $mes, $ano);
+
+
+
+            if (count($evento) > 0) {
+                $z = 0;
+                while ($z < count($evento) && $z < 3) {
+                    echo '
+                        <a href="#" class="evento ' . $corClasse[$evento[$z]->id_categoria] . '">
+                            ' . $evento[$z]->titulo . '
+                        </a>
+                    ';
+                    $z++;
+                }
+                if (count($evento) > 3) {
+                    echo '
+                        <a href="#" class="eventos-outros">
+                        <div class="outros">
+                            + ' . (count($evento) - 3) . '
+                        </div>    
+                        </a>
+                    ';
+                }
+            }
+
+            echo '
+                </div>
             </td>
             ';
             if ((($i + $celulasVazias) % 7 == 0) and ($i < $numDias)) {

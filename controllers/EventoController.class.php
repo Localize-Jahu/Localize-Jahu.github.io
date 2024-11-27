@@ -37,13 +37,11 @@ class EventoController
         if (!$_GET) {
             $mes = date('n');
             $ano = date('Y');
-
-
         } else {
-
             $mes = intval($_GET['mes']);
             $ano = intval($_GET['ano']);
         }
+
 
         require_once "views/cabecalho.php";
         require_once "views/calendario.php";

@@ -139,4 +139,25 @@ class EventoDAO extends Conexao
             die();
         }
     }
+
+
+    public function pesquisarPorDia($dia , $mes, $ano) {
+        $sql = 'SELECT e.id_evento, titulo, situacao, id_categoria
+                FROM evento e
+                INNER JOIN ocorrencia o ON (e.id_evento = o.id_evento)
+                WHERE DAY(dia) = ? AND MONTH(dia) = ? AND YEAR(dia) = ?';
+        try {
+            $stm = $this->db->prepare($sql);
+            $stm->bindValue(1, $dia);
+            $stm->bindValue(2, $mes);
+            $stm->bindValue(3, $ano);
+            $stm->execute();
+            $this->db = null; // Fecha a conexão
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            echo "Código: " . $e->getCode();
+            echo " .Mensagem: " . $e->getMessage();
+            die();
+        }
+    }
 }
