@@ -35,6 +35,7 @@ $route->get("/", array(InicioController::class, "inicio"));
 //Login
 $route->get("/login", array(LoginController::class, "login"));
 $route->post("/login", array(LoginController::class, "login"));
+$route->get("/logout", array(LoginController::class, "logout"));
 
 
 // Usuario
@@ -56,29 +57,4 @@ $route->get("/calendario", array(EventoController::class, "calendario"));
 
 //Erro
 $route->get("/pagina-nao-encontrada", array(ErroController::class, "naoEncontrado"));
-
-
-
-// //Categoria
-// $route->get("/categoria", array(CategoriaController::class, "listar"));
-
-// $route->get("/inserirCategoria", array(CategoriaController::class, "inserir"));
-// $route->post("/inserirCategoria", array(CategoriaController::class, "inserir"));
-
-// $route->get("/alterarCategoria", array(CategoriaController::class, "alterar"));
-// $route->post("/alterarCategoria", array(CategoriaController::class, "alterar"));
-
-// $route->get("/excluirCategoria", array(CategoriaController::class, "excluir"));
-
-// //Produto
-// $route->get("/produto", array(ProdutoController::class, "listar"));
-
-// $route->get("/inserirProduto", array(ProdutoController::class, "inserir"));
-// $route->post("/inserirProduto", array(ProdutoController::class, "inserir"));
-
-// $route->get("/alterarProduto", array(ProdutoController::class, "alterar"));
-// $route->post("/alterarProduto", array(ProdutoController::class, "alterar"));
-
-// $route->get("/alterarSituacao", array(ProdutoController::class, "alterarSituacao"));
-
 

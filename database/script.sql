@@ -5,7 +5,7 @@ USE localizejahu;
 CREATE TABLE usuario(
 	id_usuario INT(10) AUTO_INCREMENT PRIMARY KEY,
 	nome VARCHAR(80) NOT NULL,
-	senha VARCHAR(80) NOT NULL,
+	senha VARCHAR(100) NOT NULL,
 	telefone VARCHAR(15) NOT NULL,
 	email VARCHAR(80) NOT NULL UNIQUE,
 	cpf CHAR(14) NOT NULL UNIQUE,
@@ -47,8 +47,8 @@ CREATE TABLE evento (
 	bairro VARCHAR(80) NOT NULL,
 	cidade VARCHAR(80) NOT NULL,
 	uf CHAR(2),
-	estado ENUM('ativo','desativado','pendente','finalizado','cancelado') NOT NULL,
-	imagem LONGBLOB,
+	situacao ENUM('ativo','desativado','pendente','finalizado','cancelado') NOT NULL,
+	imagem VARCHAR(80),
 	id_categoria INT(10) NOT NULL,
 	FOREIGN KEY (id_categoria) REFERENCES categoria (id_categoria),
 	id_promotor INT(10) NOT NULL,
@@ -67,3 +67,45 @@ CREATE TABLE ocorrencia(
 
 
 ##Dados
+
+INSERT INTO usuario (`nome`, `senha`, `telefone`, `email`, `cpf`, `adm`) VALUES
+('adm', 'adm', '123456', 'adm@adm.com', '222222', 'sim');
+
+INSERT INTO promotor(nome_publico, telefone_contato, email_contato, biografia, id_usuario)
+VALUES ("Administrar","123456789","adm@adm.com","Administrador",1);
+
+INSERT INTO categoria (descritivo) 
+VALUES ('Festa'),
+	('Show'),
+	('Festival'),
+	('Exposição'),
+	('Encontro'),
+	('Feira'),
+	('Workshop/Oficina'),
+	('Curso'),
+	('Esportivo'),
+	('Competição'),
+	('Caminhada/Corrida'),
+	('Palestra'),
+	('Religioso'),
+	('Evento Académico'),
+	('Palestra/Seminário');
+
+INSERT INTO evento (descricao, titulo, logradouro, cep, bairro, cidade, uf, situacao, imagem, id_categoria, id_promotor)
+VALUES
+    ('Um grande festival de música para todos os públicos.', 'Festival de Música', 'Av. das Flores, 123', '17201-000', 'Centro', 'Jaú', 'SP', 'ativo', NULL, 3, 1),
+    ('Uma exposição de arte moderna.', 'Exposição de Arte Moderna', 'Rua das Artes, 45', '17202-100', 'Vila Nova', 'Jaú', 'SP', 'ativo', NULL, 4, 1),
+    ('Encontro literário com escritores locais.', 'Encontro Literário', 'Praça da Leitura, s/n', '17203-200', 'Jardim das Letras', 'Jaú', 'SP', 'pendente', NULL, 5, 1),
+    ('Workshop de tecnologia para iniciantes.', 'Workshop de Tecnologia', 'Rua Tech, 789', '17204-300', 'Parque Industrial', 'Jaú', 'SP', 'ativo', NULL, 7, 1),
+    ('Corrida beneficente para arrecadar fundos.', 'Corrida Beneficente', 'Parque das Palmeiras', '17205-400', 'Residencial Verde', 'Jaú', 'SP', 'ativo', NULL, 11, 1);
+	
+INSERT INTO ocorrencia (dia, hora_inicio, hora_termino, id_evento)
+VALUES
+    ('2024-11-05', '18:00:00', '23:00:00', 1), -- Festival de Música
+    ('2024-11-06', '10:00:00', '18:00:00', 2), -- Exposição de Arte Moderna
+    ('2024-11-07', '14:00:00', '17:00:00', 2), -- Encontro Literário
+    ('2024-11-12', '09:00:00', '12:00:00', 3), -- Workshop de Tecnologia
+    ('2024-11-15', '08:00:00', '11:00:00', 3), -- Corrida Beneficente
+    ('2024-11-19', '18:00:00', '23:00:00', 4), -- Outra data do Festival de Música
+    ('2024-11-20', '10:00:00', '18:00:00', 4), -- Outra data da Exposição de Arte Moderna
+    ('2024-11-21', '15:00:00', '17:00:00', 5); -- Outra data do Encontro Literário

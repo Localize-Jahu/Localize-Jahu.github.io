@@ -58,8 +58,8 @@ class UsuarioDAO extends Conexao
     public function login($usuario)
     {
         $sql = "SELECT * 
-					FROM usuario 
-					WHERE email = ?";
+				FROM usuario  	
+            	WHERE email = ?";
         try {
             $stm = $this->db->prepare($sql);
             $stm->bindValue(1, $usuario->getEmail());

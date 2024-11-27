@@ -6,15 +6,6 @@ class PromotorDAO extends UsuarioDAO
         parent::__construct();
     }
 
-// 	id_promotor INT(10) AUTO_INCREMENT PRIMARY KEY,
-// 	nome_publico VARCHAR(80) NOT NULL,
-// 	telefone_contato VARCHAR(15),
-// 	email_contato VARCHAR(80),
-// 	biografia VARCHAR(800),
-// 	id_usuario INT(10) NOT NULL UNIQUE,
-// 	FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario)
-// );
-
     public function inserir(Promotor $promotor)
     {
         $this->inserirUsuario($promotor);
@@ -85,6 +76,21 @@ class PromotorDAO extends UsuarioDAO
         try {
             $stm = $this->db->prepare($sql);
             $stm->bindValue(1, $promotor->getId());
+            $stm->execute();
+            $this->db = null; // Fecha a conexão
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            echo "Código: " . $e->getCode();
+            echo " .Mensagem: " . $e->getMessage();
+            die();
+        }
+    }
+
+    public function pesquisarPorIdUsuario(promotor $promotor) {
+        $sql = "SELECT id_promotor FROM promotor WHERE id_usuario = ?";
+        try {
+            $stm = $this->db->prepare($sql);
+            $stm->bindValue(1, $promotor->getIdUsuario());
             $stm->execute();
             $this->db = null; // Fecha a conexão
             return $stm->fetchAll(PDO::FETCH_OBJ);

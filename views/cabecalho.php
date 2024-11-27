@@ -1,7 +1,12 @@
 <?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+var_dump($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +24,7 @@
         echo "<script src='$src' defer></script>";
     }
     ?>
-</head>         
+</head>
 
 <body>
     <div class="fundo"></div>
@@ -39,19 +44,46 @@
                     <div class="dropdown">
                         <a class="nav-link" href="">Eventos</a>
                         <div class="dropdown-content">
-                            <a href="evento-cadastro">Novo</a>
                             <a href="#">Pesquisar</a>
                             <a href="/localize-jahu/calendario">Calendário</a>
 
                         </div>
                     </div>
                 </div>
-                <div class="menu-item">
-                    <a class="nav-link " href="">Promotores</a>
-                </div>
-                <div class="menu-item">
-                    <a class="nav-login" href="login">Login</a>
-                </div>
+                <?php
+                if (isset($_SESSION['logado']) && $_SESSION['logado'] == true) {
+                    if (isset($_SESSION['id_promotor']) && $_SESSION['id_promotor'] != 0) {
+
+                        echo '
+                        <div class="menu-item">
+                            <div class="dropdown">
+                                <a class="nav-link " href="">Promotores</a>
+                                <div class="dropdown-content">
+                                    <a href="evento-cadastro">Adicionar Evento</a>
+                                    <a href="#">Editar Perfil</a>
+                                </div>
+                            </div>
+                        </div>
+                        ';
+                    }
+
+
+                    $url = "";
+                    $texto = "";
+
+                    $url = "logout";
+                    $texto = "Sair";
+                } else {
+                    $url = "login";
+                    $texto = "Login";
+                }
+
+                echo '
+                        <div class="menu-item">
+                            <a class="nav-login" href="' . $url . '">' . $texto . '</a>
+                        </div>
+                        ';
+                ?>
             </div>
             <div class="menu-icon">
                 <a href="#" class="menu-abrir" id="menu-abrir" onclick="abrirNav();">

@@ -225,7 +225,8 @@ nav {
     position: absolute;
     width: auto;
     min-width: 100%;
-    bottom: -148px;
+    height: fit-content;
+    top: 50px;
     z-index: 1;
     background-color: var(--cor2);
 
@@ -233,7 +234,7 @@ nav {
 
 
 .dropdown-content a {
-    min-width: 80px;
+    min-width: 120px;
     width: max-content;
     display: block;
     color: white;
@@ -253,10 +254,7 @@ nav {
     display: block;
 }
 
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {
-    background-color: #3e8e41;
-}
+
 
 /* Fim da Barra de Navegação */
 
