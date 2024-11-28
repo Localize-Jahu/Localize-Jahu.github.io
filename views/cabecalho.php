@@ -60,7 +60,7 @@ if (!isset($_SESSION)) {
                                 <a class="nav-link " href="">Gerenciar</a>
                                 <div class="dropdown-content">
                                     <a href="evento-cadastro">Adicionar Evento</a>
-                                    <a href="#">Editar Perfil</a>
+                                    <a href="/localize-jahu/promotor_perfil">Editar Perfil</a>
                                     <a href="#">Configurações</a>
                                 </div>
                             </div>
@@ -125,7 +125,8 @@ if (!isset($_SESSION)) {
                         <a id="dropbtn" class="overlay-link dropbtn">Gerenciar</a>
                         <div id="navGerenciarDropdown" class="celular-dropdown-content">
                             <a class="overlay-link" href="evento-cadastro"> <img class="baixo-direita" src="assets/images/baixo-direita.png" alt="">Novo Evento</a>
-                            <a class="overlay-link" href="#"> <img class="baixo-direita" src="assets/images/baixo-direita.png" alt="">Editar Perfil</a>
+                            <a class="overlay-link" href="/localize-jahu/promotor_perfil"> <img class="baixo-direita" src="assets/images/baixo-direita.png" alt="">Editar Perfil</a>
+                            <a class="overlay-link" href="#"> <img class="baixo-direita" src="assets/images/baixo-direita.png" alt="">Configurações</a>
                         </div>
                     </div>
                 <?php

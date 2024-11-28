@@ -30,7 +30,7 @@ class EventoDAO extends Conexao
             $stm->bindValue(7, $evento->getUf());
             $stm->bindValue(8, $evento->getSituacao());
             $stm->bindValue(9, $evento->getImagem());
-            $stm->bindValue(10, $evento->getCategoria()->getID());
+            $stm->bindValue(10, $evento->getCategoria()->getId_categoria());
             $stm->bindValue(11, $evento->getPromotor()->getID());
             $stm->execute();
 
@@ -44,7 +44,7 @@ class EventoDAO extends Conexao
 
     public function alterarEvento($evento)
     {
-        $sql = "UPDATE evento set descricao=?, titulo=?, logradouro=?, cep=?, bairro=?, cidade=?, uf=?, imagem=?, id_categoria=?, id_promotor=? WHERE id_evento = ?";
+        $sql = "UPDATE evento set descricao=?, titulo=?, logradouro=?, cep=?, bairro=?, cidade=?, uf=?, imagem=?, id_categoria=? WHERE id_evento = ?";
         try {
             $stm = $this->db->prepare($sql);
             $stm->bindValue(1, $evento->getDescricao());
@@ -56,27 +56,11 @@ class EventoDAO extends Conexao
             $stm->bindValue(7, $evento->getUf());
             $stm->bindValue(8, $evento->getImagem());
             $stm->bindValue(9, $evento->getCategoria()->getId_categoria());
-            $stm->bindValue(10, $evento->getPromotor()->getId_promotor());
-            $stm->bindValue(11, $evento->getId_evento());
+            $stm->bindValue(10, $evento->getId_evento());
             $this->db = null;
             $stm->execute();
 
             return "Evento alterado com sucesso!";
-        } catch (PDOException $e) {
-            echo $e->getCode();
-            echo $e->getMessage();
-            die();
-        }
-    }
-
-    public function buscarTodos()
-    {
-        $sql = "SELECT id_evento, imagem FROM evento";
-        try {
-            $stm = $this->db->prepare($sql);
-            $stm->execute();
-            $this->db = null;
-            return $stm->fetchAll(PDO::FETCH_OBJ);
         } catch (PDOException $e) {
             echo $e->getCode();
             echo $e->getMessage();
@@ -194,7 +178,7 @@ class EventoDAO extends Conexao
         try {
             $stm = $this->db->prepare($sql);
             $stm->bindValue(1, 'Ativo');
-            $stm->bindValue(2,rand());
+            $stm->bindValue(2, rand());
             $stm->execute();
             $this->db = null; // Fecha a conexão
             return $stm->fetchAll(PDO::FETCH_OBJ);

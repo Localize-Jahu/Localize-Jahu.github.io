@@ -6,7 +6,7 @@ class Categoria {
         private string $descritivo = ""
     ) {}
 
-    public function getID(): int
+    public function getId_categoria(): int
     {
         return $this->id_categoria;
     }

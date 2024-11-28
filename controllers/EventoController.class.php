@@ -69,7 +69,7 @@ class EventoController
                 $evento = new Evento(0, $_POST["titulo"], $_POST["cep"], $_POST["bairro"], $_POST["logradouro"], $_POST["cidade"], $_POST["uf"], $_FILES["imagem"]["name"], $_POST["descricao"], "Pendente",  $categoria, $promotor);
             }
 
-            
+
 
             if (!$erro) {
                 $categoria = new Categoria($_POST["categoria"]);
@@ -95,7 +95,7 @@ class EventoController
             }
         }
         $categoriaDAO = new CategoriaDAO();
-        $retorno = $categoriaDAO->buscarTodas();
+        $retorno = $categoriaDAO->listar();
         require_once "views/cabecalho.php";
         require_once "views/eventoCadastro.php";
         require_once "views/rodape.html";
@@ -122,19 +122,6 @@ class EventoController
 
         require_once "views/cabecalho.php";
         require_once "views/calendario.php";
-        require_once "views/rodape.html";
-    }
-
-    public function listarTodos()
-    {
-        $titulo = ' - Listar Imagem';
-        $style = array("assets/styles/styleCalendario.css");
-        $script = array();
-
-        require_once "views/cabecalho.php";
-        $eventoDAO = new EventoDAO();
-        $retorno = $eventoDAO->buscarTodos();
-        require_once "Views/evento.php";
         require_once "views/rodape.html";
     }
 
@@ -226,10 +213,10 @@ class EventoController
             } else {
                 $categoria = new Categoria($_POST["categoria"]);
                 $promotor = new Promotor($_POST["idpromotor"]);
-                $evento = new Evento($_POST["idevento"], $_POST["descricao"], $_POST["titulo"], $_POST["logradouro"], $_POST["cep"], $_POST["bairro"], $_POST["cidade"], $_POST["uf"], "Pendente", $imagemNome, $categoria, $promotor);
+                $evento = new Evento($_POST["idevento"], $_POST["titulo"], $imagemNome, $_POST["descricao"], $_POST["uf"], $_POST["cidade"], $_POST["bairro"], $_POST["logradouro"], $_POST["cep"], "Pendente", $categoria, $promotor);
                 $eventoDAO = new eventoDAO;
                 $retorno = $eventoDAO->alterarEvento($evento);
-                header("location:/localize-jahu/evento?msg=$retorno");
+                header("location:/localize-jahu/eventos?msg=$retorno");
             }
         }
         if (isset($_GET["id"])) {

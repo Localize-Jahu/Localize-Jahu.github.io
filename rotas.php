@@ -52,10 +52,6 @@ $route->get("/contato", array(ContatoController::class, "inicio"));
 $route->get("/evento-cadastro", array(EventoController::class, "cadastrar"));
 $route->post("/evento-cadastro", array(EventoController::class, "cadastrar"));
 
-
-$route->get("/evento", [EventoController::class, "listarTodos"]);
-$route->post("/evento", [EventoController::class, "listarTodos"]);
-
 $route->get("/eventos", [EventoController::class, "listar"]);
 
 $route->get("/alterarEvento", [EventoController::class, "alterar"]);
@@ -70,6 +66,8 @@ $route->get("/calendario", array(EventoController::class, "calendario"));
 //promotor
 $route->get("/promotor_perfil", [PromotorController::class, "mostrar_info"]);
 $route->post("/promotor_perfil", [PromotorController::class, "mostrar_info"]);
+$route->get("/promotor", [PromotorController::class, "perfil_publico"]);
+
 
 $route->get("/editar_perfil", [PromotorController::class, "alterar"]);
 $route->post("/editar_perfil", [PromotorController::class, "alterar"]);
