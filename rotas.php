@@ -54,7 +54,7 @@ $route->get("/evento-cadastro", array(EventoController::class, "cadastrar"));
 $route->get("/evento", [EventoController::class, "listarTodos"]);
 $route->post("/evento", [EventoController::class, "listarTodos"]);
 
-$route->get("/evento1", [EventoController::class, "listar1"]);
+$route->get("/eventos", [EventoController::class, "listar"]);
 
 $route->get("/alterarEvento", [EventoController::class, "alterar"]);
 

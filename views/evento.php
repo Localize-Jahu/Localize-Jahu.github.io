@@ -11,7 +11,7 @@
             // Loop para exibir os eventos
             foreach ($retorno as $dado) {
                 echo "<tr>
-                        <td><a href='/localize-jahu/evento1?idevento={$dado->id_evento}'><img src='uploads/{$dado->imagem}' width='150' height='150'></td>
+                        <td><a href='/localize-jahu/eventos?idevento={$dado->id_evento}'><img src='uploads/{$dado->imagem}' width='150' height='150'></td>
                             &nbsp;&nbsp;";
                 echo "</td></tr>";
             }
