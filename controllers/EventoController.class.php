@@ -15,36 +15,31 @@ class EventoController
                 $msg[0] = "Preencha o titulo";
                 $erro = true;
             }
-            if (empty($_POST['descricao'])) {
-                $msg[1] = 'Preencha a descricao do evento!';
-                $erro = true;
-            }
-
-            if (empty($_POST['logradouro'])) {
-                $msg[5] = 'Preencha o logradouro!';
-                $erro = true;
-            }
             if (empty($_POST['cep'])) {
-                $msg[6] = 'O cep é obrigatório!';
+                $msg[1] = 'O cep é obrigatório!';
             }
+           
             if (empty($_POST["bairro"])) {
-                $msg[7] = "Preencha o bairro!";
+                $msg[2] = "Preencha o bairro!";
+                $erro = true;
+            }
+            if (empty($_POST['logradouro'])) {
+                $msg[3] = 'Preencha o logradouro!';
                 $erro = true;
             }
             if (empty($_POST["cidade"])) {
-                $msg[8] = "Preencha a cidade!";
+                $msg[4] = "Preencha a cidade!";
                 $erro = true;
             }
             if (empty($_POST["uf"])) {
-                $msg[9] = "Preencha o uf!";
+                $msg[5] = "Preencha o uf!";
                 $erro = true;
             }
-
             if ($_FILES["imagem"]["name"] == "") {
-                $msg[10] = "Escolha uma imagem!";
+                $msg[6] = "Escolha uma imagem!";
                 $erro = true;
             } else if ($_FILES["imagem"]["type"] != "image/png" && $_FILES["imagem"]["type"] != "image/jpg" && $_FILES["imagem"]["type"] != "image/jpeg") {
-                $msg[10] = "Tipo de Imagem Inválido!";
+                $msg[6] = "Tipo de Imagem Inválido!";
                 $erro = true;
             } else {
                 $diretorio = "uploads/";
@@ -55,19 +50,23 @@ class EventoController
                     $erro = true;
                 }
             }
+            if (empty($_POST['descricao'])) {
+                $msg[7] = 'Preencha a descricao do evento!';
+                $erro = true;
+            }
 
             // categoria
             if ($_POST["categoria"] == "0") {
-                $msg[11] = "Escolha uma categoria!";
+                $msg[8] = "Escolha uma categoria!";
                 $erro = true;
             }
             if (!$erro) {
                 $categoria = new Categoria($_POST["categoria"]);
-                $evento = new Evento(0, $_POST["titulo"], $_POST["descricao"], $_POST["logradouro"], $_POST["cep"], $_POST["bairro"], $_POST["cidade"], $_POST["uf"], "Pendente", $_FILES["imagem"]["name"], $categoria);
+                $evento = new Evento(0, $_POST["titulo"], $_POST["cep"], $_POST["bairro"], $_POST["logradouro"], $_POST["cidade"], $_POST["uf"], $_FILES["imagem"]["name"], $_POST["descricao"], "Pendente",  $categoria);
             }
             if (!$erro) {
                 $promotor = new Promotor();
-                $evento = new Evento(0, $_POST["titulo"], $_POST["descricao"], $_POST["logradouro"], $_POST["cep"], $_POST["bairro"], $_POST["cidade"], $_POST["uf"], "Pendente", $_FILES["imagem"]["name"], $categoria, $promotor);
+                $evento = new Evento(0, $_POST["titulo"], $_POST["cep"], $_POST["bairro"], $_POST["logradouro"], $_POST["cidade"], $_POST["uf"], $_FILES["imagem"]["name"], $_POST["descricao"], "Pendente",  $categoria, $promotor);
             }
 
 
@@ -77,16 +76,16 @@ class EventoController
                 $evento = new Evento(
                     0,
                     $_POST["titulo"],
-                    $_POST["descricao"],
-                    $_POST["logradouro"],
                     $_POST["cep"],
                     $_POST["bairro"],
+                    $_POST["logradouro"],
                     $_POST["cidade"],
                     $_POST["uf"],
-                    "Pendente",
                     $imagemNome,
+                    $_POST["descricao"],
+                    "Pendente",
                     $categoria,
-                    $promotor
+                    $promotor            
                 );
                 $eventoDAO = new EventoDAO();
                 $retorno = $eventoDAO->inserir($evento);
