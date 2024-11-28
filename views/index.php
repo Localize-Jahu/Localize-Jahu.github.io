@@ -23,7 +23,7 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <a class="a-carrossel" href="/localize-jahu/eventos?idevento={$evento->id_evento}">
-                            <img class="img-carrossel" src="assets/images/eventos.jpg" alt="Imagem de um Evento">
+                            <img class="img-carrossel" src="assets/images/evento1.jpg" alt="Imagem de um Evento">
                         </a>
                         <div class="carousel-titulo">
                             <h2>Festival de Música e Arte</h2>
