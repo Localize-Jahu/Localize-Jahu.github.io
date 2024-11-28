@@ -164,7 +164,7 @@ class EventoDAO extends Conexao
             $stm->bindValue(1, 'pt_BR');
             $stm->execute();
 
-            $sql = 'SELECT e.imagem, e.id_evento, e.titulo, DATE_FORMAT(o.dia,"%M, %d") as dia, o.hora_inicio, e.logradouro, e.bairro, e.cidade
+            $sql = 'SELECT e.imagem, e.id_evento, e.titulo, DATE_FORMAT(o.dia,"%M, %d") as dia, TIME_FORMAT(o.hora_inicio,"%H:%i") as hora_inicio, e.logradouro, e.bairro, e.cidade
             FROM evento e
             INNER JOIN ocorrencia o ON (e.id_evento = o.id_evento)
             WHERE situacao = ? AND o.dia > (CURDATE()-1)
@@ -174,6 +174,27 @@ class EventoDAO extends Conexao
 
             $stm = $this->db->prepare($sql);
             $stm->bindValue(1, 'Ativo');
+            $stm->execute();
+            $this->db = null; // Fecha a conexão
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            echo "Código: " . $e->getCode();
+            echo " .Mensagem: " . $e->getMessage();
+            die();
+        }
+    }
+
+    public function eventosPopulares()
+    {
+        $sql = "SELECT id_evento, titulo, descricao, imagem
+                FROM evento
+                WHERE situacao = ? 
+                ORDER BY ? 
+                LIMIT 3";
+        try {
+            $stm = $this->db->prepare($sql);
+            $stm->bindValue(1, 'Ativo');
+            $stm->bindValue(2,rand());
             $stm->execute();
             $this->db = null; // Fecha a conexão
             return $stm->fetchAll(PDO::FETCH_OBJ);

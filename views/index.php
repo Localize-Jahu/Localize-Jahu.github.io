@@ -19,54 +19,59 @@
                 <li data-target="#carousel" data-slide-to="2"></li>
 
             </ol>
-            <a href="/localize-jahu/eventos?idevento={$evento->id_evento}">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <a class="a-carrossel" href="/localize-jahu/eventos?idevento={$evento->id_evento}">
-                            <img class="img-carrossel" src="assets/images/evento1.jpg" alt="Imagem de um Evento">
-                        </a>
-                        <div class="carousel-titulo">
-                            <h2>Festival de Música e Arte</h2>
-                            <p> Com apresentações ao vivo de bandas locais, exposições de arte, workshops de música
-                                e pintura, o festival oferece uma plataforma para artistas emergentes e consagrados
-                                mostrarem seu talento. O evento inclui também feiras gastronômicas com comidas
-                                típicas e uma área dedicada às crianças, garantindo diversão para toda a família.
-                            </p>
+            <div class='carousel-inner'>
+                <?php
+                $i = 0;
+                foreach ($populares as $evento) {
+
+                    echo "
+                        <div class='carousel-item ".($i === 0 ? 'active' : '')."'>
+                            <a class='a-carrossel' href='/localize-jahu/eventos?idevento={$evento->id_evento}'>
+                                <img class='img-carrossel' src='uploads/{$evento->imagem}' alt='Imagem de um Evento'>
+                            </a>
+                            <div class='carousel-titulo'>
+                                <h2>{$evento->titulo}</h2>
+                                    <p>
+                                        {$evento->descricao}
+                                    </p>
+                            </div>
                         </div>
+                ";
+
+                    $i++;
+                }
+                ?>
+                <!-- <div class="carousel-item">
+                    <a class="a-carrossel" href="/localize-jahu/eventos?idevento={$evento->id_evento}">
+                        <img class="img-carrossel" src="assets/images/evento2.jpg" alt="Imagem de um Evento">
+                    </a>
+                    <div class="carousel-titulo">
+                        <h2>Mostra de Cinema Independente </h2>
+                        <p> A Mostra de Cinema Independente de Jaú é dedicada a exibir filmes de cineastas
+                            independentes de todo o Brasil. O público pode desfrutar de uma programação variada,
+                            que inclui curtas e longas-metragens, documentários e animações, proporcionando uma
+                            experiência cinematográfica rica e inspiradora. </p>
                     </div>
+                </div>
 
-                    <div class="carousel-item">
-                        <a class="a-carrossel" href="/localize-jahu/eventos?idevento={$evento->id_evento}">
-                            <img class="img-carrossel" src="assets/images/evento2.jpg" alt="Imagem de um Evento">
-                        </a>
-                        <div class="carousel-titulo">
-                            <h2>Mostra de Cinema Independente </h2>
-                            <p> A Mostra de Cinema Independente de Jaú é dedicada a exibir filmes de cineastas
-                                independentes de todo o Brasil. O público pode desfrutar de uma programação variada,
-                                que inclui curtas e longas-metragens, documentários e animações, proporcionando uma
-                                experiência cinematográfica rica e inspiradora. </p>
-                        </div>
+                <div class="carousel-item">
+                    <a class="a-carrossel" href="/localize-jahu/eventos?idevento={$evento->id_evento}">
+                        <img class="img-carrossel" src="assets/images/evento3.jpg" alt="Imagem de um Evento">
+                    </a>
+                    <div class="carousel-titulo">
+                        <h2> Noite Retrô na Discoteca Galaxy </h2>
+                        <p> A Noite Retrô na Discoteca Galaxy promete uma viagem no tempo com os melhores hits
+                            das décadas de 70, 80 e 90. Venha reviver os anos dourados da música dançando ao som
+                            de clássicos do disco, pop e rock, com DJs renomados que farão você voltar no tempo.
+                            O evento contará com decoração temática, concursos de dança e premiações para os
+                            melhores trajes retrô. Uma noite de nostalgia e diversão garantida para todas as
+                            idades! </p>
                     </div>
-
-                    <div class="carousel-item">
-                        <a class="a-carrossel" href="/localize-jahu/eventos?idevento={$evento->id_evento}">
-                            <img class="img-carrossel" src="assets/images/evento3.jpg" alt="Imagem de um Evento">
-                        </a>
-                        <div class="carousel-titulo">
-                            <h2> Noite Retrô na Discoteca Galaxy </h2>
-                            <p> A Noite Retrô na Discoteca Galaxy promete uma viagem no tempo com os melhores hits
-                                das décadas de 70, 80 e 90. Venha reviver os anos dourados da música dançando ao som
-                                de clássicos do disco, pop e rock, com DJs renomados que farão você voltar no tempo.
-                                O evento contará com decoração temática, concursos de dança e premiações para os
-                                melhores trajes retrô. Uma noite de nostalgia e diversão garantida para todas as
-                                idades! </p>
-                        </div>
-                    </div>
+                </div> -->
 
 
-                </div> <!-- Fecha elementos dentro do carrossel -->
+            </div> <!-- Fecha elementos dentro do carrossel -->
 
-            </a>
             <!--   Controladores | Botões -->
             <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span> </a>
@@ -85,11 +90,11 @@
         </div>
 
         <div class='cards'>
-        <?php
+            <?php
 
-        foreach ($proximos as $evento) {
+            foreach ($proximos as $evento) {
 
-            echo "
+                echo "
 
                     <section class='card'>
                         <div class='card-bloco-titulo'>
@@ -115,11 +120,9 @@
                 <a href='/localize-jahu/eventos?idevento={$evento->id_evento}' class='card-detalhes link-saiba-mais'>SAIBA MAIS</a>
             </section>
             ";
+            }
 
-
-        }
-
-        ?>
+            ?>
 
 
             <!-- <section class="card">

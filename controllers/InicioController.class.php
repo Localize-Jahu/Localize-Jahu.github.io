@@ -5,6 +5,8 @@ class InicioController
     {
         $eventoDAO = new EventoDAO;
         $proximos = $eventoDAO->proximosEventos(); 
+        $eventoDAO = new EventoDAO;
+        $populares = $eventoDAO->eventosPopulares();
 
         $titulo = '';
         $style = array("assets/styles/styleHome.css");

@@ -237,9 +237,11 @@
 
 /*Texto das imagens*/
 .carousel-titulo {
+  box-sizing: border-box;
   width: 70%;
+  max-height: 50%;
   height: auto;
-  padding: 3%;
+  padding: 36px;
   margin-left: 1%;
   background: rgb(173, 136, 198, 0.9);
   color: var(--cor3);
@@ -247,10 +249,22 @@
   bottom: 5%;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
+
+}
+
+.carousel-titulo h2 {
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .carousel-titulo p {
   margin-top: 1%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
 }
 
 .a-carrossel {
