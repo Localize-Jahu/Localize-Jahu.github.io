@@ -1,4 +1,8 @@
+<?php
 
+echo $msg;
+
+?>
 <main>
         <article>
 
@@ -15,7 +19,7 @@
 
                
                 <!--Nome Publico-->
-                <form action="/localize-jahu/editar_perfil" class="info" enctype="multipart/form-data">
+                <form action="/localize-jahu/editar_perfil" class="info" enctype="multipart/form-data" method="POST">
                 <input type="hidden" name="idpromotor" value="<?php echo $retorno[0]->id_promotor;?>">
 
                     <div class="nome">
@@ -43,35 +47,11 @@
             </div>
                 <div class="email">
                 <h3 class="tit-email">Email</h3>
-                input type="text" name="email_contato" id="email" value="<?php echo $retorno[0]->email_contato;?>">
+                <input type="text" name="email_contato" id="email" value="<?php echo $retorno[0]->email_contato;?>">
             </div>
             </div>
-            
-
-                        <!--Botão Enviar-->
-                        <!-- <div class="center">
-                            <h2>Deseja desativar seu perfil de Promotor?</h2>
-                            <button type="reset">
-                                Desativar Perfil Promotor 
-                            </button>
-                        </div> -->
-
-                        <!--Botão Gerenciar Eventos-->
-                        <!-- <h2>Gerenciar Eventos</h2>
-                        <div class="gerenciar">
-                        <div class="criar">
-                            <button class="criare" type="reset">
-                                Criar Eventos
-                            </button>
-                        </div>
-
-                        <div class="editar">
-                            <button class="editar" type="reset">
-                                Editar Eventos
-                            </button>
-                        </div>
-
-                    </div> -->
+               
+                <button type="submit">Enviar</button>
                 </form>
             </div>
 

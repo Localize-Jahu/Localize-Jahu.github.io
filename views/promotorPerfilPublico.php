@@ -44,11 +44,7 @@
                 <p><?php echo $retorno[0]->email_contato; ?></p>
             </div>
             </div>
-            
-
-                    
-
-                        <a href="/localize-jahu/editar_perfil">Editar</a>
+        
                     </div>
                 </form>
             </div>

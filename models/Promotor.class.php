@@ -8,6 +8,7 @@ class Promotor extends Usuario
         private string $biografia = "",
         private string $telefoneContato = "",
         private string $emailContato = "",
+        private string $website = "",
         int $id_usuario = 0,
         string $nome = "",
         string $email = "",
@@ -15,12 +16,10 @@ class Promotor extends Usuario
         string $cpf = "",
         string $senha = "",
         bool $adm = false,
-        int $id_website = 0,
-        string $url = "",
         $promotor = null
     ) {
         parent::__construct($id_usuario, $nome, $email, $telefone, $cpf, $senha, $adm);
-        $this->websites[] = new Website($id_website, $url, $promotor);
+       
     }
 
 
@@ -50,9 +49,9 @@ class Promotor extends Usuario
         return $this->telefoneContato;
     }
 
-    public function getWebsites(): array
+    public function getWebsite()
     {
-        return $this->websites;
+        return $this->website;
     }
 
     public function setID(int $id_promotor): void
@@ -75,11 +74,10 @@ class Promotor extends Usuario
         $this->telefoneContato = $telefoneContato;
     }
 
-    public function setWebsites(int $id_website, string $url): void
+    public function setWebsite( string $website)
     {
-        $this->websites[] = new Website($id_website, $url);
+       $this -> website = $website;
     }
-    
     public function setEmailContato(string $emailContato): void
     {
         $this->emailContato = $emailContato;
