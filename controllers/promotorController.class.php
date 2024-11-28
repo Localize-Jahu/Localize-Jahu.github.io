@@ -1,44 +1,85 @@
 <?php
 
-session_start();
-
-$host = 'localhost';
-$db = 'localizejahu';
-$user = 'root';
-$password = '';
-
-try {
-    $conn = new PDO("mysql:host=$host;dbname=$db", $user, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    require_once 'PromotorController.php';
-    $promotorController = new PromotorController($conn);
-
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-        $data = [
-            'nome_publico' => $_POST['nome_publico'],
-            'telefone_contato' => $_POST['telefone_contato'],
-            'email_contato' => $_POST['email_contato'],
-            'biografia' => $_POST['biografia'],
-            'condicao' => $_POST['condicao'],
-            'id_usuario' => $_POST['id_usuario'],
-        ];
-
-        $validationResult = $promotorController->validate($data);
-
-        if ($validationResult === true) {
-
-            $promotorId = $promotorController->insert($data);
-            
-            header("Location: perfil_promotor.php?id=$promotorId");
-            exit;
-        } else {
-            $promotorController->handleError($validationResult);
+class PromotorController 
+{
+    public function mostrar_info()
+    {
+        if (!isset($_SESSION)) {
+            session_start();
         }
-    }
-} catch (PDOException $e) {
-    echo "Erro ao conectar ao banco de dados: " . $e->getMessage();
-}
-?>
+        $promotor = new Promotor($_SESSION["id_promotor"]);
+        $promotorDAO = new PromotorDAO();
+        $retorno = $promotorDAO->pesquisarPorId($promotor);
+        $titulo = '- Perfil Promotor';
+        $style = array("assets/styles/stylepromotor.css");
+        $script = array();
 
+        require_once "views/cabecalho.php";
+        require_once "views/promotorPerfil.php";
+        require_once "views/rodape.html";
+
+    }
+
+    public function alterar() 
+    {
+        $msg = "";
+        $promotorDAO = new PromotorDAO();
+        
+
+        if($_POST) 
+        {
+            if(empty($_POST["nome_publico"]))
+            {
+                $msg = "Preencha o seu nome";
+            }
+
+            else if(empty($_POST["biografia"]))
+            {
+                $msg = "Preencha a sua biografia";
+            }
+
+            else if(empty($_POST["instagram_link"]))
+            {
+                $msg = "Preencha com o link do seu instagram";
+            }
+
+            else if(empty($_POST["facebook_link"]))
+            {
+                $msg = "Preencha com o link do seu facebook";
+            }
+
+            else if(empty($_POST["telefone_contato"]))
+            {
+                $msg = "Preencha o seu telefone";
+            }
+
+            else if(empty($_POST["email_contato"]))
+            {
+                $msg = "Preencha o seu email";
+            }
+
+            else {
+                $promotor = new Promotor( 
+                    $_POST["idpromotor"],
+                    $_POST["nome_publico"],
+                    $_POST["biografia"],
+                    $_POST["instagram_link"],
+                    $_POST["facebook_link"],
+                    $_POST["telefone_contato"],
+                    $_POST["email_contato"]
+                );
+                $retorno = $promotorDAO->alterar_promotor($promotor);
+                header("location:/localize-jahu/promotor?msg=$retorno");
+            } 
+        }
+        if(isset($_GET["id"])) 
+        {
+            $promotor = new Promotor($_GET["id"]); 
+            $promotorDAO = new PromotorDAO;
+            $retorno = $promotorDAO->buscar_promotor($promotor);
+        }
+        require_once "views/editarPerfil.php";
+    }
+} //fim da classe
+
+?>
