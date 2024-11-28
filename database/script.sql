@@ -131,7 +131,6 @@ INSERT INTO
 		cidade,
 		uf,
 		situacao,
-		imagem,
 		id_categoria,
 		id_promotor
 	)
@@ -146,7 +145,6 @@ VALUES
 		'Jaú',
 		'SP',
 		'ativo',
-		NULL,
 		3,
 		1
 	),
@@ -160,7 +158,6 @@ VALUES
 		'Jaú',
 		'SP',
 		'ativo',
-		NULL,
 		4,
 		1
 	),
@@ -174,7 +171,6 @@ VALUES
 		'Jaú',
 		'SP',
 		'pendente',
-		NULL,
 		5,
 		1
 	),
@@ -188,7 +184,6 @@ VALUES
 		'Jaú',
 		'SP',
 		'ativo',
-		NULL,
 		7,
 		1
 	),
@@ -202,7 +197,6 @@ VALUES
 		'Jaú',
 		'SP',
 		'ativo',
-		NULL,
 		11,
 		1
 	);
