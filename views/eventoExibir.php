@@ -8,13 +8,26 @@
             <div class="titulo">
                 <h1><?php echo $retorno[0]->titulo; ?> </h1>
             </div>
+
             <div class="data">
                 <img class="imag" src="assets/images/data.png" alt="Data do Evento">
-                <p class="subtitulo"><strong>Data:</strong> 11/08/2023 até 20/08/2023</p>
+                <p class="subtitulo"><strong>Data: </strong>
+                    <?php
+                    // Verifica se a data está no formato esperado, e formata ela
+                    $data = $retorno[0]->dia;
+                    echo date('d/m/Y', strtotime($data));
+                    ?>
+                </p>
             </div>
+
             <div class="hora">
                 <img class="imag" src="assets/images/hora.png" alt="Hora do Evento">
-                <p class="subtitulo"><strong>Hora:</strong> 9:00 até 23:00</p>
+                <p class="subtitulo"><strong>Hora Início: </strong><?php echo $retorno[0]->hora_inicio; ?></p>
+            </div>
+
+            <div class="hora">
+                <img class="imag" src="assets/images/hora.png" alt="Hora do Evento">
+                <p class="subtitulo"><strong>Hora Término: </strong><?php echo $retorno[0]->hora_termino; ?></p>
             </div>
 
             <div class="local">

@@ -12,13 +12,13 @@ class OcorrenciaDAO extends Conexao
                                         hora_inicio,
                                         hora_termino,
                                         id_evento)
-                VALUES (?, ?, ?, ?)"; 
+                VALUES (?, ?, ?, ?)";
         try {
             $stm = $this->db->prepare($sql);
             $stm->bindValue(1, $ocorrencia->getDia());
             $stm->bindValue(2, $ocorrencia->getHoraInicio());
             $stm->bindValue(3, $ocorrencia->getHoraTermino());
-            $stm->bindValue(4, $ocorrencia->getEvento()->getID());
+            $stm->bindValue(4, $ocorrencia->getEvento()->getId_evento());
             $stm->execute();
             $this->db = null; // Fecha a conexão
             return "Ocorrência inserida com sucesso!";
@@ -28,17 +28,18 @@ class OcorrenciaDAO extends Conexao
         }
     }
 
-    public function alterar(Ocorrencia $ocorrencia) {
+    public function alterar(Ocorrencia $ocorrencia)
+    {
         $sql = "UPDATE ocorrencia set dia = ?, hora_inicio = ?, hora_termino = ?, id_evento = ? where id_ocorrencia = ?";
         try {
             $stm = $this->db->prepare($sql);
-            $stm->bindValue(1,$ocorrencia->getDia());
+            $stm->bindValue(1, $ocorrencia->getDia());
             $stm->bindValue(2, $ocorrencia->getHoraInicio());
             $stm->bindValue(3, $ocorrencia->getHoraTermino());
             $stm->bindValue(4, $ocorrencia->getID());
             $stm->execute();
 
-            $this->db=null;
+            $this->db = null;
             return "Ocorrência alterada com sucesso!";
         } catch (PDOException $e) {
             echo "Código: " . $e->getCode();
@@ -53,7 +54,7 @@ class OcorrenciaDAO extends Conexao
             $stm = $this->db->prepare($sql);
             $stm->bindValue(1, $ocorrencia->getID());
             $stm->execute();
-            $this->db=null;
+            $this->db = null;
             return "Ocorrência excluída com sucesso!";
         } catch (PDOException $e) {
             echo "Código: " . $e->getCode();
@@ -76,11 +77,12 @@ class OcorrenciaDAO extends Conexao
         }
     }
 
-    public function pesquisarPorIdEvento(Ocorrencia $ocorrencia) {
+    public function pesquisarPorIdEvento(Ocorrencia $ocorrencia)
+    {
         $sql = "SELECT * FROM ocorrencia WHERE id_evento = ?";
         try {
             $stm = $this->db->prepare($sql);
-            $stm->bindValue(1, $ocorrencia->getEvento()->getID());
+            $stm->bindValue(1, $ocorrencia->getEvento()->getId_evento());
             $stm->execute();
 
             $this->db = null; // Fecha a conexão
