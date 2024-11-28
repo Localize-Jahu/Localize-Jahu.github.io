@@ -90,7 +90,7 @@ class EventoController
                 $eventoDAO = new EventoDAO();
                 $retorno = $eventoDAO->inserir($evento);
 
-                header("location:/localize-jahu/evento?mensagem=$retorno");
+                header("location:/localize-jahu/eventos?mensagem=$retorno");
                 exit;
             }
         }
@@ -148,7 +148,7 @@ class EventoController
             $evento = new Evento(id_evento: $_GET["idevento"], situacao: $_GET["situacao"]);
             $eventoDAO = new EventoDAO();
             $eventoDAO->mudarSituacao($evento);
-            header("location:/localize-jahu/evento");
+            header("location:/localize-jahu/eventos");
             die();
         }
     }
@@ -216,7 +216,7 @@ class EventoController
                 $evento = new Evento($_POST["idevento"], $_POST["titulo"], $imagemNome, $_POST["descricao"], $_POST["uf"], $_POST["cidade"], $_POST["bairro"], $_POST["logradouro"], $_POST["cep"], "Pendente", $categoria, $promotor);
                 $eventoDAO = new eventoDAO;
                 $retorno = $eventoDAO->alterarEvento($evento);
-                header("location:/localize-jahu/eventos?msg=$retorno");
+                header("location:/localize-jahu/eventos?idevento={$evento->getId_evento()}&msg=$retorno");
             }
         }
         if (isset($_GET["id"])) {
