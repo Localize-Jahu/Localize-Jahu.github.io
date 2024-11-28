@@ -47,14 +47,14 @@
                 <?php
                 if (isset($_SESSION["adm"]) && $_SESSION["adm"] == "sim") {
                     if ($retorno[0]->situacao == "pendente") {
-                        echo "<a href='/localize-jahu/alterarSituacao?idevento={$retorno[0]->id_evento}&situacao=ativo' class='cancelar' onclick=\"return confirm('Confirmar a ativação?')\">Autorizar</a>";
+                        echo "<a href='/localize-jahu/alterarSituacao?idevento={$retorno[0]->id_evento}&situacao=ativo' class='alterar' onclick=\"return confirm('Confirmar a ativação?')\">Autorizar</a>";
                         echo "<a href='/localize-jahu/alterarSituacao?idevento={$retorno[0]->id_evento}&situacao=desativado' class='cancelar' onclick=\"return confirm('Confirmar a não autorização?')\">Não autorizar</a>";
                     }
                 }
                 ?>
 
                 <?php
-                if (isset($_SESSION["id_promotor"]) && $_SESSION["id_promotor"]) {
+                if (isset($_SESSION["id_promotor"])) {
                     echo "<a href='/localize-jahu/alterarEvento?id={$retorno[0]->id_evento}' class='alterar'>Alterar</a>
                     &nbsp;&nbsp;";
                     if ($retorno[0]->situacao == "pendente") {
