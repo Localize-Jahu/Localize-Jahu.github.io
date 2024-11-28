@@ -36,7 +36,8 @@ class PromotorDAO extends UsuarioDAO
         $sql = "UPDATE promotor set nome_publico = ?,
                                     telefone_contato = ?,
                                     email_contato = ?,
-                                    biografia = ?
+                                    biografia = ?,
+                                    website = ?
                 where id_promotor = ?";
         try {
             $stm = $this->db->prepare($sql);
@@ -44,7 +45,8 @@ class PromotorDAO extends UsuarioDAO
             $stm->bindValue(2, $promotor->getTelefoneContato());
             $stm->bindValue(3, $promotor->getEmailContato());
             $stm->bindValue(4, $promotor->getBiografia());
-            $stm->bindValue(5, $promotor->getId());
+            $stm->bindValue(5, $promotor->getWebsite());
+            $stm->bindValue(6, $promotor->getId());
             $stm->execute();
 
             $this->db=null;

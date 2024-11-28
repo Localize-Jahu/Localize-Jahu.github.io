@@ -38,15 +38,6 @@ class PromotorController
                 $msg = "Preencha a sua biografia";
             }
 
-            else if(empty($_POST["instagram_link"]))
-            {
-                $msg = "Preencha com o link do seu instagram";
-            }
-
-            else if(empty($_POST["facebook_link"]))
-            {
-                $msg = "Preencha com o link do seu facebook";
-            }
 
             else if(empty($_POST["telefone_contato"]))
             {
@@ -63,13 +54,12 @@ class PromotorController
                     $_POST["idpromotor"],
                     $_POST["nome_publico"],
                     $_POST["biografia"],
-                    $_POST["instagram_link"],
-                    $_POST["facebook_link"],
                     $_POST["telefone_contato"],
-                    $_POST["email_contato"]
+                    $_POST["email_contato"],
+                    $_POST["website"]
                 );
-                $retorno = $promotorDAO->alterar_promotor($promotor);
-                header("location:/localize-jahu/promotor?msg=$retorno");
+                $retorno = $promotorDAO->alterarPromotor($promotor);
+                header("location:/localize-jahu/promotor_perfil?msg=$retorno");
             } 
         }
         if(isset($_GET["id"])) 
@@ -78,7 +68,20 @@ class PromotorController
             $promotorDAO = new PromotorDAO;
             $retorno = $promotorDAO->buscar_promotor($promotor);
         }
-        require_once "views/editarPerfil.php";
+        
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        $promotor = new Promotor($_SESSION["id_promotor"]);
+        $promotorDAO = new PromotorDAO();
+        $retorno = $promotorDAO->pesquisarPorId($promotor);
+        $titulo = '- Perfil Editar';
+        $style = array("assets/styles/stylepromotor.css");
+        $script = array();
+
+        require_once "views/cabecalho.php";
+        require_once "views/promotorEditar.php";
+        require_once "views/rodape.html";
     }
 } //fim da classe
 
