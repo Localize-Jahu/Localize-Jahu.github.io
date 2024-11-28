@@ -425,7 +425,7 @@
 .data {
   margin-left: 1em;
   border-radius: 0.3em 0 0 0.3em;
-
+  text-transform: capitalize;
 
   background: linear-gradient(90deg, rgba(173, 136, 198, 1) 0%, rgba(76, 68, 82, 1) 100%);
 

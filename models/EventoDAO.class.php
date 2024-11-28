@@ -134,15 +134,46 @@ class EventoDAO extends Conexao
 
     public function pesquisarPorDia($dia, $mes, $ano)
     {
-        $sql = 'SELECT e.id_evento, titulo, situacao, id_categoria
+        $sql = 'SELECT e.id_evento, titulo, id_categoria
                 FROM evento e
                 INNER JOIN ocorrencia o ON (e.id_evento = o.id_evento)
-                WHERE DAY(dia) = ? AND MONTH(dia) = ? AND YEAR(dia) = ?';
+                WHERE DAY(dia) = ? AND MONTH(dia) = ? AND YEAR(dia) = ? and situacao =?';
         try {
             $stm = $this->db->prepare($sql);
             $stm->bindValue(1, $dia);
             $stm->bindValue(2, $mes);
             $stm->bindValue(3, $ano);
+            $stm->bindValue(4, 'Ativo');
+            $stm->execute();
+            $this->db = null; // Fecha a conexão
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            echo "Código: " . $e->getCode();
+            echo " .Mensagem: " . $e->getMessage();
+            die();
+        }
+    }
+
+    public function proximosEventos()
+    {
+
+
+        $sql = 'SET lc_time_names = ?;';
+        try {
+            $stm = $this->db->prepare($sql);
+            $stm->bindValue(1, 'pt_BR');
+            $stm->execute();
+
+            $sql = 'SELECT e.imagem, e.id_evento, e.titulo, DATE_FORMAT(o.dia,"%M, %d") as dia, o.hora_inicio, e.logradouro, e.bairro, e.cidade
+            FROM evento e
+            INNER JOIN ocorrencia o ON (e.id_evento = o.id_evento)
+            WHERE situacao = ? AND o.dia > (CURDATE()-1)
+            GROUP BY e.id_evento
+            ORDER BY o.dia ASC
+            LIMIT 3 ';
+
+            $stm = $this->db->prepare($sql);
+            $stm->bindValue(1, 'Ativo');
             $stm->execute();
             $this->db = null; // Fecha a conexão
             return $stm->fetchAll(PDO::FETCH_OBJ);
