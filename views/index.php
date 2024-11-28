@@ -24,10 +24,12 @@
                 $i = 0;
                 foreach ($populares as $evento) {
 
+                    $imagem = $evento->imagem === NULL ? "sem-imagem.png" : $evento->imagem;
+
                     echo "
-                        <div class='carousel-item ".($i === 0 ? 'active' : '')."'>
+                        <div class='carousel-item " . ($i === 0 ? 'active' : '') . "'>
                             <a class='a-carrossel' href='/localize-jahu/eventos?idevento={$evento->id_evento}'>
-                                <img class='img-carrossel' src='uploads/{$evento->imagem}' alt='Imagem de um Evento'>
+                                <img class='img-carrossel' src='uploads/{$imagem}' alt='Imagem de um Evento'>
                             </a>
                             <div class='carousel-titulo'>
                                 <h2>{$evento->titulo}</h2>
@@ -94,6 +96,8 @@
 
             foreach ($proximos as $evento) {
 
+                $imagem = $evento->imagem === NULL ? "sem-imagem.png" : $evento->imagem;
+
                 echo "
 
                     <section class='card'>
@@ -108,7 +112,7 @@
                     </address>
                 </div>
                 <a href='/localize-jahu/eventos?idevento={$evento->id_evento}' class='image-wrapper'>
-                    <img class='card-imagem' src='uploads/{$evento->imagem}' alt='{$evento->titulo}'>
+                    <img class='card-imagem' src='uploads/{$imagem}' alt='{$evento->titulo}'>
                 </a>
 
                 <div class='card-data data'>
