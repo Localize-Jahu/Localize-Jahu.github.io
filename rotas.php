@@ -50,6 +50,8 @@ $route->get("/contato", array(ContatoController::class, "inicio"));
 
 //Evento
 $route->get("/evento-cadastro", array(EventoController::class, "cadastrar"));
+$route->post("/evento-cadastro", array(EventoController::class, "cadastrar"));
+
 
 $route->get("/evento", [EventoController::class, "listarTodos"]);
 $route->post("/evento", [EventoController::class, "listarTodos"]);
@@ -65,6 +67,12 @@ $route->get("/alterarSituacao", [EventoController::class, "alterarSituacao"]);
 $route->post("/calendario", array(EventoController::class, "calendario"));
 $route->get("/calendario", array(EventoController::class, "calendario"));
 
+//promotor
+$route->get("/promotor_perfil", [PromotorController::class, "mostrar_info"]);
+$route->post("/promotor_perfil", [PromotorController::class, "mostrar_info"]);
+
+$route->get("/editar_perfil", [PromotorController::class, "alterar"]);
+$route->post("/editar_perfil", [PromotorController::class, "alterar"]);
 
 //Erro
 $route->get("/pagina-nao-encontrada", array(ErroController::class, "naoEncontrado"));

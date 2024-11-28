@@ -7,8 +7,98 @@ class EventoController
         $style = array("assets/styles/styleEventoCadastro.css");
         $script = array();
 
+        $msg = array("", "", "", "", "", "", "", "", "", "", "");
+        $erro = false;
+
+        if ($_POST) {
+            if (empty($_POST["titulo"])) {
+                $msg[0] = "Preencha o titulo";
+                $erro = true;
+            }
+            if (empty($_POST['descricao'])) {
+                $msg[1] = 'Preencha a descricao do evento!';
+                $erro = true;
+            }
+
+            if (empty($_POST['logradouro'])) {
+                $msg[5] = 'Preencha o logradouro!';
+                $erro = true;
+            }
+            if (empty($_POST['cep'])) {
+                $msg[6] = 'O cep é obrigatório!';
+            }
+            if (empty($_POST["bairro"])) {
+                $msg[7] = "Preencha o bairro!";
+                $erro = true;
+            }
+            if (empty($_POST["cidade"])) {
+                $msg[8] = "Preencha a cidade!";
+                $erro = true;
+            }
+            if (empty($_POST["uf"])) {
+                $msg[9] = "Preencha o uf!";
+                $erro = true;
+            }
+
+            if ($_FILES["imagem"]["name"] == "") {
+                $msg[10] = "Escolha uma imagem!";
+                $erro = true;
+            } else if ($_FILES["imagem"]["type"] != "image/png" && $_FILES["imagem"]["type"] != "image/jpg" && $_FILES["imagem"]["type"] != "image/jpeg") {
+                $msg[10] = "Tipo de Imagem Inválido!";
+                $erro = true;
+            } else {
+                $diretorio = "uploads/";
+                $imagemNome = uniqid() . "-" . $_FILES["imagem"]["name"];
+
+                if (!move_uploaded_file($_FILES["imagem"]["tmp_name"], $diretorio . $imagemNome)) {
+                    $msg[10] = "Erro ao fazer upload da imagem!";
+                    $erro = true;
+                }
+            }
+
+            // categoria
+            if ($_POST["categoria"] == "0") {
+                $msg[11] = "Escolha uma categoria!";
+                $erro = true;
+            }
+            if (!$erro) {
+                $categoria = new Categoria($_POST["categoria"]);
+                $evento = new Evento(0, $_POST["titulo"], $_POST["descricao"], $_POST["logradouro"], $_POST["cep"], $_POST["bairro"], $_POST["cidade"], $_POST["uf"], "Pendente", $_FILES["imagem"]["name"], $categoria);
+            }
+            if (!$erro) {
+                $promotor = new Promotor();
+                $evento = new Evento(0, $_POST["titulo"], $_POST["descricao"], $_POST["logradouro"], $_POST["cep"], $_POST["bairro"], $_POST["cidade"], $_POST["uf"], "Pendente", $_FILES["imagem"]["name"], $categoria, $promotor);
+            }
+
+            
+
+            if (!$erro) {
+                $categoria = new Categoria($_POST["categoria"]);
+                $evento = new Evento(
+                    0,
+                    $_POST["titulo"],
+                    $_POST["descricao"],
+                    $_POST["logradouro"],
+                    $_POST["cep"],
+                    $_POST["bairro"],
+                    $_POST["cidade"],
+                    $_POST["uf"],
+                    "Pendente",
+                    $imagemNome,
+                    $categoria,
+                    $promotor
+                );
+                $eventoDAO = new EventoDAO();
+                $retorno = $eventoDAO->inserir($evento);
+
+                header("location:/localize-jahu/evento?mensagem=$retorno");
+                exit;
+            }
+        }
+        $categoriaDAO = new CategoriaDAO();
+        $retorno = $categoriaDAO->buscarTodas();
         require_once "views/cabecalho.php";
-        require_once "views/eventoCadastro.html";
+        require_once "views/eventoCadastro.php";
         require_once "views/rodape.html";
     }
 
