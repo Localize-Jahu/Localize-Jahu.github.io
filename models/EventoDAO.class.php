@@ -116,18 +116,17 @@ class EventoDAO extends Conexao
     }
 
 
-    public function pesquisarPorDia($dia, $mes, $ano)
+    public function pesquisarPorMes($mes, $ano)
     {
-        $sql = 'SELECT e.id_evento, titulo, id_categoria
+        $sql = 'SELECT e.id_evento, titulo, id_categoria, DAY(dia) "dia"
                 FROM evento e
                 INNER JOIN ocorrencia o ON (e.id_evento = o.id_evento)
-                WHERE DAY(dia) = ? AND MONTH(dia) = ? AND YEAR(dia) = ? and situacao =?';
+                WHERE MONTH(dia) = ? AND YEAR(dia) = ? and situacao =?';
         try {
             $stm = $this->db->prepare($sql);
-            $stm->bindValue(1, $dia);
-            $stm->bindValue(2, $mes);
-            $stm->bindValue(3, $ano);
-            $stm->bindValue(4, 'Ativo');
+            $stm->bindValue(1, $mes);
+            $stm->bindValue(2, $ano);
+            $stm->bindValue(3, 'Ativo');
             $stm->execute();
             $this->db = null; // Fecha a conexão
             return $stm->fetchAll(PDO::FETCH_OBJ);

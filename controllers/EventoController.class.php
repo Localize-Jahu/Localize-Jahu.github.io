@@ -119,6 +119,8 @@ class EventoController
             $ano = intval($_GET['ano']);
         }
 
+        $eventoDAO = new EventoDAO();
+        $calendario = $eventoDAO->pesquisarPorMes($mes, $ano);
 
         require_once "views/cabecalho.php";
         require_once "views/calendario.php";

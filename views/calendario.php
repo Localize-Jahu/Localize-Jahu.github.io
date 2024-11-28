@@ -19,7 +19,7 @@
         ];
 
         $corClasse = [
-            1 => "festa",  
+            1 => "festa",
             2 => "show",
             3 => "festival",
             4 => "exposicao",
@@ -76,7 +76,6 @@
 
             ";
 
-
         // definir o número de dias no mês
         $numDias = date('t', $primeiroDia);
 
@@ -108,23 +107,27 @@
                 <div class="eventos">
                 ';
 
-                
-                $eventoDAO = new EventoDAO();
-            $evento = $eventoDAO->pesquisarPorDia($i, $mes, $ano);
 
 
+            if (count($calendario) > 0) {
 
-            if (count($evento) > 0) {
-                $z = 0;
-                while ($z < count($evento) && $z < 3) {
-                    echo "
-                        <a href='/localize-jahu/eventos?idevento={$evento[$z]->id_evento}' class='evento {$corClasse[$evento[$z]->id_categoria]}'>
-                            {$evento[$z]->titulo}
-                        </a>
-                    ";
-                    $z++;
+                $contador = 0;
+                foreach ($calendario as $evento) {
+                    if (intval($evento->dia) == $i) {
+                        
+                        if ($contador < 3){
+                        echo "
+                            <a href='/localize-jahu/eventos?idevento={$evento->id_evento}' class='evento {$corClasse[$evento->id_categoria]}'>
+                                {$evento->titulo}
+                            </a>
+                            ";
+                        } else{
+                            $contador++;
+                        }
+
+                    }
                 }
-                if (count($evento) > 3) {
+                if ($contador > 3) {
                     echo '
                         <a href="#" class="eventos-outros">
                         <div class="outros">
@@ -134,7 +137,6 @@
                     ';
                 }
             }
-
             echo '
                 </div>
             </td>
