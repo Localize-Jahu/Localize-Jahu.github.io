@@ -35,15 +35,26 @@
                 <p class="subtitulo2"><strong>Local: </strong><?php echo $retorno[0]->logradouro . " - " . $retorno[0]->bairro . " , " . $retorno[0]->cidade . " - " . $retorno[0]->uf . " , " . $retorno[0]->cep; ?></p>
             </div>
             <div class="situacao">
+                <img class="ima" src="assets/images/situacao.png" alt="Situação do Evento">
                 <p class="subtitulo"><strong>Situação: </strong><?php echo $retorno[0]->situacao; ?></p>
+            </div>
+            <div class="promotor">
+                <img class="ima" src="assets/images/promotor.png" alt="Promotor do Evento">
+                <p class="subtitulo2"><strong>Promotor: </strong><?php echo "<a href='/localize-jahu/promotor?idpromotor={$retorno[0]->id_promotor}'>{$retorno[0]->nome_publico}</a>"; ?></p>
             </div>
             <p class="descricao"><?php echo $retorno[0]->descricao; ?></p>
             <div class="botao">
                 <?php
-                echo "<a href='/localize-jahu/alterarEvento?id={$retorno[0]->id_evento}' class='alterar'>Alterar</a>
+                if (isset($_SESSION["adm"]) && $_SESSION["adm"] == "sim") {
+                    echo "<a href='/localize-jahu/alterarEvento?id={$retorno[0]->id_evento}' class='alterar'>Alterar</a>";
+                }
+                ?>
+                <?php echo "
               &nbsp;&nbsp;";
                 if ($retorno[0]->situacao == "pendente") {
                     //cancelado
+                    echo "<a href='/localize-jahu/alterarSituacao?idevento={$retorno[0]->id_evento}&situacao=cancelado' class='cancelar' onclick=\"return confirm('Confirmar o cancelamento do evento?')\">Cancelar</a>";
+                } else if ($retorno[0]->situacao == "ativo") {
                     echo "<a href='/localize-jahu/alterarSituacao?idevento={$retorno[0]->id_evento}&situacao=cancelado' class='cancelar' onclick=\"return confirm('Confirmar o cancelamento do evento?')\">Cancelar</a>";
                 }
                 ?>
