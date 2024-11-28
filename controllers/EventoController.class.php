@@ -146,18 +146,6 @@ class EventoController
             if ($_POST["categoria"] == "0") {
                 $msg[8] = "Escolha uma categoria!";
                 $erro = true;
-            }
-            if (empty($_POST["dia"])) {
-                $msg[9] = "Preencha o dia!";
-                $erro = true;
-            }
-            if (empty($_POST["horaInicio"])) {
-                $msg[10] = "Preencha a hora de início!";
-                $erro = true;
-            }
-            if (empty($_POST["horaTermino"])) {
-                $msg[11] = "Preencha a hora de término!";
-                $erro = true;
             } else {
                 $categoria = new Categoria($_POST["categoria"]);
                 $promotor = new Promotor($_POST["idpromotor"]);
