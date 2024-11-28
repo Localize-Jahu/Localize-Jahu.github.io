@@ -230,4 +230,21 @@ class EventoController
         require_once "Views/editEvento.php";
         require_once "views/rodape.html";
     }
+
+    public function autorizar_evento()
+    {
+        $titulo = ' - Autorizar Evento';
+        $style = array("assets/styles/styleAutorizarEventos.css");
+        $script = array();
+        $eventoDAO = new eventoDAO;
+        $retorno = $eventoDAO->autorizarEvento();
+
+
+        require_once "views/cabecalho.php";
+        require_once "Views/eventoAutorizar.php";
+        require_once "views/rodape.html";
+        
+
+
+    }
 }
