@@ -36,8 +36,10 @@ class LoginController
 
                     if (count($retorno) == 1) {
                         $_SESSION["id_promotor"] = $retorno[0]->id_promotor;
-                    }else{
-                        $_SESSION["id_promotor"] = 0;
+                    } else {
+                        if (isset($_SESSION["id_promotor"])) {
+                            unset($_SESSION["id_promotor"]);
+                        }
                     }
                     header("location:/localize-jahu/");
                     die();
