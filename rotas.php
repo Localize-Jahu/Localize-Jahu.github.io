@@ -52,10 +52,6 @@ $route->get("/contato", array(ContatoController::class, "inicio"));
 $route->get("/evento-cadastro", array(EventoController::class, "cadastrar"));
 $route->post("/evento-cadastro", array(EventoController::class, "cadastrar"));
 
-
-$route->get("/evento", [EventoController::class, "listarTodos"]);
-$route->post("/evento", [EventoController::class, "listarTodos"]);
-
 $route->get("/eventos", [EventoController::class, "listar"]);
 
 $route->get("/alterarEvento", [EventoController::class, "alterar"]);
