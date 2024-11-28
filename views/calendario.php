@@ -117,11 +117,11 @@
             if (count($evento) > 0) {
                 $z = 0;
                 while ($z < count($evento) && $z < 3) {
-                    echo '
-                        <a href="#" class="evento ' . $corClasse[$evento[$z]->id_categoria] . '">
-                            ' . $evento[$z]->titulo . '
+                    echo "
+                        <a href='/localize-jahu/eventos?idevento={$evento[$z]->id_evento}' class='evento {$corClasse[$evento[$z]->id_categoria]}'>
+                            {$evento[$z]->titulo}
                         </a>
-                    ';
+                    ";
                     $z++;
                 }
                 if (count($evento) > 3) {

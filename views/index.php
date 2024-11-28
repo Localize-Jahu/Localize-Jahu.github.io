@@ -19,11 +19,11 @@
                 <li data-target="#carousel" data-slide-to="2"></li>
 
             </ol>
-            <a href="/localize-jahu/evento1?idevento={$evento->id_evento}">
+            <a href="/localize-jahu/eventos?idevento={$evento->id_evento}">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <a class="a-carrossel" href="/localize-jahu/evento1?idevento={$evento->id_evento}">
-                            <img class="img-carrossel" src="assets/images/evento1.jpg" alt="Imagem de um Evento">
+                        <a class="a-carrossel" href="/localize-jahu/eventos?idevento={$evento->id_evento}">
+                            <img class="img-carrossel" src="assets/images/eventos.jpg" alt="Imagem de um Evento">
                         </a>
                         <div class="carousel-titulo">
                             <h2>Festival de Música e Arte</h2>
@@ -36,7 +36,7 @@
                     </div>
 
                     <div class="carousel-item">
-                        <a class="a-carrossel" href="/localize-jahu/evento1?idevento={$evento->id_evento}">
+                        <a class="a-carrossel" href="/localize-jahu/eventos?idevento={$evento->id_evento}">
                             <img class="img-carrossel" src="assets/images/evento2.jpg" alt="Imagem de um Evento">
                         </a>
                         <div class="carousel-titulo">
@@ -49,7 +49,7 @@
                     </div>
 
                     <div class="carousel-item">
-                        <a class="a-carrossel" href="/localize-jahu/evento1?idevento={$evento->id_evento}">
+                        <a class="a-carrossel" href="/localize-jahu/eventos?idevento={$evento->id_evento}">
                             <img class="img-carrossel" src="assets/images/evento3.jpg" alt="Imagem de um Evento">
                         </a>
                         <div class="carousel-titulo">
@@ -102,7 +102,7 @@
                         <span class='card-bairro'>{$evento->bairro}, {$evento->cidade}</span>
                     </address>
                 </div>
-                <a href='/localize-jahu/evento1?idevento={$evento->id_evento}' class='image-wrapper'>
+                <a href='/localize-jahu/eventos?idevento={$evento->id_evento}' class='image-wrapper'>
                     <img class='card-imagem' src='uploads/{$evento->imagem}' alt='{$evento->titulo}'>
                 </a>
 
@@ -112,7 +112,7 @@
                 <div class='card-hora hora'>
                     {$evento->hora_inicio}
                 </div>
-                <a href='/localize-jahu/evento1?idevento={$evento->id_evento}' class='card-detalhes link-saiba-mais'>SAIBA MAIS</a>
+                <a href='/localize-jahu/eventos?idevento={$evento->id_evento}' class='card-detalhes link-saiba-mais'>SAIBA MAIS</a>
             </section>
             ";
 
@@ -134,7 +134,7 @@
                         <span class="card-bairro">Jardim Netinho Prado, Jaú</span>
                     </address>
                 </div>
-                <a href="/localize-jahu/evento1?idevento={$evento->id_evento}" class="image-wrapper">
+                <a href="/localize-jahu/eventos?idevento={$evento->id_evento}" class="image-wrapper">
                     <img class="card-imagem" src="assets/images/evento5.jpg" alt="Card da Expo Jahu">
                 </a>
 
@@ -144,7 +144,7 @@
                 <div class="card-hora hora">
                     <time datetime="20:00">20:00</time>
                 </div>
-                <a href="/localize-jahu/evento1?idevento={$evento->id_evento}" class="card-detalhes link-saiba-mais">SAIBA MAIS</a>
+                <a href="/localize-jahu/eventos?idevento={$evento->id_evento}" class="card-detalhes link-saiba-mais">SAIBA MAIS</a>
             </section>
 
 
@@ -160,7 +160,7 @@
                         <span class="card-bairro">Jardim Pedro Ometto, Jaú</span>
                     </address>
                 </div>
-                <a href="/localize-jahu/evento1?idevento={$evento->id_evento}" class="image-wrapper">
+                <a href="/localize-jahu/eventos?idevento={$evento->id_evento}" class="image-wrapper">
                     <img class="card-imagem" src="assets/images/evento6.jpeg" alt="Card da Expo Jahu">
                 </a>
 
@@ -170,7 +170,7 @@
                 <div class="card-hora hora">
                     <time datetime="18:00">18:00</time>
                 </div>
-                <a href="/localize-jahu/evento1?idevento={$evento->id_evento}" class="card-detalhes link-saiba-mais">SAIBA MAIS</a>
+                <a href="/localize-jahu/eventos?idevento={$evento->id_evento}" class="card-detalhes link-saiba-mais">SAIBA MAIS</a>
             </section> -->
 
         </div>
