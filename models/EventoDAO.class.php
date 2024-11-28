@@ -188,4 +188,28 @@ class EventoDAO extends Conexao
             die();
         }
     }
-}
+
+    public function autorizarEvento()
+    {
+        $sql = "SELECT e.titulo, p.id_promotor, p.nome_publico, e.id_evento
+                FROM EVENTO e INNER JOIN promotor p
+                ON(p.id_promotor=e.id_promotor) 
+                WHERE situacao = ? ";
+
+        try
+        {
+            $stm = $this->db->prepare($sql);
+            $stm->bindValue(1, 'Pendente');
+            $stm->execute();
+            $this->db = null;
+            //retorna a forma que o banco de dados irá funcionar
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch(PDOException $e) {
+            echo "Código: " . $e->getCode();
+            echo " .Mensagem: " . $e->getMessage();
+            die();
+        }
+    }
+
+
+}//fim da classe
