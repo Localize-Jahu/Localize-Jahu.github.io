@@ -8,7 +8,8 @@ class UsuarioController
             header("location:/localize-jahu/");
             die();
         }
-        $mensagem = "";
+        $mensagem = array("", "");
+        $erro = false;
 
 
         if ($_POST) {
@@ -18,8 +19,17 @@ class UsuarioController
             $retorno = $usuarioDAO->verificarEmail($usuario);
             if ($retorno[0]->qtd > 0) {
 
-                $mensagem = "E-mail já cadastrado!";
-            } else {
+                $mensagem[0] = "E-mail já cadastrado!";
+                $erro = true;
+            }
+            $usuarioDAO = new usuarioDAO();
+            $retorno = $usuarioDAO->verificarCpf($usuario);
+            if ($retorno[0]->qtd > 0) {
+                $mensagem[1] = "CPF já cadastrado!";
+                $erro = true;
+            }
+
+            if (!$erro) {
                 $usuarioDAO = new usuarioDAO();
                 $usuarioDAO->inserirUsuario($usuario);
 

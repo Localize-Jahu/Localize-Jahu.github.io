@@ -15,8 +15,8 @@
 
     <div class="fundo"></div>
     <div class="containers">
-    <a href="/localize-jahu/login" class="botao-voltar"><img src="assets/images/fechar-login.png" alt="Botão Fechar"
-    class="img-fechar"></a>
+        <a href="/localize-jahu/login" class="botao-voltar"><img src="assets/images/fechar-login.png" alt="Botão Fechar"
+                class="img-fechar"></a>
         <h1>Cadastro de Usuário</h1>
 
         <form action="/localize-jahu/cadastro" method="post">
@@ -27,23 +27,49 @@
             </div>
             <div class="div-input">
                 <label for="nome_completo">Nome completo:</label>
-                <input class="input-tipo input-nome" type="text" name="nome_completo" required>
+                <input class="input-tipo input-nome" type="text" name="nome_completo"
+                    <?php
+                    if (isset($usuario)) {
+                        echo "value='{$usuario->getNome()}'";
+                    }
+
+                    ?>
+                    required>
             </div>
             <div class="div-input">
                 <label for="email">Email:</label>
-                <input class="input-tipo" type="email" name="email" required>
+                <input class="input-tipo" type="email" name="email"
+                    <?php
+                    if (isset($usuario)) {
+                        echo "value='{$usuario->getEmail()}'";
+                    }
+                    ?>
+                    required>
 
             </div>
-            <?php echo"<span id='email-aviso'>{$mensagem}</span>"; ?>
+            <?php echo "<span id='aviso'>{$mensagem[0]}</span>"; ?>
             <div class="div-input">
                 <label for="telefone">Telefone</label>
-                <input class="input-tipo" type="text" id="telefone" name="telefone" OnKeyPress="formatar('(##) ####-#####',this)" required>
+                <input class="input-tipo" type="text" id="telefone" name="telefone" OnKeyPress="formatar('(##) ####-#####',this)" 
+                <?php
+                    if (isset($usuario)) {
+                        echo "value='{$usuario->getTelefone()}'";
+                    }
+                    ?>
+                required>
             </div>
             <span id="telefone-aviso">Telefone inválido!</span>
             <div class="div-input">
                 <label for="cpf">CPF:</label>
-                <input class="input-tipo" type="text" id="cpf" name="cpf" OnKeyPress="formatar('###.###.###-##',this)" required>
+                <input class="input-tipo" type="text" id="cpf" name="cpf" OnKeyPress="formatar('###.###.###-##',this)" 
+                <?php
+                    if (isset($usuario)) {
+                        echo "value='{$usuario->getCpf()}'";
+                    }
+                    ?>
+                required>
             </div>
+            <?php echo "<span id='aviso'>{$mensagem[1]}</span>"; ?>
             <span id="cpf-aviso">CPF inválido!</span>
 
 

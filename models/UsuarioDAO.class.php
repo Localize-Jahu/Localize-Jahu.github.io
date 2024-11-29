@@ -76,7 +76,7 @@ class UsuarioDAO extends Conexao
         }
     }
 
-    public function verificarEmail($usuario)
+    public function verificarEmail(Usuario $usuario)
     {
         $sql = "SELECT count(*) as qtd
 				FROM usuario  	
@@ -84,6 +84,27 @@ class UsuarioDAO extends Conexao
         try {
             $stm = $this->db->prepare($sql);
             $stm->bindValue(1, $usuario->getEmail());
+
+            $stm->execute();
+            $this->db = null;
+
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            $this->db = null;
+            echo $e->getMessage();
+            echo $e->getCode();
+            die();
+        }
+    }
+
+    public function verificarCpf(Usuario $usuario)
+    {
+        $sql = "SELECT count(*) as qtd
+				FROM usuario  	
+            	WHERE cpf = ?";
+        try {
+            $stm = $this->db->prepare($sql);
+            $stm->bindValue(1, $usuario->getcpf());
 
             $stm->execute();
             $this->db = null;
