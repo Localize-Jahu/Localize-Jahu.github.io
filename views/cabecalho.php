@@ -44,8 +44,8 @@ if (!isset($_SESSION)) {
                     <div class="dropdown">
                         <a class="nav-link" href="">Eventos</a>
                         <div class="dropdown-content">
-                            <a href="#">Pesquisar</a>
-                            <a href="/localize-jahu/calendario">Calendário</a>
+                            <a class="a-dropdown" href="#">Pesquisar</a>
+                            <a class="a-dropdown" href="/localize-jahu/calendario">Calendário</a>
 
                         </div>
                     </div>
@@ -59,9 +59,23 @@ if (!isset($_SESSION)) {
                             <div class="dropdown">
                                 <a class="nav-link " href="">Gerenciar</a>
                                 <div class="dropdown-content">
-                                    <a href="evento-cadastro">Adicionar Evento</a>
-                                    <a href="/localize-jahu/promotor_perfil">Editar Perfil</a>
-                                    <a href="#">Configurações</a>
+                                    <a class="a-dropdown" href="evento-cadastro">Adicionar Evento</a>
+                                    <a class="a-dropdown" href="/localize-jahu/promotor_perfil">Editar Perfil</a>
+                                    <a class="a-dropdown" href="#">Configurações</a>
+                                </div>
+                            </div>
+                        </div>
+                        ';
+                    }
+
+                    if ($_SESSION['adm'] == "sim") {
+
+                        echo '
+                        <div class="menu-item">
+                            <div class="dropdown">
+                                <a class="nav-link " href="">Gerenciar</a>
+                                <div class="dropdown-content">
+                                    <a class="a-dropdown" href="autorizarEventos">Autorizar Evento</a>
                                 </div>
                             </div>
                         </div>

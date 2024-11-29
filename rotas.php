@@ -39,8 +39,9 @@ $route->get("/logout", array(LoginController::class, "logout"));
 
 
 // Usuario
-// $route->get("/cadastro", array(UsuarioController::class, "cadastrar"));
-// $route->get("/recuperar-senha", array(UsuarioController::class, "recuperarSenha"));
+$route->get("/cadastro", array(UsuarioController::class, "cadastrar"));
+$route->post("/cadastro", array(UsuarioController::class, "cadastrar"));
+$route->get("/recuperar-senha", array(UsuarioController::class, "recuperarSenha"));
 
 //Sobre Nos
 $route->get("/sobre-nos", array(SobreNosController::class, "inicio"));

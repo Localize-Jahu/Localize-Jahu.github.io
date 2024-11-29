@@ -10,7 +10,7 @@
 		senha VARCHAR(100) NOT NULL,
 		telefone VARCHAR(15) NOT NULL,
 		email VARCHAR(80) NOT NULL UNIQUE,
-		cpf CHAR(14) NOT NULL UNIQUE,
+		cpf CHAR(14) NOT NULL UNIQUE, 
 		adm ENUM('nao', 'sim') NOT NULL
 	);
 
