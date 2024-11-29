@@ -244,20 +244,6 @@ input[type="checkbox"]:checked::before {
     height: 150px;
 }
 
-.container-direita h2 {
-    font-family: "Roboto", sans-serif;
-    font-size: 28px;
-    font-weight: 500;
-    margin-top: 16px;
-}
-
-.container-direita h3 {
-    font-family: "Roboto", sans-serif;
-    font-size: 20px;
-    font-weight: 300;
-    margin-top: 16px;
-    text-align: center;
-}
 
 .botao-cadastro {
     background-color: var(--cor2);

@@ -26,9 +26,10 @@
                 <input type="text" id="website" name="website">
             </div>
 
-            <label for="biografia" class="label-bio">Biografia:</label>
-            <textarea id="biografia" name="biografia" required></textarea>
-
+            <div class="div-bio">
+                <label for="biografia" class="label-bio">Biografia:</label>
+                <textarea id="biografia" name="biografia" required></textarea>
+            </div>
             <div class="btns">
                 <button type="submit" class="btn cadastro">Cadastrar</button>
                 <a id="reset" class="btn reset">Limpar</a>
