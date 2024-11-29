@@ -101,14 +101,19 @@ class PromotorController
                 $promotor = new Promotor(
                     nomePublico: $_POST["nome_publico"],
                     biografia: isset($_POST["biografia"]) ? $_POST["biografia"] : "",
-                    telefoneContato: isset($_POST["telefone_contato"]) ? $_POST["telefone_contato"] : "",
+                    telefoneContato: isset($_POST["telefone"]) ? $_POST["telefone"] : "",
                     emailContato: isset($_POST["email_contato"]) ? $_POST["email_contato"] : "",
                     website: isset($_POST["website"]) ? $_POST["website"] : "",
                     id_usuario: $_SESSION["id"]
                 );
 
-                
+                $promotorDAO = new PromotorDAO();
+                $retorno = $promotorDAO->inserir($promotor);
 
+                $_SESSION["id_promotor"] = $retorno;
+
+                header("location:/localize-jahu/promotor_perfil?msg=$retorno");
+                die();
             }
 
             $titulo = '- Cadastro Promotor';
@@ -118,8 +123,6 @@ class PromotorController
             require_once "views/cabecalho.php";
             require_once "views/promotorCadastro.php";
             require_once "views/rodape.html";
-
-
         } else {
             header("location:/localize-jahu/pagina-nao-encontrada");
             die();

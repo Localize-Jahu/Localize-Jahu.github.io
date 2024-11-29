@@ -66,7 +66,14 @@ if (!isset($_SESSION)) {
                             </div>
                         </div>
                         ';
+                    } else {
+                        echo '
+                            <div class="menu-item">
+                                <a class="nav-link " href="/localize-jahu/cadastro-promotor">Vire Promotor</a>
+                            </div>
+                        ';
                     }
+
 
                     if ($_SESSION['adm'] == "sim") {
 
@@ -144,6 +151,8 @@ if (!isset($_SESSION)) {
                         </div>
                     </div>
                 <?php
+                } else {
+                    echo '<a class="overlay-link" href="/localize-jahu/cadastro-promotor">Vire Promotor</a>';
                 }
                 ?>
                 <a class="overlay-link" href="sobreNos">Sobre Nós</a>

@@ -1,5 +1,5 @@
 <?php
-class PromotorDAO extends UsuarioDAO 
+class PromotorDAO extends UsuarioDAO
 {
     public function __construct()
     {
@@ -12,27 +12,31 @@ class PromotorDAO extends UsuarioDAO
         $sql = "INSERT INTO promotor (nome_publico,
                                     telefone_contato,
                                     email_contato,
+                                    website,
                                     biografia,
                                     id_usuario)
-                VALUES (?, ?, ?, ?, ?)";
+                VALUES (?, ?, ?, ?, ? ,?)";
         try {
             $stm = $this->db->prepare($sql);
             $stm->bindValue(1, $promotor->getNomePublico());
             $stm->bindValue(2, $promotor->getTelefoneContato());
             $stm->bindValue(3, $promotor->getEmailContato());
-            $stm->bindValue(4, $promotor->getBiografia());
-            $stm->bindValue(5, $promotor->getIdUsuario());
+            $stm->bindValue(4, $promotor->getWebsite());
+            $stm->bindValue(5, $promotor->getBiografia());
+            $stm->bindValue(6, $promotor->getIdUsuario());
             $stm->execute();
 
+            $id_promotor = $this->db->lastInsertId();
             $this->db = null; // Fecha a conexão
-            return "Promotor inserido com sucesso!";
+            return $id_promotor;
         } catch (PDOException $e) {
             echo "Código: " . $e->getCode();
             echo " .Mensagem: " . $e->getMessage();
         }
     }
 
-    public function alterarPromotor(promotor $promotor) {
+    public function alterarPromotor(promotor $promotor)
+    {
         $sql = "UPDATE promotor set nome_publico = ?,
                                     telefone_contato = ?,
                                     email_contato = ?,
@@ -49,7 +53,7 @@ class PromotorDAO extends UsuarioDAO
             $stm->bindValue(6, $promotor->getId());
             $stm->execute();
 
-            $this->db=null;
+            $this->db = null;
             return "Promotor alterado com sucesso!";
         } catch (PDOException $e) {
             echo "Código: " . $e->getCode();
@@ -73,7 +77,8 @@ class PromotorDAO extends UsuarioDAO
         }
     }
 
-    public function pesquisarPorId(promotor $promotor) {
+    public function pesquisarPorId(promotor $promotor)
+    {
         $sql = "SELECT * FROM promotor WHERE id_promotor = ?";
         try {
             $stm = $this->db->prepare($sql);
@@ -88,7 +93,8 @@ class PromotorDAO extends UsuarioDAO
         }
     }
 
-    public function pesquisarPorIdUsuario(promotor $promotor) {
+    public function pesquisarPorIdUsuario(promotor $promotor)
+    {
         $sql = "SELECT id_promotor FROM promotor WHERE id_usuario = ?";
         try {
             $stm = $this->db->prepare($sql);
