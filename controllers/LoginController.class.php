@@ -1,12 +1,11 @@
 <?php
 
-if (!isset($_SESSION)) {
-    session_start();
-}
+
 class LoginController
 {
     public function login()
     {
+
         if (isset($_SESSION["logado"])) {
             header("location:/localize-jahu/");
             die();
@@ -23,7 +22,7 @@ class LoginController
                 if (password_verify($_POST['senha'], $retorno[0]->senha)) {
 
 
-
+                    session_start();
                     $_SESSION["logado"] = true;
                     $_SESSION["id"] = $retorno[0]->id_usuario;
                     $_SESSION["nome"] = $retorno[0]->nome;

@@ -19,15 +19,15 @@
                 class="img-fechar"></a>
         <h1>Cadastro de Usuário</h1>
 
-        <form action="/localize-jahu/cadastro" method="post">
+        <form id="form" action="/localize-jahu/cadastro" method="post">
             <div class="erro">
                 <?php
                 // echo $mensagem
                 ?>
             </div>
             <div class="div-input">
-                <label for="nome_completo">Nome completo:</label>
-                <input class="input-tipo input-nome" type="text" name="nome_completo"
+                <label for="nome">Nome completo:</label>
+                <input id="nome" class="input-tipo input-nome" type="text" name="nome"
                     <?php
                     if (isset($usuario)) {
                         echo "value='{$usuario->getNome()}'";
@@ -38,7 +38,7 @@
             </div>
             <div class="div-input">
                 <label for="email">Email:</label>
-                <input class="input-tipo" type="email" name="email"
+                <input class="input-tipo" type="email" name="email" id='email'
                     <?php
                     if (isset($usuario)) {
                         echo "value='{$usuario->getEmail()}'";
@@ -47,7 +47,7 @@
                     required>
 
             </div>
-            <?php echo "<span id='aviso'>{$mensagem[0]}</span>"; ?>
+            <?php echo "<span id='email-aviso'>{$mensagem[0]}</span>"; ?>
             <div class="div-input">
                 <label for="telefone">Telefone</label>
                 <input class="input-tipo" type="text" id="telefone" name="telefone" OnKeyPress="formatar('(##) ####-#####',this)" 
@@ -69,7 +69,7 @@
                     ?>
                 required>
             </div>
-            <?php echo "<span id='aviso'>{$mensagem[1]}</span>"; ?>
+            <?php echo "<span id='cpf2-aviso'>{$mensagem[1]}</span>"; ?>
             <span id="cpf-aviso">CPF inválido!</span>
 
 
@@ -83,7 +83,7 @@
             </div>
             <div class="buttons">
                 <button type="submit" id="btn-submit" class="botao-acessar">Cadastrar</button>
-                <button type="reset" class="botao-cadastro  ">Limpar</button>
+                <a type="reset" class="botao-cadastro" id="reset">Limpar</a>
             </div>
 
         </form>

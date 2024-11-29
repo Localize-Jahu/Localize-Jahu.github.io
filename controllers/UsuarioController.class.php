@@ -14,7 +14,7 @@ class UsuarioController
 
         if ($_POST) {
             $usuarioDAO = new usuarioDAO();
-            $usuario = new Usuario(0, $_POST["nome_completo"], $_POST["email"], $_POST["telefone"], $_POST["cpf"],  senha: password_hash($_POST["senha"], PASSWORD_DEFAULT));
+            $usuario = new Usuario(0, $_POST["nome"], $_POST["email"], $_POST["telefone"], $_POST["cpf"],  senha: password_hash($_POST["senha"], PASSWORD_DEFAULT));
 
             $retorno = $usuarioDAO->verificarEmail($usuario);
             if ($retorno[0]->qtd > 0) {

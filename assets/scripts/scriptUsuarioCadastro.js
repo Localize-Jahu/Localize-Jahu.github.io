@@ -92,3 +92,16 @@ function esconderAviso(element) {
 
 
 
+document.getElementById('reset').addEventListener('click', () => {
+    document.getElementById('nome').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('cpf').value = '';
+    document.getElementById('telefone').value = '';
+    document.getElementById('senha').value = '';
+    document.getElementById('confirmar_senha').value = '';
+    document.getElementById('email-aviso').style.display = 'none';
+    document.getElementById('cpf-aviso').style.display = 'none';
+    document.getElementById('cpf2-aviso').style.display = 'none';
+    cpfAviso.style.display = 'none';
+    telefoneAviso.style.display = 'none';
+});
