@@ -81,4 +81,38 @@ class PromotorController
         require_once "views/promotorEditar.php";
         require_once "views/rodape.html";
     }
+
+    public function cadastro()
+    {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+
+        if (isset($_SESSION["logado"])) {
+            if (isset($_SESSION["id_promotor"])) {
+                header("location:/localize-jahu/promotor_perfil");
+                die();
+            }
+
+            $mensagem = "";
+
+            if ($_POST) {
+
+
+            }
+
+            $titulo = '- Cadastro Promotor';
+            $style = array("assets/styles/stylePromotorCadastro.css");
+            $script = array();
+
+            require_once "views/cabecalho.php";
+            require_once "views/promotorCadastro.php";
+            require_once "views/rodape.html";
+
+
+        } else {
+            header("location:/localize-jahu/pagina-nao-encontrada");
+            die();
+        }
+    }
 } //fim da classe

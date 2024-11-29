@@ -1,95 +1,85 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f7fc; /* Fundo suave */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
-
-.container {
-    background-color: #ffffff;
-    border: 1px solid #dcdcdc;
-    border-radius: 15px;
-    padding: 20px;
-    width: 100%;
-    max-width: 400px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
 h1 {
-    font-size: 18px;
-    margin-bottom: 20px;
-    color: #000;
-    text-transform: uppercase;
+    margin-bottom: 32px;
 }
 
-.input-group {
-    margin-bottom: 15px;
-    text-align: left; /* Para organizar labels alinhadas */
-}
-
-.input-group input,
-.input-group textarea,
-.input-group select {
-    width: calc(100% - 20px);
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 25px;
-    font-size: 14px;
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
     box-sizing: border-box;
 }
 
-textarea {
-    height: 80px;
-    resize: none; /* Impede redimensionamento */
+
+.container {
+    display: flex;
+    width: 60%;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--cor1);
+    border-radius: 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-bottom: 8px;
 }
 
 label {
-    font-size: 12px;
-    margin-bottom: 5px;
-    display: block;
-    color: #555;
+    white-space: nowrap;
+    min-width: calc(100%- size);
+    padding: 0 10px;
+    background-color: var(--cor1);
+    border-radius: 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    color: white;
+    font-weight: 400;
 }
 
-.buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-button {
-    padding: 10px 20px;
+.label-bio {
+    background-color: transparent;
+    width: auto;
     border: none;
-    border-radius: 25px;
-    font-size: 14px;
+    height: auto;
+    color: black;
+}
+
+input[type="text"],
+input[type="email"] {
+    border: 2px solid var(--cor1);
+    border-radius: 0%;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    width: 100%;
+    padding: 3px;
+    color: var(--cor3);
+}
+
+textarea {
+    resize: none;
+    width: 80%;
+    height: 70vh;
+    border: 2px solid var(--cor1);
+    border-radius: 5px;
+}
+
+.btns {
+    margin: 16px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    margin: 12px;
+    border: 2px solid var(--cor1);
+    padding: 6px;
+    border-radius: 10px;
+}
+
+.btn:hover {
     cursor: pointer;
 }
 
-.cadastrar {
-    background-color: #4c2d8d; /* Roxo do botão "Cadastrar" */
-    color: white;
-}
-
-.limpar {
-    background-color: #d9d9d9; /* Cinza claro do botão "Limpar" */
-    color: #333;
-}
-
-button:hover {
-    opacity: 0.8;
-}
-
-/* Responsividade */
-@media (max-width: 600px) {
-    .buttons {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .buttons button {
-        width: 100%; /* Botões ocupam largura total no celular */
-    }
-}
+.reset {}

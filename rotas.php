@@ -73,6 +73,8 @@ $route->get("/promotor_perfil", [PromotorController::class, "mostrar_info"]);
 $route->post("/promotor_perfil", [PromotorController::class, "mostrar_info"]);
 $route->get("/promotor", [PromotorController::class, "perfil_publico"]);
 
+$route->post("/cadastro-promotor", [PromotorController::class, "cadastro"]);
+$route->get("/cadastro-promotor", [PromotorController::class, "cadastro"]);
 
 $route->get("/editar_perfil", [PromotorController::class, "alterar"]);
 $route->post("/editar_perfil", [PromotorController::class, "alterar"]);
