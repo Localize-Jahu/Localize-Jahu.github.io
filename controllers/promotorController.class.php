@@ -12,7 +12,7 @@ class PromotorController
         $retorno = $promotorDAO->pesquisarPorId($promotor);
         $titulo = '- Perfil Promotor';
         $style = array("assets/styles/stylepromotor.css");
-        $script = array();
+        $script = array("");
 
         require_once "views/cabecalho.php";
         require_once "views/promotorPerfil.php";
@@ -98,12 +98,22 @@ class PromotorController
 
             if ($_POST) {
 
+                $promotor = new Promotor(
+                    nomePublico: $_POST["nome_publico"],
+                    biografia: isset($_POST["biografia"]) ? $_POST["biografia"] : "",
+                    telefoneContato: isset($_POST["telefone_contato"]) ? $_POST["telefone_contato"] : "",
+                    emailContato: isset($_POST["email_contato"]) ? $_POST["email_contato"] : "",
+                    website: isset($_POST["website"]) ? $_POST["website"] : "",
+                    id_usuario: $_SESSION["id"]
+                );
+
+                
 
             }
 
             $titulo = '- Cadastro Promotor';
             $style = array("assets/styles/stylePromotorCadastro.css");
-            $script = array();
+            $script = array("assets/scripts/scriptPromotorCadastro.js");
 
             require_once "views/cabecalho.php";
             require_once "views/promotorCadastro.php";

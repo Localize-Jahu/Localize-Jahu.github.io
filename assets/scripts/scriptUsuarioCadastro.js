@@ -38,7 +38,7 @@ function TestaCPF(strCPF) {
 
 
 function formatar(mascara, documento) {
-
+    documento.value = documento.value.replace(/[a-zA-Z]/g, '');
     let i = documento.value.length;
     if (i < mascara.length) {
         let saida = '#';
@@ -104,4 +104,5 @@ document.getElementById('reset').addEventListener('click', () => {
     document.getElementById('cpf2-aviso').style.display = 'none';
     cpfAviso.style.display = 'none';
     telefoneAviso.style.display = 'none';
+    document.getElementById('nome').focus();
 });
