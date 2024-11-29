@@ -44,7 +44,7 @@
         </div>
         <div class="container-direita">
 
-            <a href="javascript:history.back()" class="botao-voltar"><img src="assets/images/fechar-login.png" alt="Botão Fechar"
+            <a href="/localize-jahu" class="botao-voltar"><img src="assets/images/fechar-login.png" alt="Botão Fechar"
                     class="img-fechar"></a>
 
             <img class="logo" src="assets/images/logo_4C4452.png" alt="Logo Localize Jahu">

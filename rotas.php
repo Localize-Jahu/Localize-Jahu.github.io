@@ -32,11 +32,11 @@ $route = new Rotas();
 //Inicio
 $route->get("/", array(InicioController::class, "inicio"));
 
-//Login
-$route->get("/login", array(LoginController::class, "login"));
-$route->post("/login", array(LoginController::class, "login"));
-$route->get("/logout", array(LoginController::class, "logout"));
-
+//Session
+$route->get("/login", array(UsuarioController::class, "login"));
+$route->post("/login", array(UsuarioController::class, "login"));
+$route->get("/logout", array(UsuarioController::class, "logout"));
+$route->post("/logout", array(UsuarioController::class, "logout"));
 
 // Usuario
 $route->get("/cadastro", array(UsuarioController::class, "cadastrar"));
