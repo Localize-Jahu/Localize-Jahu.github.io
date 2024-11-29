@@ -22,6 +22,11 @@ function formatar(mascara, documento) {
 
 const telefone = document.getElementById('telefone');
 
+telefone.addEventListener('input', () => {
+    telefone.value = telefone.value.replace(/[a-zA-Z]/g, '');
+})
+
+
 document.getElementById('reset').addEventListener('click', () => {
     document.getElementById('nome_publico').value = '';
     document.getElementById('nome_publico').focus();
@@ -43,7 +48,7 @@ document.getElementById('btn-submit').addEventListener('click', (event) => {
 
     if (telefone.value < 14 || telefone.value != '') {
         if (/[a-zA-Z]/g.test(telefone.value)) {
-            
+
             event.preventDefault();
             telefone.focus();
         }
@@ -63,7 +68,7 @@ function validar(element) {
 
 telefone.addEventListener('input', () => {
 
-    if (telefone.value.length < 14 || /[a-zA-Z]/g.test(telefone.value)) {
+    if (telefone.value.length < 14) {
         telefone.style.outlineColor = '#C64126';
     }
     else {

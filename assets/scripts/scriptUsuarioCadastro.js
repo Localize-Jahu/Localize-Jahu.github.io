@@ -1,7 +1,14 @@
-let senha = document.getElementById('senha');
-let senhaC = document.getElementById('confirmar_senha');
 
-senhaC.addEventListener('input', validarSenha);
+function esconderAviso(element) {
+    element.style.display = 'none';
+}
+
+
+const cpfAviso = document.getElementById('cpf-aviso');
+const telefoneAviso = document.getElementById('telefone-aviso');
+
+const cpf = document.getElementById('cpf');
+const btnSubmit = document.getElementById('btn-submit');
 
 function validarSenha() {
     if (senha.value != senhaC.value) {
@@ -19,6 +26,9 @@ function TestaCPF(strCPF) {
     var Soma;
     var Resto;
     Soma = 0;
+
+    if (strCPF.length != 11) return false;
+
     if (strCPF == "00000000000") return false;
 
     for (i = 1; i <= 9; i++) Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (11 - i);
@@ -54,22 +64,28 @@ function formatar(mascara, documento) {
     }
 }
 
-const cpfAviso = document.getElementById(elementId = 'cpf-aviso');
-const telefoneAviso = document.getElementById(elementId = 'telefone-aviso');
-let telefone = document.getElementById('telefone');
-let cpf = document.getElementById('cpf');
-const btnSubmit = document.getElementById('btn-submit');
+
+let senha = document.getElementById('senha');
+let senhaC = document.getElementById('confirmar_senha');
+
+senhaC.addEventListener('input', validarSenha);
 
 
 cpf.addEventListener('input', () => {
     cpfAviso.style.display = 'none';
+    cpf.value = cpf.value.replace(/[a-zA-Z]/g, '');
 });
+
+const telefone = document.getElementById('telefone');
 
 telefone.addEventListener('input', () => {
     telefoneAviso.style.display = 'none';
-}); 
+    telefone.value = telefone.value.replace(/[a-zA-Z]/g, '');
+});     
 
 btnSubmit.addEventListener('click', (event) => {
+
+
     let cpfValido = TestaCPF(cpf.value);
     if (!cpfValido) {
         event.preventDefault();
@@ -86,17 +102,11 @@ btnSubmit.addEventListener('click', (event) => {
     }
 });
 
-function esconderAviso(element) {
-    element.style.display = 'none';
-}
-
-
-
 document.getElementById('reset').addEventListener('click', () => {
     document.getElementById('nome').value = '';
     document.getElementById('email').value = '';
-    document.getElementById('cpf').value = '';
-    document.getElementById('telefone').value = '';
+    cpf.value = '';
+    telefone.value = '';
     document.getElementById('senha').value = '';
     document.getElementById('confirmar_senha').value = '';
     document.getElementById('email-aviso').style.display = 'none';
@@ -105,4 +115,5 @@ document.getElementById('reset').addEventListener('click', () => {
     cpfAviso.style.display = 'none';
     telefoneAviso.style.display = 'none';
     document.getElementById('nome').focus();
-});
+}); 
+

@@ -82,7 +82,7 @@
                 <input class="input-tipo" type="password" id="confirmar_senha" name="confirmar_senha" required>
             </div>
             <div class="buttons">
-                <button type="submit" id="btn-submit" class="botao-acessar">Cadastrar</button>
+                <button id="btn-submit" class="botao-acessar"  type="submit" >Cadastrar</button>
                 <a type="reset" class="botao-cadastro" id="reset">Limpar</a>
             </div>
 

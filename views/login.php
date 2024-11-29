@@ -8,6 +8,7 @@
 
     <link rel="shortcut icon" type="imagex/png" href="assets/images/logo_4C4452.ico">
     <link rel="stylesheet" href="assets/styles/styleLogin.css">
+    <script src="assets/scripts/scriptUsuarioCadastro.js" defer></script>
 </head>
 
 <body>

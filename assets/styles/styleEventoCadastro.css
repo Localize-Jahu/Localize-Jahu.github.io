@@ -1,186 +1,201 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-
-body {
-    text-align: center;
-
-} 
-
-.corpo{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-#inicio-data, #fim-data {
-    display: inline-block;
-    justify-content: center;
-    margin: 5px 10px;
-}
-
-
-#inicio-hora, #fim-hora {
-    display: inline-block;
-    justify-content: center;
-    margin: 5px 10px;
-       
+h1 {
+    margin-bottom: 32px;
 }
 
 form {
-    margin: 20px;
-    width: 98%;
-    border: 5px solid #AD88C6;  
-    border-radius: 30px;
-    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-input {
-    border: 1px solid #AD88C6;
-    border-radius: 30px;
-   
+
+.container {
+    display: flex;
+    width: 60%;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--cor2);
+    border-radius: 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-bottom: 8px;
+}
+
+.container .container {
+    margin: 0;
+    width: 50%;
+    align-self: flex-start;
+}
+
+label {
+    white-space: nowrap;
+    min-width: calc(100%- size);
+    padding: 0 10px;
+    background-color: var(--cor2);
+    border-radius: 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    color: white;
+    font-weight: 400;
+}
+
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="file"] {
+    border: 2px solid var(--cor2);
+    border-radius: 0%;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    width: 100%;
+    padding: 3px;
+    color: var(--cor3);
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.botao-imagem{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    height: 100%;
+    color: var(--cor3);
+    border: 2px solid var(--cor2);
+    box-sizing: border-box;
+}
+
+.botao-imagem:hover{
+    cursor: pointer;
+    background-color: var(--cor3);
+    color: white;
+    border-color: var(--cor3);
+}
+
+#texto-imagem {
+    border-right: 0;
+    color: white;
+}
+
+select {
+    appearance: none;
+    color: var(--cor3);
+    width: 100%;
+    text-align: right;
+    border: 2px solid var(--cor2);
+    padding-right: 6px;
+}
+
+select:hover{
+    cursor: pointer;
+}
+
+
+.div-descricao {
+    background-color: transparent;
+    width: 80%;
+    border-color: var(--cor2);
+    height: auto;
+    color: var(--cor3);
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    justify-items: start;
+    align-items: start;
+}
+
+
+.label-descricao {
+    padding: 10px;
+
+    padding-right: 16px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0px;
+
+
 }
 
 textarea {
-    border: 1px solid #AD88C6;
-    border-radius: 30px;
-    margin: 10px 15px;
-    
+    resize: none;
+    width: 99.5%;
+    height: 70vh;
+    border: 2px solid var(--cor2);
+    color: var(--cor3);
+    padding: 6px;
+    border-radius: 5px;
+    border-top-left-radius: 0;
+    box-sizing: border-box;
 }
 
-button {
-    border: 1px solid #AD88C6;
-    border-radius: 30px;
-    background-color: #AD88C6;
-    padding: 0 5px 0 5px;
-    margin-bottom: 5px;
-    
+
+
+.btns {
+    margin: 16px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
-button:hover {
-    border: 1px solid var(--cor1);
+.btn {
+    margin: 12px;
+    border: 2px solid var(--cor1);
+    padding: 6px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    width: 120px;
+    height: 50px;
+    text-decoration: none;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.cadastro {
+    background-color: var(--cor2);
+
+    font-weight: 500;
+    border: 1px solid #FFFFFF;
     border-radius: 30px;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.cadastro:hover {
     background-color: var(--cor3);
+    color: #FFFFFF;
+    border-color: var(--cor3);
+    cursor: pointer;
 }
 
-button h3 {
-    color:white;
-}
+.reset {
 
-input[type="text"] {
-    width: 98%;
-    height: 30px;
-}
+    color: var(--cor1);
+    font-weight: 700;
+    border: 3px solid var(--cor1);
+    border-radius: 30px;
 
-input[type="date"], 
-input[type="time"] {
-    width: 300px;
-    height: 30px;
-}
-
-
-
-h2{
-    margin: 5px 10px;
-}
-
-/* #cep  {
-    display: inline-block;
-    justify-content: center;
-    width: 90px;
-    height: 30px;
-    
-} */
-
-.local_bairro {
-    width: 350px;
-    height: 30px;
-}
-
-.local_cep {
-    width: 250px;
-    height: 30px;
-
-}
-.local_rua {
-    width: 100%;
-    height: 30px;
-
-}
-
-.local_numero {
-    width: 90px;
-    height: 30px;
-
-}
-
-#local1 {
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin: 5px 10px;
-}
-
-#local2 {
-    display: flex;
     justify-content: center;
-    align-items: center;
-    margin: 5px 10px;
+    font-size: 16px;
 }
 
-#rua {
-    width: 51%;
-    padding: 0px 10px; 
-}
-
-#bairro {
-    padding: 0px 10px;
-}
-
-
-
-@media (max-width: 820px) {
-    
-       
-        #corpo {
-        display: flex;
-        flex-direction: column;
-   
-    }
-
-        form {
-       display: flex;
-       flex-direction: column;
-       width: 85%;
-      
-
-      
-    }
-
-
-   .nome_evento {
-        width: 275px;
-
-    }
-    .local_cep, .local_bairro {
-        width: 150px;
-
-    }
-    #rua {
-        width: 55%; 
-
-    }
-
-    input[type="date"], 
-    input[type="time"] {
-    width: 100px;
-    }
-
-    textarea {
-        width: 95%;  
-    }
-
-    textarea {
-        margin:5px;
-    }
-      
+.reset:hover {
+    background-color: var(--cor1);
+    color: #FFFFFF;
+    border-color: var(--cor1);
+    cursor: pointer;
 }
