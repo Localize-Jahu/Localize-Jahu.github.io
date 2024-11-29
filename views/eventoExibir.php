@@ -38,6 +38,10 @@
                 <img class="ima" src="assets/images/situacao.png" alt="Situação do Evento">
                 <p class="subtitulo"><strong>Situação: </strong><?php echo $retorno[0]->situacao; ?></p>
             </div>
+             <div class="categoria">
+                <img class="ima" src="assets/images/categoria.png" alt="categoria do Evento">
+                <p class="subtitulo"><strong>Categoria: </strong><?php echo $retorno[0]->descritivo; ?></p>
+            </div> 
             <div class="promotor">
                 <img class="ima" src="assets/images/promotor.png" alt="Promotor do Evento">
                 <p class="subtitulo2"><strong>Promotor: </strong><?php echo "<a href='/localize-jahu/promotor?idpromotor={$retorno[0]->id_promotor}'>{$retorno[0]->nome_publico}</a>"; ?></p>

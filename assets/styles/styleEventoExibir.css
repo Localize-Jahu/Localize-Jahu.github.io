@@ -37,14 +37,21 @@ strong {
 
 .local {
     display: flex;
-    align-items: center;
-    justify-content: center;
     padding: 20px;
     padding-top: 50px;
     padding-left: 40px;
 }
 
 .situacao {
+    display: flex;
+    /* align-items: center;
+    justify-content: center; */
+    padding: 20px;
+    padding-top: 50px;
+    padding-left: 40px;
+}
+
+.categoria{
     display: flex;
     /* align-items: center;
     justify-content: center; */
