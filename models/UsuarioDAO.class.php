@@ -22,7 +22,7 @@ class UsuarioDAO extends Conexao
             $stm->bindValue(3, $usuario->getTelefone());
             $stm->bindValue(4, $usuario->getEmail());
             $stm->bindValue(5, $usuario->getCpf());
-            $stm->bindValue(6, $usuario->isAdm());
+            $stm->bindValue(6, 'nao');
             $stm->execute();
 
             $this->db = null; // Fecha a conexão
@@ -75,4 +75,26 @@ class UsuarioDAO extends Conexao
             die();
         }
     }
+
+    public function verificarEmail($usuario)
+    {
+        $sql = "SELECT count(*) as qtd
+				FROM usuario  	
+            	WHERE email = ?";
+        try {
+            $stm = $this->db->prepare($sql);
+            $stm->bindValue(1, $usuario->getEmail());
+
+            $stm->execute();
+            $this->db = null;
+
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            $this->db = null;
+            echo $e->getMessage();
+            echo $e->getCode();
+            die();
+        }
+    }
+
 }

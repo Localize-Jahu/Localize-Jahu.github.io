@@ -20,9 +20,8 @@ class LoginController
             $retorno = $usuarioDAO->login($usuario);
 
             if (count($retorno) == 1) {
-                //encontrou
-                //if (password_verify($_POST['senha'], $retorno[0]->senha)) {
-                if (($_POST['senha'] == $retorno[0]->senha)) {
+                if (password_verify($_POST['senha'], $retorno[0]->senha)) {
+
 
 
                     $_SESSION["logado"] = true;

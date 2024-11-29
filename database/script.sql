@@ -65,30 +65,10 @@
 	);
 
 	##Dados
-	INSERT INTO
-		usuario (
-			`nome`,
-			`senha`,
-			`telefone`,
-			`email`,
-			`cpf`,
-			`adm`
-		)
-	VALUES
-		(
-			'adm',
-			'adm',
-			'123456',
-			'adm@adm.com',
-			'222222',
-			'sim'
-		),
-		('promotor',
-		'promotor',
-		'12343',
-		'promotor@promotor.com',
-		'1111',
-		'nao');
+INSERT INTO `usuario` (`id_usuario`, `nome`, `senha`, `telefone`, `email`, `cpf`, `adm`) VALUES
+(1, 'Admin', '$2y$10$aYS7Ms2zBE9FKb1CoKpvue/eW19p.FIFgHn4AMk12xP7cU4pLLqw.', '(11) 1111-11111', 'adm@adm.com', '111.111.111-11', ''),
+(2, 'Promotor', '$2y$10$Jcyln0tWGrz7ZhyUNk0Ub.MjoVQ0WOAdrow4YJi1ZBASafpo6vlsq', '(11) 1111-11111', 'promotor@promotor.com', '222.222.222-22', '');
+
 
 	INSERT INTO
 		promotor(
