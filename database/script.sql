@@ -49,6 +49,7 @@ CREATE TABLE evento (
 		'cancelado'
 	) NOT NULL,
 	imagem VARCHAR(100),
+	acessos int(10) default 0,
 	id_categoria INT(10) NOT NULL,
 	FOREIGN KEY (id_categoria) REFERENCES categoria (id_categoria),
 	id_promotor INT(10) NOT NULL,

@@ -15,6 +15,7 @@ class Evento
         private string $situacao = "",
         private $categoria = null,
         private	$promotor = null,
+        private int $acessos = 0
     ) {
     }
 
@@ -83,6 +84,11 @@ class Evento
         return $this->promotor;
     }
 
+    public function getAcessos(): int
+    {
+        return $this->acessos;
+    }
+
     public function setId_evento(int $id_evento): void
     {
         $this->id_evento = $id_evento;
@@ -146,5 +152,10 @@ class Evento
     public function setPromotor(Promotor $promotor): void
     {
         $this->promotor = $promotor;
+    }
+
+    public function setAcessos(int $acessos): void
+    {
+        $this->acessos = $acessos;
     }
 }
