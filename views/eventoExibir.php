@@ -64,11 +64,9 @@
             ?>
 
             <?php
-            if (isset($_SESSION["id_promotor"])) {
-                echo "<a href='/localize-jahu/alterarEvento?id={$retorno[0]->id_evento}' class='alterar'>Alterar</a>
-                    &nbsp;&nbsp;";
-                if ($retorno[0]->situacao == "pendente") {
-                    //cancelado
+            if ($retorno[0]->situacao == "pendente") {
+                if (isset($_SESSION["id_promotor"]) && $_SESSION["id_promotor"] == $retorno[0]->id_promotor) {
+                    echo "<a href='/localize-jahu/alterarEvento?id={$retorno[0]->id_evento}' class='alterar'>Alterar</a>&nbsp;&nbsp;";
                     echo "<a href='/localize-jahu/alterarSituacao?idevento={$retorno[0]->id_evento}&situacao=cancelado' class='cancelar' onclick=\"return confirm('Confirmar o cancelamento do evento?')\">Cancelar</a>";
                 }
             }
