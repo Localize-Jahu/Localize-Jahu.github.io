@@ -68,16 +68,16 @@
             <div class="container quebra" id="base-dia">
                 <div class="container div-dia">
                     <label for="data">Data:</label>
-                    <input type="date" name="data[]" id="data" onchange="desativarAlerta()" required>
+                    <input type="date" name="data[]" id="data" onchange="desativarAlerta()">
                 </div>
 
                 <div class="container div-dia" >
                     <label for="hora">Hora de Início:</label>
-                    <input type="time" name="hora_inicio[]" id="hora_inicio"  onchange="desativarAlerta()" required>
+                    <input type="time" name="hora_inicio[]" id="hora_inicio"  onchange="desativarAlerta()">
                 </div>
                 <div class="container div-dia">
                     <label for="hora">Hora de término:</label>
-                    <input type="time" name="hora_termino[]" id="hora_termino" onchange="desativarAlerta()" required>
+                    <input type="time" name="hora_termino[]" id="hora_termino" onchange="desativarAlerta()">
                 </div>
                 <a class="botao" id="btn-mais"><img class="img-mais" src="assets/images/fechar-login.png" alt=""><label class="label-mais">Adicionar dia</label></a>
             </div>
@@ -91,8 +91,8 @@
             <!--Descrição do Evento-->
             <div class="div-descricao">
 
-                <label class="label-descricao" for="descricao" maxlength="800">Descrição:</label>
-                <textarea name="descricao" id="descricao" placeholder="Conte um pouco sobre o evento..."></textarea>
+                <label class="label-descricao" for="descricao" >Descrição:</label>
+                <textarea name="descricao" id="descricao" maxlength="5000" placeholder="Conte um pouco sobre o evento..."></textarea>
             </div>
 
 

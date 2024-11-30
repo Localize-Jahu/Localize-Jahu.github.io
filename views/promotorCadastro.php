@@ -40,8 +40,8 @@
             </div>
 
             <div class="div-bio">
-                <label for="biografia" class="label-bio">Biografia:</label>
-                <textarea id="biografia" name="biografia" placeholder="Nos conte um pouco sobre você..."></textarea>
+                <label for="biografia" class="label-bio" >Biografia:</label>
+                <textarea id="biografia" name="biografia" maxlength="5000" placeholder="Nos conte um pouco sobre você..."></textarea>
             </div>
 
             <div class="div-aceito">
