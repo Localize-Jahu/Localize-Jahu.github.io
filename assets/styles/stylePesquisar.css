@@ -25,7 +25,7 @@ form {
     margin-bottom: 8px;
 }
 
-.column{
+.column {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -38,11 +38,13 @@ form {
     width: 100%;
 }
 
-.img-opcoes{
+.img-opcoes {
     padding-top: 5px;
-width: 40px;
-} 
-.a-opcoes, .pesquisar{
+    width: 40px;
+}
+
+.a-opcoes,
+.pesquisar {
     white-space: nowrap;
     min-width: auto;
     padding: 0 10px;
@@ -55,7 +57,7 @@ width: 40px;
     font-weight: 400;
 }
 
-.img-pesquisar{
+.img-pesquisar {
     padding-top: 5px;
     padding-right: 3px;
     margin: 6px;
@@ -74,7 +76,7 @@ width: 40px;
     cursor: pointer;
 }
 
-.btn:hover img{
+.btn:hover img {
     scale: 1.3;
 }
 
@@ -95,18 +97,185 @@ select {
 }
 
 select:hover {
-    cursor: pointer;    
+    cursor: pointer;
 }
-.opcoes{
+
+.opcoes {
     width: 100%;
 }
 
 
-.categoria{
+.categoria {
     box-sizing: border-box;
     width: 100%;
     padding: 6px 7px 7px 7px;
     border-bottom-right-radius: 5px !important;
     display: none;
-    
+
+}
+
+/* Cards */
+
+.cards {
+    display: flex;
+    width: 95%;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 3% 0;
+}
+
+.card {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: auto;
+    grid-gap: 0;
+    text-decoration: none;
+    width: 23%;
+
+    background: linear-gradient(white, white) padding-box,
+        linear-gradient(to bottom, var(--cor2), var(--cor3)) border-box;
+    color: #313149;
+    border: 5px solid transparent;
+    border-radius: 15px;
+    margin: 20px;
+
+}
+
+.image-wrapper {
+    grid-column: span 2;
+    grid-row: 1;
+    position: relative;
+}
+
+.card-data {
+    grid-column: span 1;
+    grid-row: 2;
+}
+
+.card-hora {
+    grid-column: span 1;
+    grid-row: 2;
+}
+
+.card-bloco-titulo {
+    grid-column: span 2;
+    grid-row: 3;
+    background-color: #FFFFFF;
+    padding: 1.5em 1.2em 2.5em;
+    margin-top: -0.2em;
+
+}
+
+.card-detalhes {
+    grid-column: span 2;
+    grid-row: 8;
+}
+
+
+.image-wrapper:after {
+    content: "";
+    position: absolute;
+    display: block;
+    margin: auto;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 99%;
+    background-image: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 45%, rgba(255, 255, 255, 0) 100%);
+}
+
+.card-imagem {
+    width: 100%;
+    height: 190px;
+    border-radius: 0.45em 0.45em 0 0;
+    object-fit: fill;
+    max-height: 16em;
+}
+
+.card-titulo {
+    color: var(--cor3);
+    margin: 5% 0 2% 0;
+}
+
+
+.card-rua,
+.card-bairro {
+    margin: 0.3em 0;
+    color: var(--dark);
+    opacity: 0.85;
+}
+
+.link-saiba-mais {
+
+    text-decoration: none;
+    color: #FFFFFF;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+
+.card-detalhes {
+    background: rgb(173, 136, 198);
+    background: linear-gradient(90deg, rgba(173, 136, 198, 1) 0%, rgba(76, 68, 82, 1) 100%);
+
+    padding: 1em;
+    text-align: center;
+    border-radius: 0 0 0 0.45em;
+    cursor: pointer;
+
+}
+
+@keyframes detalhe {
+    from {
+        background: var(--cor3);
+        opacity: 0;
+    }
+
+    to {
+        background: var(--cor3);
+    }
+
+}
+
+
+.card-detalhes:hover {
+
+    animation: detalhe 1s;
+    animation-iteration-count: 1;
+    background: var(--cor3);
+
+}
+
+
+
+
+
+.data,
+.hora {
+    z-index: 1;
+    background-color: var(--cor2);
+
+    color: #FFFFFF;
+    text-align: center;
+    padding: 0.8em 0.5em 0.3em;
+    margin: -1.5em 0 -1.5em;
+    max-height: 1.5em;
+    font-size: 16px;
+}
+
+
+.data {
+    margin-left: 1em;
+    border-radius: 0.3em 0 0 0.3em;
+    text-transform: capitalize;
+
+    background: linear-gradient(90deg, rgba(173, 136, 198, 1) 0%, rgba(76, 68, 82, 1) 100%);
+
+}
+
+.hora {
+    max-width: 5em;
+    border-radius: 0 0.3em 0.3em 0;
+    background-color: var(--cor3);
 }
