@@ -4,7 +4,8 @@
 
 </div>
 
-- - -
+---
+
 # Localize Jahu
 Aplicação Web que destaca artistas locais e eventos da comunidade na região de Jaú.
 
@@ -41,6 +42,66 @@ A documentação completa do projeto, incluindo detalhes sobre o processo de des
 
 [Documentação do Projeto](https://github.com/Localize-Jahu/Documentos)
 
+## Funcionalidades
+
+- Cadastro e consulta de eventos
+- Exibição de calendários interativos
+- Perfis públicos para promotores
+- Aprovação de eventos por administradores
+
+
+## Tecnologias Utilizadas
+
+- **Frontend:** HTML5, CSS3, JavaScript
+- **Backend:** PHP
+- **Banco de Dados:** MySQL
+- **Ferramentas:**
+  - **Editor de Código:** Visual Studio Code
+  - **Controle de Versão:** Git e GitHub
+  - **Prototipação:** Figma
+  - **Administração de Banco de Dados:** phpMyAdmin e SQLyog
+
+## Como Usar
+
+Siga os passos abaixo para configurar e executar a aplicação Localize Jahu em seu ambiente local:
+
+### 1. Renomear a Pasta Principal
+
+Após fazer o download ou clonar o repositório, renomeie a pasta principal do projeto para **`localize-jahu`**. Este nome é necessário para garantir que a aplicação funcione corretamente em seu ambiente.
+
+### 2. Configurar o Ambiente
+Certifique-se de que você tem os seguintes pré-requisitos instalados:
+
+- **Servidor Apache**: Recomendamos o uso do XAMPP ou WAMP.
+- **Banco de Dados MySQL**: Certifique-se de ter o MySQL configurado e rodando.
+- **PHP**: Garanta que uma versão compatível do PHP esteja instalada.
+
+### 3. Importar o Banco de Dados
+
+1. Acesse o phpMyAdmin ou outro gerenciador de banco de dados.
+2. Crie um banco de dados chamado **`localize_jahu`**.
+3. Importe o arquivo SQL disponível na pasta `database` do projeto.
+
+### 4. Configurar os Arquivos
+
+- Verifique o arquivo **`Conexao.class.php`** na pasta **`models`** e configure os parâmetros de conexão com o banco de dados, como `host`, `username`, `password` e `database`.
+
+### 5. Executar a Aplicação
+
+1. Coloque a pasta **`localize-jahu`** no diretório de documentos do servidor local (por exemplo, `htdocs` no XAMPP).
+2. Inicie o servidor Apache e o MySQL.
+3. Acesse a aplicação no navegador usando o endereço:
+
+   ```
+   http://localhost/localize-jahu
+   ```
+
+## 📜 Licença
+
+Este projeto é desenvolvido para fins educacionais e é licenciado sob a [MIT License](LICENSE).
+
+
+
 ## Fale conosco
 
 Se tiver alguma dúvida, sugestão ou feedback sobre a aplicação, não hesite em nos contatar. 
@@ -49,9 +110,7 @@ Estamos aqui para ajudar e ouvir suas opiniões para melhorar continuamente o pr
 [Evelyn Cassinotte](mailto:evelyn.cassinotte@fatec.sp.gov.br)
 
 
-
-- - -
-
+- --
 Agradecemos a todos os envolvidos na realização deste projeto e esperamos que ele sirva como uma base sólida para futuros desenvolvimentos e aprendizados.
 
 
