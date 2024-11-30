@@ -1,10 +1,10 @@
 <?php
-var_dump($_POST);
-echo "<br>";
-var_dump($_FILES["imagem"]);
-if ($erro){
-    echo $mensagem;
-}	
+// var_dump($_POST);
+// echo "<br>";
+// var_dump($_FILES["imagem"]);
+// if ($erro){
+//     echo $mensagem;
+// }	
 ?>
 
 <main>
