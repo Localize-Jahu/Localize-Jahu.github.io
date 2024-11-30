@@ -73,14 +73,14 @@ if (!isset($_SESSION)) {
                                     <a class="a-dropdown" href="evento-cadastro">Adicionar Evento</a>
                                     <a class="a-dropdown" href="/localize-jahu/promotor_perfil">Editar Perfil</a>
                                 <?php
-                                }
-                                if (isset($_SESSION['adm']) && $_SESSION['adm'] == 'nao') {
+                                } else if (isset($_SESSION['adm']) && $_SESSION['adm'] == 'nao') {
                                 ?>
-                                <a class="a-dropdown" href="/localize-jahu/cadastro-promotor">Vire Promotor</a>
-                                
+                                    <a class="a-dropdown" href="/localize-jahu/cadastro-promotor">Vire Promotor</a>
+                                <?php
+                                } ?>    
                                 <a class="a-dropdown" href="/localize-jahu/configuracoes">Configurações</a>
                                 <?php
-                                } else {
+                                if (isset($_SESSION['adm']) && $_SESSION['adm'] == 'sim') {
                                 ?>
                                     <a class="a-dropdown" href="/localize-jahu/autorizarEventos">Autorizar Eventos</a>
                                 <?php
