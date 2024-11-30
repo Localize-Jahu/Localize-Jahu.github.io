@@ -15,14 +15,7 @@ class Evento
         private string $situacao = "",
         private $categoria = null,
         private	$promotor = null,
-        int $id_ocorrencia = 0,
-        string $dia = "",  
-        string $horaInicio = "",
-        string $horaTermino = "",
-        $evento = null
-
     ) {
-        $this->ocorrencias[] = new Ocorrencia($id_ocorrencia, $dia, $horaInicio, $horaTermino, $evento);
     }
 
     public function getId_evento(): int

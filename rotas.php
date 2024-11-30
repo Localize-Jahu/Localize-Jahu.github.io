@@ -64,6 +64,10 @@ $route->get("/alterarSituacao", [EventoController::class, "alterarSituacao"]);
 $route->post("/calendario", array(EventoController::class, "calendario"));
 $route->get("/calendario", array(EventoController::class, "calendario"));
 
+$route->get("/pesquisar", array(EventoController::class, "pesquisar"));
+
+
+
 //autorizar eventos
 $route->get("/autorizarEventos", [EventoController::class, "autorizar_evento"]);
 $route->post("/autorizarEventos", [EventoController::class, "autorizar_evento"]);

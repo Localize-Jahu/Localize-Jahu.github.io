@@ -13,31 +13,34 @@ class EventoController
             if (isset($_SESSION["id_promotor"])) {
 
 
+
                 $mensagem = "";
                 $erro = false;
                 $imagemNome = '';
+
+                $diretorio = "uploads/";
 
                 if ($_POST) {
 
                     if (isset($_FILES["imagem"]) && $_FILES["imagem"]["name"] != "") {
                         $extensao = pathinfo($_FILES["imagem"]["name"], PATHINFO_EXTENSION);
                         $imagemNome = uniqid() . "." . $extensao;
+
+                        if (!is_dir($diretorio)) {
+                            mkdir($diretorio, 0755, true);
+                        }
+
+                        if (!file_exists($diretorio . $imagemNome)) {
+                            if (!move_uploaded_file($_FILES["imagem"]["tmp_name"], $diretorio . $imagemNome)) {
+                                $mensagem = "Erro ao fazer upload da imagem!";
+                                $erro = true;
+                            }
+                        }
                     } else {
                         $imagemNome = "sem-imagem.png";
                     }
 
-                    $diretorio = "uploads/";
 
-                    if (!is_dir($diretorio)) {
-                        mkdir($diretorio, 0755, true);
-                    }
-
-                    if (!file_exists($diretorio . $imagemNome)) {
-                        if (!move_uploaded_file($_FILES["imagem"]["tmp_name"], $diretorio . $imagemNome)) {
-                            $mensagem = "Erro ao fazer upload da imagem!";
-                            $erro = true;
-                        }
-                    }
 
                     if (!$erro) {
 
@@ -57,13 +60,16 @@ class EventoController
                             categoria: $categoria,
                             promotor: $promotor
                         );
+
                         for ($i = 0; $i < count($_POST["data"]); $i++) {
-                            $evento->setOcorrencias(
-                                0,
-                                $_POST["data"][$i],
-                                $_POST["hora_inicio"][$i],
-                                $_POST["hora_termino"][$i]
-                            );
+                            if ($_POST["data"][$i] != "") {
+                                $evento->setOcorrencias(
+                                    0,
+                                    $_POST["data"][$i],
+                                    $_POST["hora_inicio"][$i],
+                                    $_POST["hora_termino"][$i]
+                                );
+                            }
                         }
 
                         $eventoDAO = new EventoDAO();
@@ -78,8 +84,6 @@ class EventoController
                         }
                     }
                 }
-
-
 
                 $categoriaDAO = new CategoriaDAO();
                 $retorno = $categoriaDAO->listar();
@@ -244,6 +248,23 @@ class EventoController
 
         require_once "views/cabecalho.php";
         require_once "Views/eventoAutorizar.php";
+        require_once "views/rodape.html";
+    }
+
+
+    public function Pesquisar()
+    {
+        $titulo = ' - Pesquisar Evento';
+        $style = array("assets/styles/stylePesquisar.css");
+        $script = array("assets/scripts/scriptPesquisar.js");
+
+
+        // $eventoDAO = new eventoDAO;
+        // $retorno = $eventoDAO->autorizarEvento();
+
+
+        require_once "views/cabecalho.php";
+        require_once "Views/pesquisar.php";
         require_once "views/rodape.html";
     }
 }
