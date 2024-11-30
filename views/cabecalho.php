@@ -76,7 +76,9 @@ if (!isset($_SESSION)) {
                                 }
                                 if (isset($_SESSION['adm']) && $_SESSION['adm'] == 'nao') {
                                 ?>
-                                    <a class="a-dropdown" href="/localize-jahu/configuracoes">Configurações</a>
+                                <a class="a-dropdown" href="/localize-jahu/cadastro-promotor">Vire Promotor</a>
+                                
+                                <a class="a-dropdown" href="/localize-jahu/configuracoes">Configurações</a>
                                 <?php
                                 } else {
                                 ?>
