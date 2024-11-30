@@ -1,6 +1,6 @@
 <main>
     <article>
-        <h1 class="titulo">Editar Evento</h1>
+        <h1 class="titulo1">Editar Evento</h1>
         <form method="post" action="/localize-jahu/alterarEvento" enctype="multipart/form-data">
             <input type="hidden" name="idevento" value="<?php echo $retorno[0]->id_evento; ?>">
             <input type="hidden" name="idpromotor" value="<?php echo $retorno[0]->id_promotor; ?>">
@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="uf">
-                    <label for="uf" class="uf">UF: </label>
+                    <label for="uf" class="uf">UF(Estado): </label>
                     <input type="text" name="uf" id="uf" value="<?php echo $retorno[0]->uf; ?>">
                     <div style="color:red;font-size:11px;"><?php echo $msg[6]; ?></div>
                 </div>
@@ -54,37 +54,57 @@
                     <textarea name="descricao" id="descricao" cols="30" rows="10"><?php echo $retorno[0]->descricao; ?></textarea>
                     <div style="color:red;font-size:11px;"><?php echo $msg[1]; ?></div>
                 </div>
-                <?php
-                if (!empty($retorno)) {
-                    foreach ($retorno as $id => $ocorrencia) {
-                ?>
-                        <div class="container quebra" id="base-dia">
-                            <div class="container div-dia">
-                                <label for="data<?php echo $id; ?>">Data:</label>
-                                <input type="date" name="data[<?php echo $id; ?>]" id="data<?php echo $id; ?>" value="<?php echo date('Y-m-d', strtotime($ocorrencia->dia)); ?>" onchange="desativarAlerta()">
-                            </div>
 
-                            <div class="container div-dia">
-                                <label for="hora_inicio<?php echo $id; ?>">Hora de Início:</label>
-                                <input type="time" name="hora_inicio[<?php echo $id; ?>]" id="hora_inicio<?php echo $id; ?>" value="<?php echo $ocorrencia->hora_inicio; ?>" onchange="desativarAlerta()">
-                            </div>
+                <div class="container quebra" id="base-dia">
+                    <div class="container div-dia">
+                        <label for="data">Data:</label>
+                        <input type="date" name="data[]" id="data" onchange="desativarAlerta()">
+                    </div>
 
-                            <div class="container div-dia">
-                                <label for="hora_termino<?php echo $id; ?>">Hora de término:</label>
-                                <input type="time" name="hora_termino[<?php echo $id; ?>]" id="hora_termino<?php echo $id; ?>" value="<?php echo $ocorrencia->hora_termino; ?>" onchange="desativarAlerta()">
-                            </div>
-                        </div>
-                <?php
-                    }
-                }
-                ?>
-
-                <a class="botao" id="btn-mais"><img class="img-mais" src="assets/images/fechar-login.png" alt=""><label class="label-mais">Adicionar dia</label></a>
-
+                    <div class="container div-dia">
+                        <label for="hora_inicio">Hora de Início:</label>
+                        <input type="time" name="hora_inicio[]" id="hora_inicio" onchange="desativarAlerta()">
+                    </div>
+                    <div class="container div-dia">
+                        <label for="hora_termino">Hora de término:</label>
+                        <input type="time" name="hora_termino[]" id="hora_termino" onchange="desativarAlerta()">
+                    </div>
+                    <a class="botao" id="btn-mais"><img class="img-mais" src="assets/images/fechar-login.png" alt=""><label class="label-mais">Adicionar dia</label></a>
+                </div>
                 <span class="alerta" id="alerta"></span>
+               
 
                 <div id="div-clone" class="dias-adicionados">
+
                 </div>
+                <div id="div-clone" class="dias-ja-cadastrados">
+                    <h1>Ocorrências já cadastradas</h1>
+                    <?php
+                    if (!empty($retorno)) {
+                        foreach ($retorno as $id => $ocorrencia) {
+                    ?>
+                            <div class="container quebra" id="base-dia">
+                                <div class="container div-dia">
+                                    <label for="data<?php echo $id; ?>">Data:</label>
+                                    <input type="date" name="data[<?php echo $id; ?>]" id="data<?php echo $id; ?>" value="<?php echo date('Y-m-d', strtotime($ocorrencia->dia)); ?>" onchange="desativarAlerta()">
+                                </div>
+
+                                <div class="container div-dia">
+                                    <label for="hora_inicio<?php echo $id; ?>">Hora de Início:</label>
+                                    <input type="time" name="hora_inicio[<?php echo $id; ?>]" id="hora_inicio<?php echo $id; ?>" value="<?php echo $ocorrencia->hora_inicio; ?>" onchange="desativarAlerta()">
+                                </div>
+
+                                <div class="container div-dia">
+                                    <label for="hora_termino<?php echo $id; ?>">Hora de término:</label>
+                                    <input type="time" name="hora_termino[<?php echo $id; ?>]" id="hora_termino<?php echo $id; ?>" value="<?php echo $ocorrencia->hora_termino; ?>" onchange="desativarAlerta()">
+                                </div>
+                            </div>
+                    <?php
+                        }
+                    }
+                    ?>
+                </div>
+
                 <div class="categoria">
                     <label for="categoria">Categoria:</label>
                     <select name="categoria" id="categoria">
