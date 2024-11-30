@@ -15,8 +15,7 @@ class Promotor extends Usuario
         string $telefone = "",
         string $cpf = "",
         string $senha = "",
-        bool $adm = false,
-        $promotor = null
+        bool $adm = false
     ) {
         parent::__construct($id_usuario, $nome, $email, $telefone, $cpf, $senha, $adm);
        

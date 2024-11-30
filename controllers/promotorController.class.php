@@ -11,9 +11,9 @@ class PromotorController
             header("location:/localize-jahu/pagina-nao-encontrada");
             die();
         }
-        $promotor = new Promotor($_SESSION["id_promotor"]);
+        $promotor = new Promotor(id_promotor:$_SESSION["id_promotor"]);
         $promotorDAO = new PromotorDAO();
-        $retorno = $promotorDAO->pesquisarPorId($promotor);
+        $retorno = $promotorDAO->pesquisarPorIdPromotor($promotor);
         $titulo = '- Perfil Promotor';
         $style = array("assets/styles/stylepromotor.css");
         $script = array("");

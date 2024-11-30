@@ -77,12 +77,12 @@ class PromotorDAO extends UsuarioDAO
         }
     }
 
-    public function pesquisarPorId(promotor $promotor)
+    public function pesquisarPorIdPromotor(Promotor $promotor)
     {
         $sql = "SELECT * FROM promotor WHERE id_promotor = ?";
         try {
             $stm = $this->db->prepare($sql);
-            $stm->bindValue(1, $promotor->getId());
+            $stm->bindValue(1, $promotor->getID());
             $stm->execute();
             $this->db = null; // Fecha a conexão
             return $stm->fetchAll(PDO::FETCH_OBJ);
