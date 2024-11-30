@@ -15,6 +15,6 @@ spl_autoload_register(function ($nome_classe) {
 // tratar a requisiçao
 $nome_rota = parse_url($_SERVER["REQUEST_URI"])["path"];
 
-$nome_rota = substr($nome_rota, strpos($nome_rota, "localize-jahu") + 13);
+$nome_rota = substr($nome_rota, strpos($nome_rota, "/", 1));
 
 $route->verificar_rota($_SERVER["REQUEST_METHOD"], $nome_rota);
