@@ -7,6 +7,10 @@ class PromotorController
         if (!isset($_SESSION)) {
             session_start();
         }
+        if (!isset($_SESSION["id_promotor"])) {
+            header("location:/localize-jahu/pagina-nao-encontrada");
+            die();
+        }
         $promotor = new Promotor($_SESSION["id_promotor"]);
         $promotorDAO = new PromotorDAO();
         $retorno = $promotorDAO->pesquisarPorId($promotor);
@@ -40,6 +44,14 @@ class PromotorController
 
     public function alterar()
     {
+
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        if (!isset($_SESSION["id_promotor"])) {
+            header("location:/localize-jahu/pagina-nao-encontrada");
+            die();
+        }
         $msg = "";
         $promotorDAO = new PromotorDAO();
 
@@ -108,7 +120,6 @@ class PromotorController
                     id_usuario: $_SESSION["id"]
                 );
 
-                
                 $retorno = $promotorDAO->inserir($promotor);
 
                 $_SESSION["id_promotor"] = $retorno;
