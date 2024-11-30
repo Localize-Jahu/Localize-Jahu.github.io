@@ -147,12 +147,20 @@ if (!isset($_SESSION)) {
                         <div id="navGerenciarDropdown" class="celular-dropdown-content">
                             <a class="overlay-link" href="evento-cadastro"> <img class="baixo-direita" src="assets/images/baixo-direita.png" alt="">Novo Evento</a>
                             <a class="overlay-link" href="/localize-jahu/promotor_perfil"> <img class="baixo-direita" src="assets/images/baixo-direita.png" alt="">Editar Perfil</a>
-                            <a class="overlay-link" href="#"> <img class="baixo-direita" src="assets/images/baixo-direita.png" alt="">Configurações</a>
                         </div>
                     </div>
                 <?php
-                } else {
+                } else if (isset($_SESSION['adm']) && $_SESSION['adm'] == 'nao') {
                     echo '<a class="overlay-link" href="/localize-jahu/cadastro-promotor">Vire Promotor</a>';
+                } else {
+                ?>
+                    <div class="celular-dropdown selecionado" id="celular-dropdown" onclick="abrirDropdown('navGerenciarAdmDropdown');">
+                        <a id="dropbtn" class="overlay-link dropbtn">Gerenciar</a>
+                        <div id="navGerenciarAdmDropdown" class="celular-dropdown-content">
+                            <a class="overlay-link" href="/localize-jahu/autorizarEventos "> <img class="baixo-direita" src="assets/images/baixo-direita.png" alt=""> Autorizar Eventos</a>
+                        </div>
+                    </div>
+                <?php
                 }
                 ?>
                 <a class="overlay-link" href="sobreNos">Sobre Nós</a>
@@ -160,7 +168,8 @@ if (!isset($_SESSION)) {
 
                 <?php
                 if (isset($_SESSION['logado']) && $_SESSION['logado'] == true) {
-                    echo '<a class="overlay-link" href="logout">Sair</a>';
+                    echo '<a class="overlay-link" href="/localize-jahu/configuracoes">Configurações</a>';
+                    echo '<a class="overlay-link" href="/localize-jahu/logout">Sair</a>';
                 }
                 ?>
             </div>

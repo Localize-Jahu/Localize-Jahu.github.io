@@ -279,3 +279,93 @@ select:hover {
     border-radius: 0 0.3em 0.3em 0;
     background-color: var(--cor3);
 }
+
+@media (max-width: 1700px) {
+
+    .container {
+        width: 80%;
+    }
+    .barra{
+        width: 100%;
+    }
+    .cards {
+        width: 100% !important;
+    }
+
+    .card {
+        width: 30%;
+    }
+}
+@media (max-width: 1600px) {
+
+    .container {
+        width: 80%;
+    }
+    .barra{
+        width: 100%;
+    }
+    .cards {
+        width: 100% !important;
+    }
+
+    .card {
+        width: 25%;
+    }
+}
+
+@media (max-width: 1400px) {
+
+    .container {
+        width: 80%;
+    }
+    .barra{
+        width: 100%;
+    }
+    .cards {
+        width: 100% !important;
+    }
+
+    .card {
+        min-width: 25%;
+        margin: 10px;
+    }
+}
+
+@media (max-width: 1200px) {
+
+    .container {
+        width: 80%;
+    }
+    .barra{
+        width: 100%;
+    }
+    .cards {
+        width: 100% !important;
+    }
+
+    .card {
+        min-width: 45%;
+        margin: 10px;
+    }
+}
+@media (max-width: 600px) {
+
+    .container {
+        width: 80%;
+    }
+    .barra{
+        width: 100%;
+    }
+    .cards {
+        width: 100% !important;
+    }
+
+    .card {
+        min-width: 78%;
+        margin: 10px;
+    }
+}
+
+
+
+
