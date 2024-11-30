@@ -156,7 +156,7 @@ class EventoController
             $evento = new Evento(id_evento: $_GET["idevento"], situacao: $_GET["situacao"]);
             $eventoDAO = new EventoDAO();
             $eventoDAO->mudarSituacao($evento);
-            header("location:/localize-jahu/eventos");
+            header("location:/localize-jahu/eventos?idevento={$evento->getId_evento()}");
             die();
         }
     }

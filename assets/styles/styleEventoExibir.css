@@ -26,6 +26,9 @@ strong {
     padding-left: 40px;
 }
 
+.ocorrencia{
+    display: flex;
+}
 .hora {
     display: flex;
     /* align-items: center;
