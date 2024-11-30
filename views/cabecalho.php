@@ -51,55 +51,44 @@ if (!isset($_SESSION)) {
                     </div>
                 </div>
                 <?php
+                $url = "login";
+                $texto = "Login";
                 if (isset($_SESSION['logado']) && $_SESSION['logado'] == true) {
-                    if (isset($_SESSION['id_promotor']) && $_SESSION['id_promotor'] != 0) {
-
-                        echo '
-                        <div class="menu-item">
-                            <div class="dropdown">
-                                <a class="nav-link " href="">Gerenciar</a>
-                                <div class="dropdown-content">
-                                    <a class="a-dropdown" href="evento-cadastro">Adicionar Evento</a>
-                                    <a class="a-dropdown" href="/localize-jahu/promotor_perfil">Editar Perfil</a>
-                                    <a class="a-dropdown" href="#">Configurações</a>
-                                </div>
-                            </div>
-                        </div>
-                        ';
-                    } else {
-                        echo '
-                            <div class="menu-item">
-                                <a class="nav-link " href="/localize-jahu/cadastro-promotor">Vire Promotor</a>
-                            </div>
-                        ';
-                    }
 
 
-                    if ($_SESSION['adm'] == "sim") {
-
-                        echo '
-                        <div class="menu-item">
-                            <div class="dropdown">
-                                <a class="nav-link " href="">Gerenciar</a>
-                                <div class="dropdown-content">
-                                    <a class="a-dropdown" href="autorizarEventos">Autorizar Evento</a>
-                                </div>
-                            </div>
-                        </div>
-                        ';
-                    }
-
-
-                    $url = "";
-                    $texto = "";
 
                     $url = "logout";
                     $texto = "Sair";
-                } else {
-                    $url = "login";
-                    $texto = "Login";
-                }
+                ?>
+                    <div class="menu-item">
+                        <div class="dropdown">
+                            <a class="nav-link " href="">Gerenciar</a>
+                            <div class="dropdown-content">
 
+                                <?php
+                                if (isset($_SESSION['id_promotor']) && $_SESSION['id_promotor'] != 0) {
+                                ?>
+
+
+                                    <a class="a-dropdown" href="evento-cadastro">Adicionar Evento</a>
+                                    <a class="a-dropdown" href="/localize-jahu/promotor_perfil">Editar Perfil</a>
+                                <?php
+                                }
+                                if (isset($_SESSION['adm']) && $_SESSION['adm'] == 'nao') {
+                                ?>
+                                    <a class="a-dropdown" href="/localize-jahu/configuracoes">Configurações</a>
+                                <?php
+                                } else {
+                                ?>
+                                    <a class="a-dropdown" href="/localize-jahu/autorizarEventos">Autorizar Eventos</a>
+                                <?php
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+                }
                 echo '
                         <div class="menu-item">
                             <a class="nav-login" href="' . $url . '">' . $texto . '</a>
