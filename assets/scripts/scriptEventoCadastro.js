@@ -5,13 +5,16 @@ const hora_inicio = document.getElementById('hora_inicio');
 const hora_termino = document.getElementById('hora_termino');
 const cep = document.getElementById('cep');
 const btnSubmit = document.getElementById('submit');
+const categoria = document.getElementById('categoria');
+const bairro = document.getElementById('bairro');
+const logradouro = document.getElementById('logradouro');
+const titulo = document.getElementById('titulo');
 
 document.getElementById('imagem').addEventListener('change', (event) => {
     document.getElementById('texto-imagem').value = event.target.files[0].name;
 })
 
 function formatar(mascara, documento) {
-    documento.value = documento.value.replace(/[a-zA-Z]/g, '');
     let i = documento.value.length;
     if (i < mascara.length) {
         let saida = '#';
@@ -29,13 +32,19 @@ function formatar(mascara, documento) {
 
 
 cep.addEventListener('input', () => {
+
+    const numerico = cep.value.replace(/[^0-9]/g, '');
     cep.value = cep.value.replace(/[a-zA-Z]/g, '');
-    if (cep.value.length < 9) {
+    if (cep.value.length != 9) {
+        cep.style.outlineColor = '#C64126';
+    }
+    else if (numerico.length != 8) {
         cep.style.outlineColor = '#C64126';
     }
     else {
         cep.style.outlineColor = 'green';
     }
+
 })
 
 const btnLimpar = document.getElementById('reset');
@@ -103,9 +112,23 @@ btnMais.addEventListener('click', () => {
         return;
     }
 
-    const dataLimite = new Date(new Date().getFullYear() + 1, 0, 0);
+    const dataLimite = new Date(new Date().getFullYear() + 1, new Date().getMonth(), new Date().getDate());
     if (new Date(data.value) > dataLimite) {
-        alerta.innerHTML = 'Data ultrapassa o prazo de um ano.';
+        alerta.innerHTML = 'Data ultrapassa o prazo limite de um ano.';
+        return;
+    }
+
+    if (hora_inicio.value >= hora_termino.value) {
+        alerta.innerHTML = 'Hora de término deve ser maior que a hora de início.';
+        return;
+    }
+
+
+    const inicio = new Date(`1970-01-01T${hora_inicio.value}:00`);
+    const termino = new Date(`1970-01-01T${hora_termino.value}:00`);
+    const diferenca = (termino - inicio) / (1000 * 60); // difference in minutes
+    if (diferenca < 30) {
+        alerta.innerHTML = 'A diferença entre a hora de início e a hora de término deve ser de no mínimo 30 minutos.';
         return;
     }
 
@@ -192,9 +215,100 @@ btnMais.addEventListener('click', () => {
 
 });
 
+categoria.addEventListener('change', () => {
+    if (categoria.value != '0') {
+        categoria.style.outlineColor = 'green';
+    }
+});
+
+bairro.addEventListener('input', () => {
+    if (bairro.checkValidity() == false) {
+        bairro.style.outlineColor = '#C64126';
+    }
+    else {
+        bairro.style.outlineColor = 'green';
+    }
+});
+
+logradouro.addEventListener('input', () => {
+    if (logradouro.checkValidity() == false) {
+        logradouro.style.outlineColor = '#C64126';
+    }
+    else {
+        logradouro.style.outlineColor = 'green';
+    }
+}
+);
+
+titulo.addEventListener('input', () => {
+    if (titulo.checkValidity() == false) {
+        titulo.style.outlineColor = '#C64126';
+    }
+    else {
+        titulo.style.outlineColor = 'green';
+    }
+}
+);
+
+
 btnSubmit.addEventListener('click', (event) => {
 
-    
+
+    if (!titulo.checkValidity()){
+        titulo.focus();
+        titulo.style.outlineColor = '#C64126';
+        event.preventDefault();
+        return;
+    }
+
+    if (!logradouro.checkValidity()) {
+        logradouro.focus();
+        logradouro.style.outlineColor = '#C64126';
+        event.preventDefault();
+        return;
+    }
+
+    if (!bairro.checkValidity()) {
+        bairro.focus();
+        bairro.style.outlineColor = '#C64126';
+        event.preventDefault();
+        return;
+    }
+
+    const cepNumerico = cep.value.replace(/[^0-9]/g, '');
+    if (cep.value.length < 9) {
+        cep.focus();
+        event.preventDefault();
+        return;
+    }
+    else if (cepNumerico.length != 8) {
+        cep.focus();
+        event.preventDefault();
+        return;
+    }
+
+    if (categoria.value == '0') {
+        categoria.focus();
+        categoria.style.outlineColor = '#C64126';
+        event.preventDefault();
+        return;
+    }
+
+    const datas = document.getElementsByName('data[]');
+    if (datas.length <= 1) {
+        alerta.innerHTML = 'Adicione pelo menos uma data.';
+        data.focus();
+        event.preventDefault();
+        return;
+    }
+
+
+    if (document.getElementById('imagem').value == '') {
+        if (!confirm(' Nenhuma imagem foi selecionada.\n Deseja continuar assim mesmo?')) {
+            event.preventDefault();
+            return;
+        }
+    }
 
 
 });

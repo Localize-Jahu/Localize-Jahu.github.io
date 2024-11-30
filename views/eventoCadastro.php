@@ -1,5 +1,7 @@
 <?php
 var_dump($_POST);
+echo "<br>";
+var_dump($_POST["data"]);	
 ?>
 
 <main>
@@ -15,20 +17,15 @@ var_dump($_POST);
                 <input type="text" name="titulo" id="titulo" required>
             </div>
 
-            <div class="container">
-                <label for="cep">CEP:</label>
-                <input type="text" name="cep" id="cep" required OnKeyPress="formatar('#####-###',this)">
-            </div>
 
+            <div class="container">
+                <label for="logradouro">Logradouro:</label>
+                <input type="text" name="logradouro" id="logradouro" required>
+            </div>
             <div class="container">
                 <label for="bairro">Bairro:</label>
                 <input type="text" name="bairro" id="bairro" required>
             </div>
-
-            </div>
-            <div class="container">
-                <label for="logradouro">Logradouro:</label>
-                <input type="text" name="logradouro" id="logradouro" required>
             </div>
 
             <div class="container">
@@ -43,12 +40,19 @@ var_dump($_POST);
                 </div>
             </div>
 
+            <span class="alerta" id="alerta-cep">
+            </span>
+            <div class="container">
+                <label for="cep">CEP:</label>
+                <input type="text" name="cep" id="cep" required OnKeyPress="formatar('#####-###',this)">
+            </div>
 
 
-            <span class="alerta">
-                <?php
-                echo $mensagem[0];
-                ?>
+
+
+
+
+            <span class="alerta" id="alerta-categoria">
             </span>
             <div class="container">
 
@@ -83,12 +87,12 @@ var_dump($_POST);
                 </div>
 
                 <div class="container div-dia">
-                    <label for="hora">Hora de Início:</label>
-                    <input type="time" name="hora_inicio[]" id="hora_inicio" onchange="desativarAlerta()">
+                    <label for="hora_inicio">Hora de Início:</label>
+                    <input type="time" name="hora_inicio[]" id="hora_inicio" step="1800" onchange="desativarAlerta()">
                 </div>
                 <div class="container div-dia">
-                    <label for="hora">Hora de término:</label>
-                    <input type="time" name="hora_termino[]" id="hora_termino" onchange="desativarAlerta()">
+                    <label for="hora_termino">Hora de término:</label>
+                    <input type="time" name="hora_termino[]" id="hora_termino" step="1800" onchange="desativarAlerta()">
                 </div>
                 <a class="botao" id="btn-mais"><img class="img-mais" src="assets/images/fechar-login.png" alt=""><label class="label-mais">Adicionar dia</label></a>
             </div>

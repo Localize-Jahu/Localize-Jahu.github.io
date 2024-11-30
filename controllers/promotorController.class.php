@@ -98,6 +98,7 @@ class PromotorController
 
             if ($_POST) {
 
+                $promotorDAO = new PromotorDAO();
                 $promotor = new Promotor(
                     nomePublico: $_POST["nome_publico"],
                     biografia: isset($_POST["biografia"]) ? $_POST["biografia"] : "",
@@ -107,7 +108,7 @@ class PromotorController
                     id_usuario: $_SESSION["id"]
                 );
 
-                $promotorDAO = new PromotorDAO();
+                
                 $retorno = $promotorDAO->inserir($promotor);
 
                 $_SESSION["id_promotor"] = $retorno;

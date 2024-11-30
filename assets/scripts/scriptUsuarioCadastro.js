@@ -85,14 +85,23 @@ telefone.addEventListener('input', () => {
 
 btnSubmit.addEventListener('click', (event) => {
 
-
+    let numerico = cpf.value.replace(/[^0-9]/g, '');
     let cpfValido = TestaCPF(cpf.value);
     if (!cpfValido) {
         event.preventDefault();
         cpfAviso.style.display = 'block';
     }
+    if (cpf.value.length != 14) {
+        event.preventDefault();
+        cpfAviso.style.display = 'block';
+    }
 
+    numerico = telefone.value.replace(/[^0-9]/g, '');
     if (telefone.value.length < 14) {
+        event.preventDefault();
+        telefoneAviso.style.display = 'block';
+    } 
+    if (numerico.length != 11) {
         event.preventDefault();
         telefoneAviso.style.display = 'block';
     }
