@@ -12,3 +12,8 @@ opcoes.addEventListener('click', function (event) {
     event.preventDefault();
 });
 
+pesquisar.addEventListener('click', function () {
+    if (divCategoria.style.display === 'none') {
+        categoria.value = '0';
+    }
+});
