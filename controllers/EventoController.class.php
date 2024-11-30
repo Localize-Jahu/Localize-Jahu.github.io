@@ -254,9 +254,26 @@ class EventoController
 
     public function Pesquisar()
     {
+
+        if ($_GET) {
+
+            $categoria = new Categoria(id_categoria: $_GET["categoria"]);
+            $evento = new Evento(titulo: $_GET["texto"], categoria: $categoria);
+
+
+            $eventoDAO = new EventoDAO();
+            $eventos = $eventoDAO->pesquisar($evento);
+        } else {
+            $eventos = null;
+        }
+
+
         $titulo = ' - Pesquisar Evento';
         $style = array("assets/styles/stylePesquisar.css");
         $script = array("assets/scripts/scriptPesquisar.js");
+
+        $categoriaDAO = new CategoriaDAO();
+        $categorias = $categoriaDAO->listar();
 
 
         // $eventoDAO = new eventoDAO;

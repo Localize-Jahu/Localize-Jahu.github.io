@@ -36,7 +36,6 @@ class EventoDAO extends Conexao
             $stm->bindValue(11, $evento->getPromotor()->getID());
             $stm->execute();
             $id_evento = $this->db->lastInsertId();
-
         } catch (PDOException $e) {
             echo "Código: " . $e->getCode();
             echo " .Mensagem: " . $e->getMessage();
@@ -223,6 +222,35 @@ class EventoDAO extends Conexao
             $stm->execute();
             $this->db = null;
             //retorna a forma que o banco de dados irá funcionar
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            echo "Código: " . $e->getCode();
+            echo " .Mensagem: " . $e->getMessage();
+            die();
+        }
+    }
+
+
+    public function pesquisar(Evento $evento)
+    {
+
+        $sql = 'SET lc_time_names = ?;';
+        try {
+            $stm = $this->db->prepare($sql);
+            $stm->bindValue(1, 'pt_BR');
+            $stm->execute();
+
+            $sql = 'SELECT e.imagem, e.id_evento, e.titulo, DATE_FORMAT(o.dia,"%M, %d") as dia, TIME_FORMAT(o.hora_inicio,"%H:%i") as hora_inicio, e.logradouro, e.bairro, e.cidade
+            FROM evento e
+            INNER JOIN ocorrencia o ON (e.id_evento = o.id_evento)
+            WHERE situacao = ? AND o.dia > (CURDATE()-1)
+            ORDER BY o.dia ASC
+            LIMIT 3 ';
+
+            $stm = $this->db->prepare($sql);
+            $stm->bindValue(1, 'Ativo');
+            $stm->execute();
+            $this->db = null; // Fecha a conexão
             return $stm->fetchAll(PDO::FETCH_OBJ);
         } catch (PDOException $e) {
             echo "Código: " . $e->getCode();

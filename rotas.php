@@ -65,7 +65,7 @@ $route->post("/calendario", array(EventoController::class, "calendario"));
 $route->get("/calendario", array(EventoController::class, "calendario"));
 
 $route->get("/pesquisar", array(EventoController::class, "pesquisar"));
-
+$route->post("/pesquisar", array(EventoController::class, "pesquisar"));
 
 
 //autorizar eventos

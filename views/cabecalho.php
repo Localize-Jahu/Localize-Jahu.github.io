@@ -44,7 +44,7 @@ if (!isset($_SESSION)) {
                     <div class="dropdown">
                         <a class="nav-link" href="">Eventos</a>
                         <div class="dropdown-content">
-                            <a class="a-dropdown" href="#">Pesquisar</a>
+                            <a class="a-dropdown" href="/localize-jahu/pesquisar">Pesquisar</a>
                             <a class="a-dropdown" href="/localize-jahu/calendario">Calendário</a>
 
                         </div>
@@ -132,7 +132,7 @@ if (!isset($_SESSION)) {
                 <div class="celular-dropdown selecionado" id="celular-dropdown" onclick="abrirDropdown('navEventosDropdown');">
                     <a id="dropbtn" class="overlay-link dropbtn">Eventos</a>
                     <div id="navEventosDropdown" class="celular-dropdown-content overlay-link">
-                        <a class="overlay-link" href="#"> <img class="baixo-direita" src="assets/images/baixo-direita.png" alt=""> Pesquisar</a>
+                        <a class="overlay-link" href="/localize-jahu/pesquisar  "> <img class="baixo-direita" src="assets/images/baixo-direita.png" alt=""> Pesquisar</a>
                         <a class="overlay-link" href="/localize-jahu/calendario"> <img class="baixo-direita" src="assets/images/baixo-direita.png" alt=""> Calendário</a>
                     </div>
                 </div>

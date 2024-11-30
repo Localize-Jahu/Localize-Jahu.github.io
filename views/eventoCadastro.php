@@ -58,7 +58,6 @@
             </span>
             <div class="container">
 
-
                 <label for="categoria">Categoria:</label>
                 <select name="categoria" id="categoria">
                     <option value="0">Escolha uma das categorias disponíveis</option>
