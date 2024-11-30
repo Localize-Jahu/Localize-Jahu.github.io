@@ -49,7 +49,7 @@ CREATE TABLE evento (
 		'cancelado'
 	) NOT NULL,
 	imagem VARCHAR(100),
-	acessos int(10) default 0,
+	acessos INT(10) DEFAULT 0,
 	id_categoria INT(10) NOT NULL,
 	FOREIGN KEY (id_categoria) REFERENCES categoria (id_categoria),
 	id_promotor INT(10) NOT NULL,
@@ -104,7 +104,6 @@ VALUES
 		'12312',
 		'nao'
 	);
-	
 
 INSERT INTO
 	promotor(
@@ -154,7 +153,8 @@ INSERT INTO
 		uf,
 		situacao,
 		id_categoria,
-		id_promotor
+		id_promotor,
+		acessos
 	)
 VALUES
 	(
@@ -168,7 +168,8 @@ VALUES
 		'SP',
 		'ativo',
 		3,
-		1
+		1,
+		105
 	),
 	(
 		'Lorem ipsum odor amet, consectetuer adipiscing elit. Congue libero vestibulum; suspendisse lacinia varius torquent molestie pulvinar. Dapibus mus laoreet curabitur iaculis; lobortis facilisi curae suspendisse. Aliquam facilisi integer parturient commodo nisi cras rhoncus. Tempor mus ad in, proin ipsum lobortis. Inceptos integer auctor posuere ultrices per vel ante facilisi. Magna facilisi eu commodo finibus cursus aliquam sagittis ornare efficitur.
@@ -183,7 +184,8 @@ VALUES
 		'SP',
 		'ativo',
 		4,
-		1
+		1,
+		98
 	),
 	(
 		'Encontro literário com escritores locais.',
@@ -196,7 +198,8 @@ VALUES
 		'SP',
 		'ativo',
 		5,
-		1
+		1,
+		220
 	),
 	(
 		'Workshop de tecnologia para iniciantes.',
@@ -209,7 +212,8 @@ VALUES
 		'SP',
 		'ativo',
 		7,
-		1
+		1,
+		35
 	),
 	(
 		'Corrida beneficente para arrecadar fundos.',
@@ -222,7 +226,8 @@ VALUES
 		'SP',
 		'ativo',
 		11,
-		1
+		1,
+		47
 	);
 
 INSERT INTO
