@@ -1,7 +1,10 @@
 <?php
-var_dump($_POST);
-echo "<br>";
-var_dump($_POST["data"]);	
+// var_dump($_POST);
+// echo "<br>";
+// var_dump($_FILES["imagem"]);
+// if ($erro){
+//     echo "Erro";
+// }	
 ?>
 
 <main>
@@ -9,8 +12,7 @@ var_dump($_POST["data"]);
         <h1>Cadastro de Eventos</h1>
 
         <!--Nome do Evento-->
-        <form action="/localize-jahu/evento-cadastro" method="post">
-
+        <form action="/localize-jahu/evento-cadastro" method="post" enctype="multipart/form-data">
 
             <div class="container">
                 <label for="titulo">Titulo: </label>
@@ -88,11 +90,11 @@ var_dump($_POST["data"]);
 
                 <div class="container div-dia">
                     <label for="hora_inicio">Hora de Início:</label>
-                    <input type="time" name="hora_inicio[]" id="hora_inicio" step="1800" onchange="desativarAlerta()">
+                    <input type="time" name="hora_inicio[]" id="hora_inicio" onchange="desativarAlerta()">
                 </div>
                 <div class="container div-dia">
                     <label for="hora_termino">Hora de término:</label>
-                    <input type="time" name="hora_termino[]" id="hora_termino" step="1800" onchange="desativarAlerta()">
+                    <input type="time" name="hora_termino[]" id="hora_termino" onchange="desativarAlerta()">
                 </div>
                 <a class="botao" id="btn-mais"><img class="img-mais" src="assets/images/fechar-login.png" alt=""><label class="label-mais">Adicionar dia</label></a>
             </div>

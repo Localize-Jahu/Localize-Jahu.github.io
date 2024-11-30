@@ -8,6 +8,8 @@ class EventoDAO extends Conexao
 
     public function inserir(Evento $evento)
     {
+        $this->db->beginTransaction();
+        $id_evento = 0;
         $sql = "INSERT INTO evento (descricao,
                                     titulo,
                                     logradouro,
@@ -33,13 +35,33 @@ class EventoDAO extends Conexao
             $stm->bindValue(10, $evento->getCategoria()->getId_categoria());
             $stm->bindValue(11, $evento->getPromotor()->getID());
             $stm->execute();
+            $id_evento = $this->db->lastInsertId();
 
-            $this->db = null; // Fecha a conexão
-            return "Evento inserido com sucesso!";
         } catch (PDOException $e) {
             echo "Código: " . $e->getCode();
             echo " .Mensagem: " . $e->getMessage();
         }
+
+        $sql = "INSERT INTO ocorrencia (dia, hora_inicio, hora_termino, id_evento) VALUES (?, ?, ?, ?)";
+
+        foreach ($evento->getOcorrencias() as $ocorrencia) {
+            try {
+                $stm = $this->db->prepare($sql);
+                $stm->bindValue(1, $ocorrencia->getDia());
+                $stm->bindValue(2, $ocorrencia->getHoraInicio());
+                $stm->bindValue(3, $ocorrencia->getHoraTermino());
+                $stm->bindValue(4, $id_evento);
+                $stm->execute();
+            } catch (PDOException $e) {
+                $this->db->rollBack();
+                $this->db = null;
+                echo "Código: " . $e->getCode();
+                echo " .Mensagem: " . $e->getMessage();
+            }
+        }
+        $this->db->commit();
+        $this->db = null;
+        return $id_evento;
     }
 
     public function alterarEvento($evento)
@@ -195,20 +217,17 @@ class EventoDAO extends Conexao
                 ON(p.id_promotor=e.id_promotor) 
                 WHERE situacao = ? ";
 
-        try
-        {
+        try {
             $stm = $this->db->prepare($sql);
             $stm->bindValue(1, 'Pendente');
             $stm->execute();
             $this->db = null;
             //retorna a forma que o banco de dados irá funcionar
             return $stm->fetchAll(PDO::FETCH_OBJ);
-        } catch(PDOException $e) {
+        } catch (PDOException $e) {
             echo "Código: " . $e->getCode();
             echo " .Mensagem: " . $e->getMessage();
             die();
         }
     }
-
-
 }//fim da classe

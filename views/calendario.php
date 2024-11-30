@@ -121,17 +121,17 @@
                                 {$evento->titulo}
                             </a>
                             ";
-                        } else{
-                            $contador++;
+
                         }
+                        $contador++;
 
                     }
                 }
                 if ($contador > 3) {
                     echo '
-                        <a href="#" class="eventos-outros">
+                        <a  class="eventos-outros">
                         <div class="outros">
-                            + ' . (count($evento) - 3) . '
+                            + ' . ($contador - 3) . '
                         </div>    
                         </a>
                     ';

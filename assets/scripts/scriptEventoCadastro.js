@@ -118,6 +118,12 @@ btnMais.addEventListener('click', () => {
         return;
     }
 
+    const today = new Date().toISOString().split('T')[0];
+     if (data.value === today) {
+        alerta.innerHTML = 'Só é possivel cadastrar eventos para datas futuras.';
+        return;
+    }
+
     if (hora_inicio.value >= hora_termino.value) {
         alerta.innerHTML = 'Hora de término deve ser maior que a hora de início.';
         return;
@@ -154,7 +160,7 @@ btnMais.addEventListener('click', () => {
     const inputData = document.createElement('input');
     inputData.setAttribute('type', 'date');
     inputData.setAttribute('name', 'data[]');
-    inputData.setAttribute('value', data.value);
+    inputData.setAttribute('value', new Date(data.value).toISOString().split('T')[0]);
     inputData.setAttribute('disabled', true);
 
 
@@ -178,7 +184,7 @@ btnMais.addEventListener('click', () => {
 
     const inputHoraFim = document.createElement('input');
     inputHoraFim.setAttribute('type', 'time');
-    inputHoraFim.setAttribute('name', 'hora_fim[]');
+    inputHoraFim.setAttribute('name', 'hora_termino[]');
     inputHoraFim.setAttribute('value', hora_termino.value);
     inputHoraFim.setAttribute('disabled', true);
 
@@ -295,6 +301,7 @@ btnSubmit.addEventListener('click', (event) => {
     }
 
     const datas = document.getElementsByName('data[]');
+
     if (datas.length <= 1) {
         alerta.innerHTML = 'Adicione pelo menos uma data.';
         data.focus();
@@ -310,5 +317,17 @@ btnSubmit.addEventListener('click', (event) => {
         }
     }
 
+
+    datas.forEach(element => {
+        element.disabled = false;
+    });
+
+    document.getElementsByName('hora_inicio[]').forEach(element => {
+        element.disabled = false;
+    });
+
+    document.getElementsByName('hora_termino[]').forEach(element => {
+        element.disabled = false;
+    });
 
 });
