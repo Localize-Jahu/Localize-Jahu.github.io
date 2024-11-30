@@ -160,22 +160,24 @@ class EventoDAO extends Conexao
 
     public function proximosEventos()
     {
-
-
         $sql = 'SET lc_time_names = ?;';
         try {
             $stm = $this->db->prepare($sql);
             $stm->bindValue(1, 'pt_BR');
             $stm->execute();
-
-            $sql = 'SELECT e.imagem, e.id_evento, e.titulo, DATE_FORMAT(o.dia,"%M, %d") as dia, TIME_FORMAT(o.hora_inicio,"%H:%i") as hora_inicio, e.logradouro, e.bairro, e.cidade
+        } catch (PDOException $e) {
+            echo "Código: " . $e->getCode();
+            echo " .Mensagem: " . $e->getMessage();
+            die();
+        }
+        $sql = 'SELECT e.imagem, e.id_evento, e.titulo, DATE_FORMAT(o.dia,"%M, %d") as dia, TIME_FORMAT(o.hora_inicio,"%H:%i") as hora_inicio, e.logradouro, e.bairro, e.cidade
             FROM evento e
             INNER JOIN ocorrencia o ON (e.id_evento = o.id_evento)
             WHERE situacao = ? AND o.dia > (CURDATE()-1)
             GROUP BY e.id_evento
             ORDER BY o.dia ASC
             LIMIT 3 ';
-
+        try {
             $stm = $this->db->prepare($sql);
             $stm->bindValue(1, 'Ativo');
             $stm->execute();
@@ -239,16 +241,31 @@ class EventoDAO extends Conexao
             $stm = $this->db->prepare($sql);
             $stm->bindValue(1, 'pt_BR');
             $stm->execute();
-
+        } catch (PDOException $e) {
+            echo "Código: " . $e->getCode();
+            echo " .Mensagem: " . $e->getMessage();
+            die();
+        }
+        if ($evento->getCategoria()->getId_categoria() == 0) {
             $sql = 'SELECT e.imagem, e.id_evento, e.titulo, DATE_FORMAT(o.dia,"%M, %d") as dia, TIME_FORMAT(o.hora_inicio,"%H:%i") as hora_inicio, e.logradouro, e.bairro, e.cidade
-            FROM evento e
-            INNER JOIN ocorrencia o ON (e.id_evento = o.id_evento)
-            WHERE situacao = ? AND o.dia > (CURDATE()-1)
-            ORDER BY o.dia ASC
-            LIMIT 3 ';
-
+                    FROM evento e
+                    INNER JOIN ocorrencia o ON (e.id_evento = o.id_evento)
+                    WHERE situacao = ? AND o.dia > (CURDATE()-1) AND e.titulo LIKE ?
+                    ORDER BY o.dia ASC';
+        } else {
+            $sql = 'SELECT e.imagem, e.id_evento, e.titulo, DATE_FORMAT(o.dia,"%M, %d") as dia, TIME_FORMAT(o.hora_inicio,"%H:%i") as hora_inicio, e.logradouro, e.bairro, e.cidade
+                    FROM evento e
+                    INNER JOIN ocorrencia o ON (e.id_evento = o.id_evento)
+                    WHERE situacao = ? AND o.dia > (CURDATE()-1) AND e.titulo LIKE ? AND id_categoria = ?
+                    ORDER BY o.dia ASC';
+        }
+        try {
             $stm = $this->db->prepare($sql);
             $stm->bindValue(1, 'Ativo');
+            $stm->bindValue(2, '%' . $evento->getTitulo() . '%');
+            if ($evento->getCategoria()->getId_categoria() != 0) {
+                $stm->bindValue(3, $evento->getCategoria()->getId_categoria());
+            }
             $stm->execute();
             $this->db = null; // Fecha a conexão
             return $stm->fetchAll(PDO::FETCH_OBJ);
