@@ -163,6 +163,18 @@ class EventoController
 
     public function alterar()
     {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        if (!isset($_SESSION["id_promotor"])) {
+            header("location:/localize-jahu/pagina-nao-encontrada");
+            die();
+        }
+        if (!isset($_GET["id"])) {
+            header("location:/localize-jahu/pagina-nao-encontrada");
+            die();
+        }
+
         $titulo = ' - Alterar Evento';
         $style = array("assets/styles/styleEditarEvento.css");
         $script = array();
@@ -239,6 +251,14 @@ class EventoController
 
     public function autorizar_evento()
     {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        if (!isset($_SESSION["adm"]) || $_SESSION["adm"] != 'sim') {
+            header("location:/localize-jahu/pagina-nao-encontrada");
+            die();
+        }
+
         $titulo = ' - Autorizar Evento';
         $style = array("assets/styles/styleAutorizarEventos.css");
         $script = array();
@@ -274,11 +294,6 @@ class EventoController
 
         $categoriaDAO = new CategoriaDAO();
         $categorias = $categoriaDAO->listar();
-
-
-        // $eventoDAO = new eventoDAO;
-        // $retorno = $eventoDAO->autorizarEvento();
-
 
         require_once "views/cabecalho.php";
         require_once "Views/pesquisar.php";

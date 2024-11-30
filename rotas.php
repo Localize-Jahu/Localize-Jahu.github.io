@@ -43,6 +43,10 @@ $route->get("/cadastro", array(UsuarioController::class, "cadastrar"));
 $route->post("/cadastro", array(UsuarioController::class, "cadastrar"));
 $route->get("/recuperar-senha", array(UsuarioController::class, "recuperarSenha"));
 
+$route->post("/configuracoes", array(UsuarioController::class, "configuracoes"));
+$route->get("/configuracoes", array(UsuarioController::class, "configuracoes"));
+
+
 //Sobre Nos
 $route->get("/sobre-nos", array(SobreNosController::class, "inicio"));
 

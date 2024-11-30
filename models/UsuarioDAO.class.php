@@ -118,4 +118,47 @@ class UsuarioDAO extends Conexao
         }
     }
 
+    public function pesquisarPorId(Usuario $usuario)
+    {
+        $sql = "SELECT *
+        FROM usuario  	
+        WHERE id_usuario = ?";
+        try {
+            $stm = $this->db->prepare($sql);
+            $stm->bindValue(1, $usuario->getIdUsuario());
+
+            $stm->execute();
+            $this->db = null;
+
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            $this->db = null;
+            echo $e->getMessage();
+            echo $e->getCode();
+            die();
+        }
+    }
+
+    public function atualizar(Usuario $usuario){
+        $sql = "UPDATE usuario set nome = ?,
+                                telefone = ?,
+                                email = ?
+                where id_usuario = ?";
+        try {
+            $stm = $this->db->prepare($sql);
+            $stm->bindValue(1, $usuario->getNome());
+            $stm->bindValue(2, $usuario->getTelefone());
+            $stm->bindValue(3, $usuario->getEmail());
+            $stm->bindValue(4, $usuario->getIdUsuario());
+            $stm->execute();
+
+            $this->db = null;
+            return true;
+        } catch (PDOException $e) {
+            echo "Código: " . $e->getCode();
+            echo " .Mensagem: " . $e->getMessage();
+        }
+    }
+
+
 }
