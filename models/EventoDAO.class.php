@@ -195,12 +195,11 @@ class EventoDAO extends Conexao
         $sql = "SELECT id_evento, titulo, descricao, imagem
                 FROM evento
                 WHERE situacao = ? 
-                ORDER BY ? 
+                ORDER BY acessos DESC 
                 LIMIT 3";
         try {
             $stm = $this->db->prepare($sql);
             $stm->bindValue(1, 'Ativo');
-            $stm->bindValue(2, rand());
             $stm->execute();
             $this->db = null; // Fecha a conexão
             return $stm->fetchAll(PDO::FETCH_OBJ);
