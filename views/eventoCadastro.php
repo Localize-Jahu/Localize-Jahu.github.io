@@ -1,3 +1,7 @@
+<?php
+var_dump($_POST);
+?>
+
 <main>
     <article>
         <h1>Cadastro de Eventos</h1>
@@ -40,8 +44,15 @@
             </div>
 
 
-            <!-- Categoria -->
+
+            <span class="alerta">
+                <?php
+                echo $mensagem[0];
+                ?>
+            </span>
             <div class="container">
+
+
                 <label for="categoria">Categoria:</label>
                 <select name="categoria" id="categoria">
                     <option value="0">Escolha uma das categorias disponíveis</option>
@@ -71,9 +82,9 @@
                     <input type="date" name="data[]" id="data" onchange="desativarAlerta()">
                 </div>
 
-                <div class="container div-dia" >
+                <div class="container div-dia">
                     <label for="hora">Hora de Início:</label>
-                    <input type="time" name="hora_inicio[]" id="hora_inicio"  onchange="desativarAlerta()">
+                    <input type="time" name="hora_inicio[]" id="hora_inicio" onchange="desativarAlerta()">
                 </div>
                 <div class="container div-dia">
                     <label for="hora">Hora de término:</label>
@@ -91,13 +102,13 @@
             <!--Descrição do Evento-->
             <div class="div-descricao">
 
-                <label class="label-descricao" for="descricao" >Descrição:</label>
+                <label class="label-descricao" for="descricao">Descrição:</label>
                 <textarea name="descricao" id="descricao" maxlength="5000" placeholder="Conte um pouco sobre o evento..."></textarea>
             </div>
 
 
             <div class="btns">
-                <button class="btn cadastro" type="submit">
+                <button id="submit" class="btn cadastro" type="submit">
                     Cadastrar
                 </button>
 

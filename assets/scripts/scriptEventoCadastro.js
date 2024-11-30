@@ -1,3 +1,11 @@
+const btnMais = document.getElementById('btn-mais');
+const alerta = document.getElementById('alerta');
+const data = document.getElementById('data');
+const hora_inicio = document.getElementById('hora_inicio');
+const hora_termino = document.getElementById('hora_termino');
+const cep = document.getElementById('cep');
+const btnSubmit = document.getElementById('submit');
+
 document.getElementById('imagem').addEventListener('change', (event) => {
     document.getElementById('texto-imagem').value = event.target.files[0].name;
 })
@@ -19,7 +27,6 @@ function formatar(mascara, documento) {
     }
 }
 
-const cep = document.getElementById('cep');
 
 cep.addEventListener('input', () => {
     cep.value = cep.value.replace(/[a-zA-Z]/g, '');
@@ -56,12 +63,7 @@ btnLimpar.addEventListener('click', () => {
 
 });
 
-const btnMais = document.getElementById('btn-mais');
-const alerta = document.getElementById('alerta');
 
-const data = document.getElementById('data');
-const hora_inicio = document.getElementById('hora_inicio');
-const hora_termino = document.getElementById('hora_termino');
 
 
 function desativarAlerta() {
@@ -70,6 +72,7 @@ function desativarAlerta() {
 
 
 btnMais.addEventListener('click', () => {
+
 
 
     if (data.value == '' || hora_inicio.value == '' || hora_termino.value == '') {
@@ -82,7 +85,7 @@ btnMais.addEventListener('click', () => {
     i = 0;
     document.getElementsByName('data[]').forEach(element => {
         if (i != 0) {
-           if (element.value == data.value) {
+            if (element.value == data.value) {
                 alerta.innerHTML = 'Data duplicada.';
                 erro = true;
                 return;
@@ -189,3 +192,9 @@ btnMais.addEventListener('click', () => {
 
 });
 
+btnSubmit.addEventListener('click', (event) => {
+
+    
+
+
+}
