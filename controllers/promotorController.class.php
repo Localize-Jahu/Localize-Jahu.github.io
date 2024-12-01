@@ -100,7 +100,7 @@ class PromotorController
             session_start();
         }
 
-        if (isset($_SESSION["logado"])) {
+        if (isset($_SESSION["id"])) {
             if (isset($_SESSION["id_promotor"])) {
                 header("location:/localize-jahu/promotor_perfil");
                 die();

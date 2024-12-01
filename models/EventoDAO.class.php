@@ -91,7 +91,7 @@ class EventoDAO extends Conexao
 
     public function buscarUmEvento($evento)
     {
-        $sql = "SELECT e.*, c.id_categoria, c.descritivo, p.nome_publico, o.dia, o.hora_inicio, o.hora_termino FROM evento e INNER JOIN ocorrencia o on (o.id_evento = e.id_evento) INNER JOIN categoria c ON(e.id_categoria = c.id_categoria) INNER JOIN promotor p ON(e.id_promotor = p.id_promotor) WHERE e.id_evento = ?";
+        $sql = "SELECT e.*, c.id_categoria, c.descritivo, p.nome_publico, o.dia, o.hora_inicio, o.hora_termino, situacao FROM evento e INNER JOIN ocorrencia o on (o.id_evento = e.id_evento) INNER JOIN categoria c ON(e.id_categoria = c.id_categoria) INNER JOIN promotor p ON(e.id_promotor = p.id_promotor) WHERE e.id_evento = ?";
         try {
             $stm = $this->db->prepare($sql);
             $stm->bindValue(1, $evento->getId_evento());

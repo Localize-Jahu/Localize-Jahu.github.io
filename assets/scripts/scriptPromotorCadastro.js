@@ -45,17 +45,19 @@ document.getElementById('btn-submit').addEventListener('click', (event) => {
         document.getElementById("alerta").innerHTML = '* Os campos com (*) devem ser preenchidos.';
         document.getElementById('nome_publico').focus();
     }
-    if (telefone.value < 14 || telefone.value != '') {
-        event.preventDefault();
-        telefone.focus();
+    if (telefone.value != '') {
+        if (telefone.value < 14) {
+            event.preventDefault();
+            telefone.focus();
 
-    }
-    let numerico = telefone.value.replace(/[^0-9]/g, '');
-    if (numerico.length < 11) {
-        event.preventDefault();
-        telefone.focus();
-    }
+        }
+        let numerico = telefone.value.replace(/[^0-9]/g, '');
 
+        if (numerico.length != 11) {
+            event.preventDefault();
+            telefone.focus();
+        }
+    }
 });
 
 function validar(element) {

@@ -143,6 +143,16 @@ class EventoController
             $evento = new Evento($_GET["idevento"]);
             $eventoDAO = new eventoDAO;
             $retorno = $eventoDAO->buscarUmEvento($evento);
+
+            if ($retorno[0]->situacao == "pendente") {
+                if (isset($_SESSION["id_promotor"]) && $retorno[0]->id_promotor != $_SESSION["id_promotor"]) {
+                    if (!isset($_SESSION["adm"]) || $_SESSION["adm"] != 'sim') {
+                        header("location:/localize-jahu/pagina-nao-encontrada");
+                        die();
+                    }       
+                }
+            }
+
             require_once "views/cabecalho.php";
             require_once "Views/eventoExibir.php";
             require_once "views/rodape.html";
@@ -163,6 +173,26 @@ class EventoController
 
     public function alterar()
     {
+
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        if (!isset($_SESSION["id_promotor"])) {
+            header("location:/localize-jahu/pagina-nao-encontrada");
+            die();
+        }
+        if (!isset($_GET["id"])) {
+            header("location:/localize-jahu/pagina-nao-encontrada");
+            die();
+        }
+        $evento = new Evento($_GET["id"]);
+        $eventoDAO = new eventoDAO;
+        $retorno = $eventoDAO->buscarUmEvento($evento);
+        if ($retorno[0]->id_promotor != $_SESSION["id_promotor"]) {
+            header("location:/localize-jahu/pagina-nao-encontrada");
+            die();
+        }
+
         $titulo = ' - Alterar Evento';
         $style = array("assets/styles/styleEditarEvento.css");
         $script = array();
@@ -227,11 +257,7 @@ class EventoController
                 header("location:/localize-jahu/eventos?idevento={$evento->getId_evento()}&msg=$retorno");
             }
         }
-        if (isset($_GET["id"])) {
-            $evento = new Evento($_GET["id"]);
-            $eventoDAO = new eventoDAO;
-            $retorno = $eventoDAO->buscarUmEvento($evento);
-        }
+
         require_once "views/cabecalho.php";
         require_once "Views/editEvento.php";
         require_once "views/rodape.html";
