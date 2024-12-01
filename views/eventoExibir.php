@@ -87,7 +87,12 @@
                     $i++;
                     echo "<div class='container quebra'>
                             <div class='container div-dia'>
-                                <label>{$i}º Dia:</label>
+                                <label>";
+                                
+                                if(count($ocorrencias) > 1){
+                                    echo $i."º ";
+                                }
+                                echo "Dia:</label>
                                 <input disabled='true' type='date' name='dia-cadastrado[]' value='{$ocorrencia->dia}' disabled='true'>
                             </div>
                             <div class='container div-dia'>
