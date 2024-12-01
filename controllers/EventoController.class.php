@@ -151,6 +151,12 @@ class EventoController
             $evento = new Evento($_GET["idevento"]);
             $eventoDAO = new eventoDAO;
             $retorno = $eventoDAO->buscarUmEvento($evento);
+            $evento = $retorno[0];
+            $event = new Evento($_GET["idevento"]);
+            $eventoDAO = new EventoDAO();
+            $ocorrencias = $eventoDAO->pesquisarOcorrencias($event);
+    
+
 
             if (count($retorno) == 0) {
                 header("location:/localize-jahu/pagina-nao-encontrada");
@@ -164,7 +170,7 @@ class EventoController
                     die();
                 }
             }
-            $titulo = ' - Exibir Evento';
+            $titulo = ' - '.$evento->titulo;
             $style = array("assets/styles/styleEventoExibir.css");
             $script = array();
             require_once "views/cabecalho.php";

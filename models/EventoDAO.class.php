@@ -344,7 +344,7 @@ class EventoDAO extends Conexao
 
     public function pesquisarOcorrencias(Evento $evento)
     {
-        $sql = "SELECT * FROM ocorrencia WHERE id_evento = ?";
+        $sql = "SELECT * FROM ocorrencia WHERE id_evento = ? ORDER BY dia ASC";
         try {
             $stm = $this->db->prepare($sql);
             $stm->bindValue(1, $evento->getId_evento());

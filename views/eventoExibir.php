@@ -1,92 +1,128 @@
 <main>
     <article>
-        <input type="hidden" name="imagem_antiga" value="<?php echo $retorno[0]->imagem; ?>">
-        <br>
-        <img src="uploads/<?php echo $retorno[0]->imagem; ?>" id="img" width="300" height="400">
+        <input disabled='true' type="hidden" name="imagem_antiga" value="<?php echo $retorno[0]->imagem; ?>">
 
-        <div class="conjunto">
-            <div class="titulo">
-                <h1><?php echo $retorno[0]->titulo; ?> </h1>
+        <?php
+        ?>
+
+        <h1><?php
+            $evento = $retorno[0];
+            echo $retorno[0]->titulo; ?> </h1>
+
+        <img class='banner' src="uploads/<?php echo $retorno[0]->imagem; ?>" id="img" width="300" height="400">
+
+        <div class="box">
+
+            <div class="container">
+                <label for="titulo">Titulo: </label>
+                <input disabled='true' type="text" name="titulo" id="titulo"
+
+                    <?php
+                    echo "value='{$evento->titulo}'";
+                    ?>
+
+                    required>
             </div>
 
-            <?php
 
-            if (!empty($retorno)) {
-                foreach ($retorno as $evento) {
-                    echo '<div class="ocorrencia">';
-                    echo '<div class="data">';
-                    echo '<img class="imag" src="assets/images/data.png" alt="Data do Evento">';
-                    echo '<p class="subtitulo"><strong>Data: </strong>' . date('d/m/Y', strtotime($evento->dia)) . '</p>';
-                    echo '</div>';
+            <div class="container">
+                <label for="logradouro">Logradouro:</label>
+                <input disabled='true' type="text" name="logradouro" id="logradouro"
 
-                    echo '<div class="hora">';
-                    echo '<img class="imag" src="assets/images/hora.png" alt="Hora do Evento">';
-                    echo '<p class="subtitulo"><strong>Hora Início: </strong>' . $evento->hora_inicio . '</p>';
-                    echo '</div>';
+                    <?php
+                    echo "value='{$evento->logradouro}'";
+                    ?>
 
-                    echo '<div class="hora">';
-                    echo '<img class="imag" src="assets/images/hora.png" alt="Hora do Evento">';
-                    echo '<p class="subtitulo"><strong>Hora Término: </strong>' . $evento->hora_termino . '</p>';
-                    echo '</div>';
-                    echo '</div>';
+                    required>
+            </div>
+            <div class="container">
+                <label for="bairro">Bairro:</label>
+                <input disabled='true' type="text" name="bairro" id="bairro"
+
+                    <?php
+
+                    echo "value='{$evento->bairro}'";
+
+                    ?>
+
+                    required>
+            </div>
+
+
+            <div class="container">
+                <div class="container">
+                    <label for="cidade">Cidade:</label>
+                    <input disabled='true' type="text" name="cidade" id="cidade" value="Jaú" disabled style="color:white;">
+                </div>
+
+                <div class="container">
+                    <label for="uf">UF:</label>
+                    <input disabled='true' type="text" name="uf" id="uf" value="SP" style="color:white;" disabled>
+                </div>
+            </div>
+            <div class="container">
+                <label for="cep">CEP:</label>
+                <input disabled='true' type="text" name="cep" id="cep"
+                    required OnKeyPress="divatar('#####-###',this)">
+            </div>
+
+            <div class="container">
+
+                <label for="categoria">Categoria:</label>
+                <input type="text" disabled='true' name="categoria" id="categoria"
+                    <?php
+                    foreach ($retorno as $dado) {
+                        echo "value='{$evento->descritivo}'";
+                    }
+                    ?>>
+            </div>
+
+
+            <div class="dias-adicionados">
+
+
+                <?php
+                $i = 0;
+                foreach ($ocorrencias as $ocorrencia) {
+                    $i++;
+                    echo "<div class='container quebra'>
+                            <div class='container div-dia'>
+                                <label>{$i}º Dia:</label>
+                                <input disabled='true' type='date' name='dia-cadastrado[]' value='{$ocorrencia->dia}' disabled='true'>
+                            </div>
+                            <div class='container div-dia'>
+                                <label>Hora de Início:</label>
+                                <input disabled='true' type='time' name='hora-inicio-cadastrado[]' value='{$ocorrencia->hora_inicio}' disabled='true'>
+                            </div>
+                            <div class='container div-dia'>
+                                <label>Hora de término:</label>
+                                <input disabled='true' type='time' name='hora-termino-cadastrado[]' value='{$ocorrencia->hora_termino}' disabled='true'>
+                            </div>
+                        </div>";
                 }
-            } else {
-                echo '<p>Nenhuma ocorrência encontrada para este evento.</p>';
-            }
-            ?>
-        </div>
+                ?>
+            </div>
 
-        <div class="local">
-            <img class="ima" src="assets/images/local.png" alt="Local do Evento">
-            <p class="subtitulo2"><strong>Local: </strong><?php echo $retorno[0]->logradouro . " - " . $retorno[0]->bairro . " , " . $retorno[0]->cidade . " - " . $retorno[0]->uf . " , " . $retorno[0]->cep; ?></p>
+            <label class="label-descricao" for="descricao">Descrição:</label>
+            <textarea name="descricao" id="descricao" maxlength="5000" placeholder="Conte um pouco sobre o evento..."><?php echo $evento->descricao; ?></textarea>
         </div>
-        <div class="situacao">
-            <img class="ima" src="assets/images/situacao.png" alt="Situação do Evento">
-            <p class="subtitulo"><strong>Situação: </strong><?php echo $retorno[0]->situacao; ?></p>
-        </div>
-        <div class="categoria">
-            <img class="ima" src="assets/images/categoria.png" alt="categoria do Evento">
-            <p class="subtitulo"><strong>Categoria: </strong><?php echo $retorno[0]->descritivo; ?></p>
-        </div>
-        <div class="promotor">
-            <img class="ima" src="assets/images/promotor.png" alt="Promotor do Evento">
-            <p class="subtitulo2"><strong>Promotor: </strong><?php echo "<a href='/localize-jahu/promotor?idpromotor={$retorno[0]->id_promotor}'>{$retorno[0]->nome_publico}</a>"; ?></p>
-        </div>
-        <p class="descricao"><?php echo $retorno[0]->descricao; ?></p>
-        <div class="botao">
-            <?php
-            if (isset($_SESSION["adm"]) && $_SESSION["adm"] == "sim") {
-                if ($retorno[0]->situacao == "pendente") {
-                    echo "<a href='/localize-jahu/alterarSituacao?idevento={$retorno[0]->id_evento}&situacao=ativo' class='alterar' onclick=\"return confirm('Confirmar a ativação?')\">Autorizar</a>";
-                    echo "<a href='/localize-jahu/alterarSituacao?idevento={$retorno[0]->id_evento}&situacao=desativado' class='cancelar' onclick=\"return confirm('Confirmar a não autorização?')\">Não autorizar</a>";
-                }
-            }
-            ?>
-
-            <?php
+        <?php
+        if (isset($_SESSION["adm"]) && $_SESSION["adm"] == "sim") {
             if ($retorno[0]->situacao == "pendente") {
-                if (isset($_SESSION["id_promotor"]) && $_SESSION["id_promotor"] == $retorno[0]->id_promotor) {
-                    echo "<a href='/localize-jahu/alterarEvento?id={$retorno[0]->id_evento}' class='alterar'>Alterar</a>&nbsp;&nbsp;";
-                    echo "<a href='/localize-jahu/alterarSituacao?idevento={$retorno[0]->id_evento}&situacao=cancelado' class='cancelar' onclick=\"return confirm('Confirmar o cancelamento do evento?')\">Cancelar</a>";
-                }
+                echo "<a href='/localize-jahu/alterarSituacao?idevento={$retorno[0]->id_evento}&situacao=ativo' class='alterar' onclick=\"return confirm('Confirmar a ativação?')\">Autorizar</a>";
+                echo "<a href='/localize-jahu/alterarSituacao?idevento={$retorno[0]->id_evento}&situacao=desativado' class='cancelar' onclick=\"return confirm('Confirmar a não autorização?')\">Não autorizar</a>";
             }
-            ?>
-        </div>
+        }
+        ?>
+
+        <?php
+        if ($retorno[0]->situacao == "pendente") {
+            if (isset($_SESSION["id_promotor"]) && $_SESSION["id_promotor"] == $retorno[0]->id_promotor) {
+                echo "<a href='/localize-jahu/alterarEvento?id={$retorno[0]->id_evento}' class='alterar'>Alterar</a>&nbsp;&nbsp;";
+                echo "<a href='/localize-jahu/alterarSituacao?idevento={$retorno[0]->id_evento}&situacao=cancelado' class='cancelar' onclick=\"return confirm('Confirmar o cancelamento do evento?')\">Cancelar</a>";
+            }
+        }
+        ?>
         </div>
     </article>
 </main>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-<script>
-    function mostrar(img) {
-        if (img.files && img.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $('#img')
-                    .attr('src', e.target.result)
-                    .width(170)
-                    .height(100);
-            };
-            reader.readAsDataURL(img.files[0]);
-        }
-    }
-</script>
