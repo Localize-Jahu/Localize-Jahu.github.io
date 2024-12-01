@@ -1,64 +1,66 @@
-<?php
-
-echo $msg;
-
-?>
 <main>
-        <article>
+    <article>
 
-            <!-- Corpo -->
-            <div class="corpo">
-                <h1>Meu Perfil</h1>
+        <h1>Cadastro de Promotor</h1>
 
-                <br>
+        <?php
+        // var_dump($promotor);
+        ?>
 
-                  <!--Imagem Perfil-->     
-                <!-- <div class="foto">
-                    <input type="image" id="imagem">
-                </div> -->
+        <form action="/localize-jahu/editar_perfil" method="post">
 
-               
-                <!--Nome Publico-->
-                <form action="/localize-jahu/editar_perfil" class="info" enctype="multipart/form-data" method="POST">
-                <input type="hidden" name="idpromotor" value="<?php echo $retorno[0]->id_promotor;?>">
-
-                    <div class="nome">
-                            <h2>Nome Publico</h2>
-                            <input type="text" name="nome_publico" id="nome_publico" value="<?php echo $retorno[0]->nome_publico; ?>">  
-                    </div>
-
-                    <!-- Biografia -->
-                    <div class="label-50">
-                        <h2>Biografia</h2>
-                        <input type="text" name="biografia" id="biografia" value="<?php echo $retorno[0]->biografia;?>">
-                    </div>
-
-                    <!-- Redes Sociais -->
-                     <div class="redes-sociais">
-                        <h2>Minhas Redes Sociais</h2>
-                        <div class="website">
-                        <h3 class="tit-website">Website</h3>
-                        <input type="text" name="website" id="website" value="<?php echo $retorno[0]->website;?>">
-                </div>
-           
-                <div class="telefone">
-                <h3 class="tit-tel">Telefone</h3>
-                <input type="text" name="telefone_contato" id="telefone" value="<?php echo $retorno[0]->telefone_contato;?>">
-            </div>
-                <div class="email">
-                <h3 class="tit-email">Email</h3>
-                <input type="text" name="email_contato" id="email" value="<?php echo $retorno[0]->email_contato;?>">
-            </div>
-            </div>
-               
-                <button type="submit">Enviar</button>
-                </form>
+            <input type="hidden" name="id_promotor" value="<?php echo $promotor->id_promotor ?>">
+            <div class="container">
+                <label for="nome_publico">Nome Público: </label>
+                <input type="text" id="nome_publico" name="nome_publico"
+                    <?php
+                    echo "value='{$promotor->nome_publico}'";
+                    ?>>
+                <span class="asterisco">*</span>
             </div>
 
-            <br>
-            <br>
-            <br>
+            <div class="container">
+                <label for="email_contato">Email para contato:</label>
+                <input type="email" id="email_contato" name="email_contato" oninput="validar(this)"
+                    <?php
+                    echo "value='{$promotor->email_contato}'";
+                    ?>>
+                <!-- <span class="asterisco">*</span> -->
+            </div>
 
+            <div class="container">
+                <label for="telefone">Telefone</label>
+                <input class="input-tipo" type="text" id="telefone" name="telefone" OnKeyPress="formatar('(##) ####-#####',this)"
+                    <?php
+                    echo "value='{$promotor->telefone_contato}'";
+                    ?>>
+                <!-- <span class="asterisco">*</span> -->
+            </div>
 
-        </article>
-    </main>
+            <div class="container">
+                <label for="website">Website:</label>
+                <input type="url" pattern="https://.*" placeholder="https://" id="website" name="website" oninput="validar(this)"
+                    <?php
+                    echo "value='{$promotor->website}'";
+                    ?>>
+                <!-- <span class="asterisco">*</span> -->
+            </div>
+
+            <div class="alerta">
+                <span id="alerta" class="text-alerta">
+
+                </span>
+            </div>
+
+            <div class="div-bio">
+                <label for="biografia" class="label-bio">Biografia:</label>
+                <textarea id="biografia" name="biografia" maxlength="5000" placeholder=""><?php echo"$promotor->biografia"; ?></textarea>
+            </div>
+
+            <div class="btns">
+                <button type="submit" id="btn-submit" class="btn cadastro">Editar</button>
+                <a id="reset" class="btn reset">Limpar</a>
+            </div>
+        </form>
+    </article>
+</main>

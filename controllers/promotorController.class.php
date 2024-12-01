@@ -56,38 +56,33 @@ class PromotorController
         $promotorDAO = new PromotorDAO();
 
 
+     
         if ($_POST) {
-            if (empty($_POST["nome_publico"])) {
-                $msg = "Preencha o seu nome";
-            } else if (empty($_POST["biografia"])) {
-                $msg = "Preencha a sua biografia";
-            } else if (empty($_POST["telefone_contato"])) {
-                $msg = "Preencha o seu telefone";
-            } else if (empty($_POST["email_contato"])) {
-                $msg = "Preencha o seu email";
-            } else {
-                $promotor = new Promotor(
-                    $_POST["idpromotor"],
-                    $_POST["nome_publico"],
-                    $_POST["biografia"],
-                    $_POST["telefone_contato"],
-                    $_POST["email_contato"],
-                    $_POST["website"]
-                );
-                $retorno = $promotorDAO->alterarPromotor($promotor);
-                header("location:/localize-jahu/promotor_perfil?msg=$retorno");
-            }
+
+            $promotorDAO = new PromotorDAO();
+            $promotor = new Promotor(
+                id_promotor: $_POST["id_promotor"],
+                nomePublico: $_POST["nome_publico"],
+                biografia: isset($_POST["biografia"]) ? $_POST["biografia"] : "",
+                telefoneContato: isset($_POST["telefone"]) ? $_POST["telefone"] : "",
+                emailContato: isset($_POST["email_contato"]) ? $_POST["email_contato"] : "",
+                website: isset($_POST["website"]) ? $_POST["website"] : "",
+                id_usuario: $_SESSION["id"]
+            );
+
+            $promotorDAO->alterar($promotor);
+
+            header('location:/localize-jahu/promotor_perfil?msg={$_POST["id_promotor"]}');
+            die();
         }
 
-        if (!isset($_SESSION)) {
-            session_start();
-        }
         $promotor = new Promotor($_SESSION["id_promotor"]);
         $promotorDAO = new PromotorDAO();
         $retorno = $promotorDAO->pesquisarPorIdPromotor($promotor);
+        $promotor = $retorno[0];
         $titulo = '- Perfil Editar';
-        $style = array("assets/styles/stylepromotor.css");
-        $script = array();
+        $style = array("assets/styles/stylePromotorEditar.css");
+        $script = array("assets/scripts/scriptPromotorEditar.js");
 
         require_once "views/cabecalho.php";
         require_once "views/promotorEditar.php";

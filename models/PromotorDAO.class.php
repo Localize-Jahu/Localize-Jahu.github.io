@@ -34,7 +34,7 @@ class PromotorDAO extends Conexao
         }
     }
 
-    public function alterarPromotor(promotor $promotor)
+    public function alterar(promotor $promotor)
     {
         $sql = "UPDATE promotor set nome_publico = ?,
                                     telefone_contato = ?,

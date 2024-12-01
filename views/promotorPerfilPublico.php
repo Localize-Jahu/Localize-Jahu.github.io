@@ -1,58 +1,49 @@
-
 <main>
-        <article>
+    <article>
 
-            <!-- Corpo -->
-            <div class="corpo">
-                <h1>Meu Perfil</h1>
 
-                <br>
+        <div class="container">
+            <h2>Nome Publico</h2>
 
-                  <!--Imagem Perfil-->     
-                <!-- <div class="foto">
-                    <input type="image" id="imagem">
-                </div> -->
-
-               
-                <!--Nome Publico-->
-
-                    <div class="nome">
-                            <h2>Nome Publico</h2>
-                           <p><?php echo $retorno[0]->nome_publico; ?></p>    
-                    </div>
-
-                    <!-- Biografia -->
-                    <div class="label-50">
-                        <h2>Biografia</h2>
-                        <p><?php echo $retorno[0]->biografia; ?></p>
-                    </div>
-
-                    <!-- Redes Sociais -->
-                     <div class="redes-sociais">
-                        <h2>Minhas Redes Sociais</h2>
-                        <div class="website">
-                        <h3 class="tit-website">Website</h3>
-                        <p><?php echo $retorno[0]->website; ?></p>
+            <span><?php echo $retorno[0]->nome_publico; ?></span>
+        </div>
+        <?php
+        if ($retorno[0]->telefone_contato != "") {
+            echo "
+                <div class='container'>
+                    <h2>Telefone</h2>
+                    <span>{$retorno[0]->telefone_contato}</span>
+                </div>";
+        }
+        if ($retorno[0]->website == "" && $retorno[0]->email_contato == "" && $retorno[0]->biografia == "") {
+            echo "
+            <h3> Sem informações Adicionais </h3>
+            ";
+        }
+        if ($retorno[0]->website != "") {
+            echo "
+                <div class='container'>
+                    <h2>Website</h2>
+                    <span>{$retorno[0]->website}</span>
                 </div>
-           
-                <div class="telefone">
-                <h3 class="tit-tel">Telefone</h3>
-                <p><?php echo $retorno[0]->telefone_contato; ?></p>
-            </div>
-                <div class="email">
-                <h3 class="tit-email">Email</h3>
-                <p><?php echo $retorno[0]->email_contato; ?></p>
-            </div>
-            </div>
-        
-                    </div>
-                </form>
-            </div>
+                ";
+        }
+        if ($retorno[0]->email_contato != "") {
+            echo "
+                <div class='container'>
+                    <h2>Email</h2>
+                    <span>{$retorno[0]->email_contato}</span>
+                </div>
+                ";
+        }
+        if ($retorno[0]->biografia != "") {
+            echo "
+                <div class='container'>
+                    <h2>Biografia</h2>
+                    <textarea>{$retorno[0]->biografia}</textarea>
+                </div>
+                ";
+        } ?>
 
-            <br>
-            <br>
-            <br>
-
-
-        </article>
-    </main>
+    </article>
+</main>
