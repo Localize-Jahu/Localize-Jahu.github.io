@@ -11,7 +11,7 @@ class PromotorController
             header("location:/localize-jahu/pagina-nao-encontrada");
             die();
         }
-        $promotor = new Promotor(id_promotor:$_SESSION["id_promotor"]);
+        $promotor = new Promotor($_SESSION["id_promotor"]);
         $promotorDAO = new PromotorDAO();
         $retorno = $promotorDAO->pesquisarPorIdPromotor($promotor);
         $titulo = '- Perfil Promotor';
@@ -28,7 +28,7 @@ class PromotorController
         if ($_GET) {
             $promotor = new Promotor($_GET["idpromotor"]);
             $promotorDAO = new PromotorDAO();
-            $retorno = $promotorDAO->pesquisarPorId($promotor);
+            $retorno = $promotorDAO->pesquisarPorIdPromotor($promotor);
             $titulo = '-' . $retorno[0]->nome_publico;
             $style = array("assets/styles/stylepromotor.css");
             $script = array();
@@ -84,7 +84,7 @@ class PromotorController
         }
         $promotor = new Promotor($_SESSION["id_promotor"]);
         $promotorDAO = new PromotorDAO();
-        $retorno = $promotorDAO->pesquisarPorId($promotor);
+        $retorno = $promotorDAO->pesquisarPorIdPromotor($promotor);
         $titulo = '- Perfil Editar';
         $style = array("assets/styles/stylepromotor.css");
         $script = array();
@@ -100,7 +100,7 @@ class PromotorController
             session_start();
         }
 
-        if (isset($_SESSION["id"])) {
+        if (isset($_SESSION["logado"])) {
             if (isset($_SESSION["id_promotor"])) {
                 header("location:/localize-jahu/promotor_perfil");
                 die();

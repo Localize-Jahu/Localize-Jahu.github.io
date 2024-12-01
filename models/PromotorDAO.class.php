@@ -1,5 +1,5 @@
 <?php
-class PromotorDAO extends UsuarioDAO
+class PromotorDAO extends Conexao
 {
     public function __construct()
     {
@@ -8,7 +8,6 @@ class PromotorDAO extends UsuarioDAO
 
     public function inserir(Promotor $promotor)
     {
-        $this->inserirUsuario($promotor);
         $sql = "INSERT INTO promotor (nome_publico,
                                     telefone_contato,
                                     email_contato,

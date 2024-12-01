@@ -6,6 +6,7 @@ class UsuarioDAO extends Conexao
         parent::__construct();
     }
 
+
     public function inserirUsuario(Usuario $usuario)
     {
         $sql = "INSERT INTO usuario (nome,
