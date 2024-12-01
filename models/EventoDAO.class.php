@@ -277,10 +277,12 @@ class EventoDAO extends Conexao
 
     public function autorizarEvento()
     {
-        $sql = "SELECT e.titulo, p.id_promotor, p.nome_publico, e.id_evento
-                FROM EVENTO e INNER JOIN promotor p
-                ON(p.id_promotor=e.id_promotor) 
-                WHERE situacao = ? ";
+        $sql = "SELECT *
+                FROM EVENTO e INNER JOIN promotor p ON(p.id_promotor=e.id_promotor)
+                INNER JOIN ocorrencia o ON (o.id_evento=e.id_evento) 
+                WHERE situacao = ?
+                GROUP BY e.id_evento
+                ORDER BY o.dia ASC";
 
         try {
             $stm = $this->db->prepare($sql);

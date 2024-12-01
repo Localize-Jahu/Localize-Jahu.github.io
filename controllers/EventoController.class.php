@@ -311,7 +311,7 @@ class EventoController
 
 
         $titulo = ' - Alterar Evento';
-        $style = array("assets/styles/styleEditarEvento.css");
+        $style = array("assets/styles/styleEventoEditar.css");
         $script = array("assets/scripts/scriptEventoEditar.js");
 
 
@@ -331,7 +331,7 @@ class EventoController
         }
 
         $titulo = ' - Autorizar Evento';
-        $style = array("assets/styles/styleAutorizarEventos.css");
+        $style = array("assets/styles/styleEventoAutorizar.css");
         $script = array();
         $eventoDAO = new eventoDAO;
         $retorno = $eventoDAO->autorizarEvento();

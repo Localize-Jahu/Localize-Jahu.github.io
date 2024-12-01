@@ -1,43 +1,56 @@
+<main>
+	<article>
 
 
-    <main>
-        <article>
-
-           
-            <!-- conteudo do evento -->
-          <div class="corpo">
-
-
-
-     <?php
-		if(isset($_GET["msg"]))
-		{
-			echo "<div class='alert alert-success' role='alert'>{$_GET["msg"]}</div>";
-				
-		}
-	?>
-         <h1>Eventos Pendentes</h1>
-         <table class="table table-striped">
-		<tr>
-			
-			
-		</tr>
 		<?php
-			foreach($retorno as $dado)
-			{
-                echo"<th>Nome do Evento</th>
-			        <th>Promotor</th>";
-				echo "<tr>
-				      <td><a href='/localize-jahu/eventos?idevento={$dado->id_evento}'>{$dado->titulo}</a></td>
-					  <td>{$dado->id_promotor}</td>
-                      <td>{$dado->nome_publico}</td>
-					  <td>";			
-					}//fim do foreach
+		if (isset($_GET["msg"])) {
+			echo "<div class='alert alert-success' role='alert'>{$_GET["msg"]}</div>";
+		}
 		?>
-	</table>
-        <hr>
-        <br>
-          </div>
-        </article>
-    </main>
+		<h1>Eventos Pendentes</h1>
+		<div class="container">
 
+			<?php
+
+            foreach ($retorno as $evento) {
+
+                $imagem = $evento->imagem === NULL ? "sem-imagem.png" : $evento->imagem;
+                if (!file_exists("uploads/{$imagem}")) {
+                    $imagem = "sem-imagem.png";
+                }
+                echo "
+
+                    <section class='card'>
+                        <div class='card-bloco-titulo'>
+                            <h2 class='card-titulo'>
+                                {$evento->titulo}
+                            </h2>
+
+                    <address class='card-endereco'>
+                        <p class='card-rua'>{$evento->logradouro}</p>
+                        <span class='card-bairro'>{$evento->bairro}, {$evento->cidade}</span>
+                    </address>
+                </div>
+                <a href='/localize-jahu/eventos?idevento={$evento->id_evento}' class='image-wrapper'>
+                    <img class='card-imagem' src='uploads/{$imagem}' alt='{$evento->titulo}'>
+                </a>
+
+                <div class='card-data data'>
+                    {$evento->dia}
+                </div>
+                <div class='card-hora hora'>
+                    {$evento->hora_inicio}
+                </div>
+                <a href='/localize-jahu/eventos?idevento={$evento->id_evento}' class='card-detalhes link-saiba-mais'>SAIBA MAIS</a>
+            </section>
+            ";
+            }
+
+            ?>
+
+
+
+
+		</div>
+	</article>
+</main>
