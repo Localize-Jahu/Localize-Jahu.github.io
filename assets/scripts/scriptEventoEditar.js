@@ -13,8 +13,8 @@ const titulo = document.getElementById('titulo');
 
 function confirmarExclusao(idOcorrencia, idEvento, idPromotor) {
 
-    diasCadastrados = document.getElementsByName('dia-cadastrado[]').length;
-    if (diasCadastrados = 1) {
+    let diasCadastrados = document.getElementsByName('dia-cadastrado[]').length;
+    if (diasCadastrados === 1) {
         alert('Não é possível excluir! \nO evento deve ter pelo menos uma data cadastrada.');
         return
     }
@@ -27,19 +27,19 @@ document.getElementById('imagem').addEventListener('change', (event) => {
     document.getElementById('texto-imagem').value = event.target.files[0].name;
 })
 
-function formatar(mascara, documento) {
-    let i = documento.value.length;
+function formatar(mascara, elemento) {
+    let i = elemento.value.length;
     if (i < mascara.length) {
         let saida = '#';
         let texto = mascara.substring(i);
         while (texto.substring(0, 1) != saida && texto.length) {
-            documento.value += texto.substring(0, 1);
+            elemento.value += texto.substring(0, 1);
             i++;
             texto = mascara.substring(i);
         }
     }
     else {
-        documento.value = documento.value.substring(0, documento.value.length - 1);
+        elemento.value = elemento.value.substring(0, elemento.value.length - 1);
     }
 }
 
@@ -114,6 +114,13 @@ btnMais.addEventListener('click', () => {
             }
         }
         i++;
+    });
+    document.getElementsByName('dia-cadastrado[]').forEach(element => {
+        if (element.value == data.value) {
+            alerta.innerHTML = 'Data duplicada.';
+            erro = true;
+            return;
+        }
     });
 
     if (erro) {
@@ -272,7 +279,7 @@ titulo.addEventListener('input', () => {
 
 btnSubmit.addEventListener('click', (event) => {
 
-
+    
     if (!titulo.checkValidity()) {
         titulo.focus();
         titulo.style.outlineColor = '#C64126';
@@ -313,23 +320,7 @@ btnSubmit.addEventListener('click', (event) => {
         return;
     }
 
-    const datas = document.getElementsByName('data[]');
-
-    if (datas.length <= 1) {
-        alerta.innerHTML = 'Adicione pelo menos uma data.';
-        data.focus();
-        event.preventDefault();
-        return;
-    }
-
-
-    if (document.getElementById('imagem').value == '') {
-        if (!confirm(' Nenhuma imagem foi selecionada.\n Deseja continuar assim mesmo?')) {
-            event.preventDefault();
-            return;
-        }
-    }
-
+    document.getElementById('texto-imagem').disabled = false;
 
     datas.forEach(element => {
         element.disabled = false;
@@ -342,5 +333,6 @@ btnSubmit.addEventListener('click', (event) => {
     document.getElementsByName('hora_termino[]').forEach(element => {
         element.disabled = false;
     });
+
 
 });

@@ -60,7 +60,6 @@ $route->post("/evento-cadastro", array(EventoController::class, "cadastrar"));
 $route->get("/eventos", [EventoController::class, "listar"]);
 
 $route->get("/alterarEvento", [EventoController::class, "alterar"]);
-
 $route->post("/alterarEvento", [EventoController::class, "alterar"]);
 
 $route->get("/alterarSituacao", [EventoController::class, "alterarSituacao"]);

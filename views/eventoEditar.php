@@ -2,13 +2,16 @@
     <article>
 
         <?php
-        var_dump($evento);
+        // var_dump($evento);
+        // var_dump($_POST);
         ?>
 
         <h1>Alterar de Eventos</h1>
 
         <!--Nome do Evento-->
         <form action="/localize-jahu/alterarEvento" method="post" enctype="multipart/form-data">
+
+        <input type="hidden" name="id_evento" value="<?php echo $evento->id_evento; ?>">
 
             <div class="container">
                 <label for="titulo">Titulo: </label>
@@ -96,11 +99,11 @@
             <div class="container">
                 <label for="imagem">Imagem:</label>
                 <!--Insira a Imagem-->
-                <input type="text" name="texto-imagem" id="texto-imagem"
+                <input type="text" name="texto-imagem" id="texto-imagem" disabled
                     <?php
                     echo "value='{$evento->imagem}'";
                     ?>
-                    disabled>
+                    >
                 <input type="file" name="imagem" id="imagem" accept=".jpg, .png, .jpeg, .gif">
                 <label for="imagem" class="botao-imagem">Selecionar Imagem</label>
                 <!-- Botão Enviar Imagem-->

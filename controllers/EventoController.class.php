@@ -138,8 +138,11 @@ class EventoController
     public function listar()
     {
 
+        if (!isset($_SESSION)) {
+            session_start();
+        }
 
-        if(!isset($_GET["idevento"])){
+        if (!isset($_GET["idevento"])) {
             header("location:/localize-jahu/pagina-nao-encontrada");
             die();
         }
@@ -157,13 +160,10 @@ class EventoController
 
             if ($retorno[0]->situacao == "pendente") {
                 if (isset($_SESSION["id_promotor"]) && $retorno[0]->id_promotor != $_SESSION["id_promotor"]) {
-                    if (!isset($_SESSION["adm"]) || $_SESSION["adm"] != 'sim') {
-                        header("location:/localize-jahu/pagina-nao-encontrada");
-                        die();
-                    }
+                    header("location:/localize-jahu/pagina-nao-encontrada");
+                    die();
                 }
             }
-
             $titulo = ' - Exibir Evento';
             $style = array("assets/styles/styleEventoExibir.css");
             $script = array();
@@ -195,34 +195,6 @@ class EventoController
             header("location:/localize-jahu/pagina-nao-encontrada");
             die();
         }
-        if (!isset($_GET["id"])) {
-            header("location:/localize-jahu/pagina-nao-encontrada");
-            die();
-        }
-        $evento = new Evento($_GET["id"]);
-        $eventoDAO = new eventoDAO;
-        $retorno = $eventoDAO->pesquisarId($evento); 
-
-        if (count($retorno) == 0) {
-            header("location:/localize-jahu/pagina-nao-encontrada");
-            die();
-        }
-
-        $evento = $retorno[0];
-
-        if ($evento->id_promotor != $_SESSION["id_promotor"]) {
-            header("location:/localize-jahu/pagina-nao-encontrada");
-            die();
-        }
-        if ($evento->situacao == "ativo") {
-            header("location:/localize-jahu/pagina-nao-encontrada");
-            die();
-        }
-
-        $event = new Evento($_GET["id"]);
-        $eventoDAO = new EventoDAO();
-        $ocorrencias = $eventoDAO->pesquisarOcorrencias($event);
-
 
         $mensagem = "";
         $erro = false;
@@ -230,32 +202,32 @@ class EventoController
 
         $diretorio = "uploads/";
 
+
         if ($_POST) {
 
-
             if (isset($_FILES["imagem"]) && $_FILES["imagem"]["name"] != "") {
-                if ($retorno[0]->imagem != "sem-imagem.png") {
-                    $extensao = pathinfo($_FILES["imagem"]["name"], PATHINFO_EXTENSION);
-                    $imagemNome = uniqid() . "." . $extensao;
+                $extensao = pathinfo($_FILES["imagem"]["name"], PATHINFO_EXTENSION);
+                $imagemNome = uniqid() . "." . $extensao;
 
-                    if (!is_dir($diretorio)) {
-                        mkdir($diretorio, 0755, true);
-                    }
+                if (!is_dir($diretorio)) {
+                    mkdir($diretorio, 0755, true);
+                }
 
-                    if (file_exists($diretorio . $imagemNome)) {
-                        unlink($diretorio . $imagemNome);
+                if (file_exists($diretorio . $imagemNome)) {
+                    unlink($diretorio . $imagemNome);
+                }
+                if (!file_exists($diretorio . $imagemNome)) {
+                    if (!move_uploaded_file($_FILES["imagem"]["tmp_name"], $diretorio . $imagemNome)) {
+                        $mensagem = "Erro ao fazer upload da imagem!";
+                        $erro = true;
                     }
-                    if (!file_exists($diretorio . $imagemNome)) {
-                        if (!move_uploaded_file($_FILES["imagem"]["tmp_name"], $diretorio . $imagemNome)) {
-                            $mensagem = "Erro ao fazer upload da imagem!";
-                            $erro = true;
-                        }
-                    }
-                } else {
-                    $imagemNome = $retorno[0]->imagem;
                 }
             } else {
-                $imagemNome = "sem-imagem.png";
+                if (file_exists($diretorio . $_POST["texto-imagem"])) {
+                    $imagemNome = $_POST["texto-imagem"];
+                } else {
+                    $imagemNome = "sem-imagem.png";
+                }
             }
 
             if (!$erro) {
@@ -263,7 +235,7 @@ class EventoController
                 $categoria = new Categoria($_POST["categoria"]);
 
                 $evento = new Evento(
-                    id_evento: $_GET["id"],
+                    id_evento: $_POST["id_evento"],
                     titulo: $_POST["titulo"],
                     cep: $_POST["cep"],
                     bairro: $_POST["bairro"],
@@ -289,8 +261,10 @@ class EventoController
                 $eventoDAO = new EventoDAO();
                 $retorno = $eventoDAO->alterarEvento($evento);
 
+                echo $retorno;
+
                 if ($retorno) {
-                    header("location:/localize-jahu/eventos?idevento=$retorno");
+                    header("location:/localize-jahu/eventos?idevento=" . $evento->getId_evento());
                     die();
                 } else {
                     unlink($diretorio . $imagemNome);
@@ -298,6 +272,38 @@ class EventoController
                 }
             }
         }
+
+        if (!isset($_GET["id"])) {
+            header("location:/localize-jahu/pagina-nao-encontrada");
+            die();
+        }
+
+        $evento = new Evento($_GET["id"]);
+        $eventoDAO = new eventoDAO;
+        $retorno = $eventoDAO->pesquisarId($evento);
+
+        if (count($retorno) == 0) {
+            header("location:/localize-jahu/pagina-nao-encontrada");
+            die();
+        }
+
+        $evento = $retorno[0];
+
+        if ($evento->id_promotor != $_SESSION["id_promotor"]) {
+            header("location:/localize-jahu/pagina-nao-encontrada");
+            die();
+        }
+        if ($evento->situacao == "ativo") {
+            header("location:/localize-jahu/pagina-nao-encontrada");
+            die();
+        }
+
+        $event = new Evento($_GET["id"]);
+        $eventoDAO = new EventoDAO();
+        $ocorrencias = $eventoDAO->pesquisarOcorrencias($event);
+
+
+
 
         $categoriaDAO = new CategoriaDAO();
         $retorno = $categoriaDAO->listar();
@@ -307,6 +313,8 @@ class EventoController
         $titulo = ' - Alterar Evento';
         $style = array("assets/styles/styleEditarEvento.css");
         $script = array("assets/scripts/scriptEventoEditar.js");
+
+
         require_once "views/cabecalho.php";
         require_once "Views/eventoEditar.php";
         require_once "views/rodape.html";
