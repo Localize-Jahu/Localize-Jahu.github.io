@@ -256,9 +256,10 @@ class EventoDAO extends Conexao
 
     public function eventosPopulares()
     {
-        $sql = "SELECT id_evento, titulo, descricao, imagem
-                FROM evento
-                WHERE situacao = ? 
+        $sql = "SELECT e.id_evento, e.titulo, e.descricao, e.imagem
+                FROM evento e
+                INNER JOIN ocorrencia o ON (e.id_evento = o.id_evento)
+                WHERE situacao = ? AND o.dia > (CURDATE()-1)
                 ORDER BY acessos DESC 
                 LIMIT 3";
         try {
