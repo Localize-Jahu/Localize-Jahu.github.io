@@ -63,9 +63,20 @@ class EventoDAO extends Conexao
         return $id_evento;
     }
 
-    public function alterarEvento($evento)
+    public function alterarEvento(Evento $evento)
     {
-        $sql = "UPDATE evento set descricao=?, titulo=?, logradouro=?, cep=?, bairro=?, cidade=?, uf=?, imagem=?, id_categoria=? WHERE id_evento = ?";
+        $this->db->beginTransaction();
+        $sql = "UPDATE evento 
+                SET descricao=?,
+                    titulo=?,
+                    logradouro=?,
+                    cep=?,
+                    bairro=?,
+                    cidade=?,
+                    uf=?, 
+                    imagem=?,
+                    id_categoria=? 
+                WHERE id_evento = ?";
         try {
             $stm = $this->db->prepare($sql);
             $stm->bindValue(1, $evento->getDescricao());
@@ -79,14 +90,35 @@ class EventoDAO extends Conexao
             $stm->bindValue(9, $evento->getCategoria()->getId_categoria());
             $stm->bindValue(10, $evento->getId_evento());
             $stm->execute();
-            $this->db = null;
-       
-            return $evento->getId_evento();
+
         } catch (PDOException $e) {
             echo $e->getCode();
             echo $e->getMessage();
             die();
         }
+
+        if ($evento->getOcorrencias() != null) {
+            $sql = "INSERT INTO ocorrencia (dia, hora_inicio, hora_termino, id_evento) VALUES (?, ?, ?, ?)";
+
+            foreach ($evento->getOcorrencias() as $ocorrencia) {
+                try {
+                    $stm = $this->db->prepare($sql);
+                    $stm->bindValue(1, $ocorrencia->getDia());
+                    $stm->bindValue(2, $ocorrencia->getHoraInicio());
+                    $stm->bindValue(3, $ocorrencia->getHoraTermino());
+                    $stm->bindValue(4, $evento->getId_evento());
+                    $stm->execute();
+                } catch (PDOException $e) {
+                    $this->db->rollBack();
+                    $this->db = null;
+                    echo "Código: " . $e->getCode();
+                    echo " .Mensagem: " . $e->getMessage();
+                }
+            }
+        }
+        $this->db->commit();
+        $this->db = null;
+        return $evento->getId_evento();
     }
 
     public function buscarUmEvento($evento)
@@ -323,7 +355,4 @@ class EventoDAO extends Conexao
             die();
         }
     }
-
-
-
 }//fim da classe

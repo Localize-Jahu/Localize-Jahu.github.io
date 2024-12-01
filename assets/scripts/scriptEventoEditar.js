@@ -322,6 +322,8 @@ btnSubmit.addEventListener('click', (event) => {
 
     document.getElementById('texto-imagem').disabled = false;
 
+    const datas = document.getElementsByName('data[]');
+
     datas.forEach(element => {
         element.disabled = false;
     });

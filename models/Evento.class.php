@@ -74,7 +74,7 @@ class Evento
         return $this->situacao;
     }
 
-    public function getOcorrencias(): array
+    public function getOcorrencias()
     {
         return $this->ocorrencias;
     }
