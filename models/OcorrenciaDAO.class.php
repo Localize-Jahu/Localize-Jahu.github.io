@@ -52,7 +52,7 @@ class OcorrenciaDAO extends Conexao
         $sql = "DELETE FROM ocorrencia where id_ocorrencia = ?";
         try {
             $stm = $this->db->prepare($sql);
-            $stm->bindValue(1, $ocorrencia->getID());
+            $stm->bindValue(1, $ocorrencia->getId());
             $stm->execute();
             $this->db = null;
             return "Ocorrência excluída com sucesso!";
@@ -77,16 +77,21 @@ class OcorrenciaDAO extends Conexao
         }
     }
 
-    public function pesquisarPorIdEvento(Ocorrencia $ocorrencia)
+
+
+    public function pesquisarPorId(Ocorrencia $ocorrencia)
     {
-        $sql = "SELECT * FROM ocorrencia WHERE id_evento = ?";
+        $sql = "SELECT *
+                FROM ocorrencia o
+                INNER JOIN evento e ON (o.id_evento = e.id_evento)
+                WHERE id_ocorrencia = ? ";
         try {
             $stm = $this->db->prepare($sql);
-            $stm->bindValue(1, $ocorrencia->getEvento()->getId_evento());
+            $stm->bindValue(1, $ocorrencia->getID());
             $stm->execute();
 
             $this->db = null; // Fecha a conexão
-            return $stm->fetchAll(PDO::FETCH_OBJ);
+            return $stm->fetch(PDO::FETCH_OBJ);
         } catch (PDOException $e) {
             echo "Código: " . $e->getCode();
             echo " .Mensagem: " . $e->getMessage();

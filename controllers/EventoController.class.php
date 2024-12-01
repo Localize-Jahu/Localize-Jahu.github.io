@@ -30,6 +30,9 @@ class EventoController
                             mkdir($diretorio, 0755, true);
                         }
 
+                        if (file_exists($diretorio . $imagemNome)) {
+                            unlink($diretorio . $imagemNome);
+                        }
                         if (!file_exists($diretorio . $imagemNome)) {
                             if (!move_uploaded_file($_FILES["imagem"]["tmp_name"], $diretorio . $imagemNome)) {
                                 $mensagem = "Erro ao fazer upload da imagem!";
@@ -39,7 +42,6 @@ class EventoController
                     } else {
                         $imagemNome = "sem-imagem.png";
                     }
-
 
 
                     if (!$erro) {
@@ -135,24 +137,36 @@ class EventoController
 
     public function listar()
     {
-        $titulo = ' - Exibir Evento';
-        $style = array("assets/styles/styleEventoExibir.css");
-        $script = array();
+
+
+        if(!isset($_GET["idevento"])){
+            header("location:/localize-jahu/pagina-nao-encontrada");
+            die();
+        }
 
         if (isset($_GET["idevento"])) {
             $evento = new Evento($_GET["idevento"]);
             $eventoDAO = new eventoDAO;
             $retorno = $eventoDAO->buscarUmEvento($evento);
 
+            if (count($retorno) == 0) {
+                header("location:/localize-jahu/pagina-nao-encontrada");
+                die();
+            }
+
+
             if ($retorno[0]->situacao == "pendente") {
                 if (isset($_SESSION["id_promotor"]) && $retorno[0]->id_promotor != $_SESSION["id_promotor"]) {
                     if (!isset($_SESSION["adm"]) || $_SESSION["adm"] != 'sim') {
                         header("location:/localize-jahu/pagina-nao-encontrada");
                         die();
-                    }       
+                    }
                 }
             }
 
+            $titulo = ' - Exibir Evento';
+            $style = array("assets/styles/styleEventoExibir.css");
+            $script = array();
             require_once "views/cabecalho.php";
             require_once "Views/eventoExibir.php";
             require_once "views/rodape.html";
@@ -187,79 +201,114 @@ class EventoController
         }
         $evento = new Evento($_GET["id"]);
         $eventoDAO = new eventoDAO;
-        $retorno = $eventoDAO->buscarUmEvento($evento);
-        if ($retorno[0]->id_promotor != $_SESSION["id_promotor"]) {
+        $retorno = $eventoDAO->pesquisarId($evento); 
+
+        if (count($retorno) == 0) {
             header("location:/localize-jahu/pagina-nao-encontrada");
             die();
         }
 
-        $titulo = ' - Alterar Evento';
-        $style = array("assets/styles/styleEditarEvento.css");
-        $script = array();
+        $evento = $retorno[0];
 
-        $msg = array("", "", "", "", "", "", "", "", "", "");
+        if ($evento->id_promotor != $_SESSION["id_promotor"]) {
+            header("location:/localize-jahu/pagina-nao-encontrada");
+            die();
+        }
+        if ($evento->situacao == "ativo") {
+            header("location:/localize-jahu/pagina-nao-encontrada");
+            die();
+        }
+
+        $event = new Evento($_GET["id"]);
+        $eventoDAO = new EventoDAO();
+        $ocorrencias = $eventoDAO->pesquisarOcorrencias($event);
+
+
+        $mensagem = "";
         $erro = false;
+        $imagemNome = '';
+
+        $diretorio = "uploads/";
+
         if ($_POST) {
-            if (empty($_POST["titulo"])) {
-                $msg[0] = "Preencha o titulo";
-                $erro = true;
-            }
-            if (empty($_POST['logradouro'])) {
-                $msg[1] = 'Preencha o logradouro!';
-                $erro = true;
-            }
-            if (empty($_POST['descricao'])) {
-                $msg[2] = 'Preencha a descricao!';
-                $erro = true;
-            }
-            if (empty($_POST['cep'])) {
-                $msg[3] = 'Preencha o cep!';
-                $erro = true;
-            }
-            if (empty($_POST["bairro"])) {
-                $msg[4] = "Preencha o bairro!";
-                $erro = true;
-            }
-            if (empty($_POST["cidade"])) {
-                $msg[5] = "Preencha a cidade!";
-                $erro = true;
-            }
-            if (empty($_POST["uf"])) {
-                $msg[6] = "Preencha o uf!";
-                $erro = true;
-            }
+
+
             if (isset($_FILES["imagem"]) && $_FILES["imagem"]["name"] != "") {
-                if ($_FILES["imagem"]["type"] != "image/png" && $_FILES["imagem"]["type"] != "image/jpg" && $_FILES["imagem"]["type"] != "image/jpeg") {
-                    $msg[7] = "Tipo de Imagem Inválido!";
-                    $erro = true;
-                } else {
-                    $diretorio = "uploads/";
+                if ($retorno[0]->imagem != "sem-imagem.png") {
+                    $extensao = pathinfo($_FILES["imagem"]["name"], PATHINFO_EXTENSION);
+                    $imagemNome = uniqid() . "." . $extensao;
 
-                    $imagemNome = uniqid() . "_" . $_FILES["imagem"]["name"];
-
-                    if (!move_uploaded_file($_FILES["imagem"]["tmp_name"], $diretorio . $imagemNome)) {
-                        $msg[7] = "Erro ao fazer upload da imagem!";
-                        $erro = true;
+                    if (!is_dir($diretorio)) {
+                        mkdir($diretorio, 0755, true);
                     }
+
+                    if (file_exists($diretorio . $imagemNome)) {
+                        unlink($diretorio . $imagemNome);
+                    }
+                    if (!file_exists($diretorio . $imagemNome)) {
+                        if (!move_uploaded_file($_FILES["imagem"]["tmp_name"], $diretorio . $imagemNome)) {
+                            $mensagem = "Erro ao fazer upload da imagem!";
+                            $erro = true;
+                        }
+                    }
+                } else {
+                    $imagemNome = $retorno[0]->imagem;
                 }
             } else {
-                $imagemNome = $_POST["imagem_antiga"];
+                $imagemNome = "sem-imagem.png";
             }
-            if ($_POST["categoria"] == "0") {
-                $msg[8] = "Escolha uma categoria!";
-                $erro = true;
-            } else {
+
+            if (!$erro) {
+
                 $categoria = new Categoria($_POST["categoria"]);
-                $promotor = new Promotor($_POST["idpromotor"]);
-                $evento = new Evento($_POST["idevento"], $_POST["titulo"], $imagemNome, $_POST["descricao"], $_POST["uf"], $_POST["cidade"], $_POST["bairro"], $_POST["logradouro"], $_POST["cep"], "Pendente", $categoria, $promotor);
-                $eventoDAO = new eventoDAO;
+
+                $evento = new Evento(
+                    id_evento: $_GET["id"],
+                    titulo: $_POST["titulo"],
+                    cep: $_POST["cep"],
+                    bairro: $_POST["bairro"],
+                    logradouro: $_POST["logradouro"],
+                    cidade: "Jaú",
+                    uf: "SP",
+                    imagem: $imagemNome,
+                    descricao: $_POST["descricao"],
+                    categoria: $categoria
+                );
+
+                for ($i = 0; $i < count($_POST["data"]); $i++) {
+                    if ($_POST["data"][$i] != "") {
+                        $evento->setOcorrencias(
+                            0,
+                            $_POST["data"][$i],
+                            $_POST["hora_inicio"][$i],
+                            $_POST["hora_termino"][$i]
+                        );
+                    }
+                }
+
+                $eventoDAO = new EventoDAO();
                 $retorno = $eventoDAO->alterarEvento($evento);
-                header("location:/localize-jahu/eventos?idevento={$evento->getId_evento()}&msg=$retorno");
+
+                if ($retorno) {
+                    header("location:/localize-jahu/eventos?idevento=$retorno");
+                    die();
+                } else {
+                    unlink($diretorio . $imagemNome);
+                    $mensagem = "Não foi possível cadastrar o evento!";
+                }
             }
         }
 
+        $categoriaDAO = new CategoriaDAO();
+        $retorno = $categoriaDAO->listar();
+
+
+
+        $titulo = ' - Alterar Evento';
+        $style = array("assets/styles/styleEditarEvento.css");
+        $script = array("assets/scripts/scriptEventoEditar.js");
         require_once "views/cabecalho.php";
-        require_once "Views/editEvento.php";
+        require_once "Views/eventoEditar.php";
         require_once "views/rodape.html";
     }
 
