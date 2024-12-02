@@ -377,7 +377,7 @@ class EventoDAO extends Conexao
 
     public function gerenciarEvento(Evento $evento)
     {
-        $sql = "SELECT * FROM evento e INNER JOIN promotor p ON (p.id_promotor=e.id_promotor) inner join ocorrencia o ON (o.id_evento=e.id_evento) WHERE situacao = 'ativo' OR situacao = 'pendente' AND p.id_promotor = ?  GROUP BY e.id_evento ";
+        $sql = "SELECT * FROM evento e INNER JOIN promotor p ON (p.id_promotor=e.id_promotor) inner join ocorrencia o ON (o.id_evento=e.id_evento) WHERE situacao = 'ativo' OR situacao = 'pendente' AND p.id_promotor = ?  GROUP BY e.id_evento ORDER BY O.dia ASC";
     
         try {
             $stm = $this->db->prepare($sql);

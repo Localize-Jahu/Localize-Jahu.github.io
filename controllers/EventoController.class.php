@@ -193,11 +193,23 @@ class EventoController
 
     public function alterarSituacao()
     {
-        if (isset($_GET["idevento"])) {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        if (!isset($_SESSION["adm"]) && !isset($_SESSION["id_promotor"])) {
+            header("location:/localize-jahu/pagina-nao-encontrada");
+            die();
+        }
+        if (isset($_GET["idevento"]) && isset($_GET["situacao"])) {
+            
             $evento = new Evento(id_evento: $_GET["idevento"], situacao: $_GET["situacao"]);
             $eventoDAO = new EventoDAO();
             $eventoDAO->mudarSituacao($evento);
             header("location:/localize-jahu/eventos?idevento={$evento->getId_evento()}");
+            die();
+        }
+        else{
+            header("location:/localize-jahu/pagina-nao-encontrada");
             die();
         }
     }
@@ -213,6 +225,8 @@ class EventoController
             die();
         }
 
+
+        
         $mensagem = "";
         $erro = false;
         $imagemNome = '';
@@ -425,7 +439,10 @@ class EventoController
         if (!isset($_SESSION)) {
             session_start();
         }
-        
+        if (!isset($_SESSION["id_promotor"]) || $_SESSION["id_promotor"] == '0') {
+            header("location:/localize-jahu/pagina-nao-encontrada");
+            die();
+        }
       
         $idPromotor = $_SESSION['id_promotor'];
         
