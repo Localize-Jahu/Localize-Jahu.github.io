@@ -164,8 +164,10 @@ class EventoController
             }
 
             if (!isset($_SESSION["id_promotor"]) && (!isset($_SESSION["adm"]))) {
-                header("location:/localize-jahu/pagina-nao-encontrada");
-                die();
+                if ($retorno[0]->situacao == "pendente") {
+                    header("location:/localize-jahu/pagina-nao-encontrada");
+                    die();
+                }
             }
 
 
