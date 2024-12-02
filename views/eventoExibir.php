@@ -7,9 +7,15 @@
 
         <h1><?php
             $evento = $retorno[0];
-            echo $retorno[0]->titulo; ?> </h1>
+            echo $retorno[0]->titulo;
 
-        <img class='banner' src="uploads/<?php echo $retorno[0]->imagem; ?>" id="img" width="300" height="400">
+
+        $imagem = $evento->imagem === NULL ? "sem-imagem.png" : $evento->imagem;
+        if (!file_exists("uploads/{$imagem}")) {
+        $imagem = "sem-imagem.png";
+        }
+        ?> </h1>
+        <img class='banner' src="uploads/<?php echo $imagem; ?>" id="img" width="300" height="400">
 
         <div class="box">
 
@@ -88,11 +94,11 @@
                     echo "<div class='container quebra'>
                             <div class='container div-dia'>
                                 <label>";
-                                
-                                if(count($ocorrencias) > 1){
-                                    echo $i."º ";
-                                }
-                                echo "Dia:</label>
+
+                    if (count($ocorrencias) > 1) {
+                        echo $i . "º ";
+                    }
+                    echo "Dia:</label>
                                 <input disabled='true' type='date' name='dia-cadastrado[]' value='{$ocorrencia->dia}' disabled='true'>
                             </div>
                             <div class='container div-dia'>
