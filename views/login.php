@@ -19,14 +19,18 @@
             <h1>Localize Jahu</h1>
 
             <form action="/localize-jahu/login" method="post">
-            <div class="erro">
-                <?php
-                echo $mensagem
-                ?>
-            </div>
+                <div class="erro">
+                    <?php
+                    echo $mensagem
+                    ?>
+                </div>
                 <div class="div-email">
                     <label for="email">E-mail:</label>
-                    <input type="email" name="email" class="input-tipo" id="email" required>
+                    <input type="email" name="email" class="input-tipo" id="email"
+                        <?php
+                        echo "value='{$usuario}'";
+                        ?>
+                        required>
                 </div>
                 <div class="div-senha">
                     <label for="senha">Senha:</label>
