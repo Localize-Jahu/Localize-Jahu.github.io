@@ -20,9 +20,9 @@
             <div class="fundo"></div>
             <div class="containers">
                 <div class="topo">
-                
-                <h1 class="titulo">Redefinir Senha</h1>    
-                <a href="/localize-jahu/login" class="botao-voltar"><img src="assets/images/fechar-login.png" alt="Botão Fechar"
+
+                    <h1 class="titulo">Redefinir Senha</h1>
+                    <a href="/localize-jahu/login" class="botao-voltar"><img src="assets/images/fechar-login.png" alt="Botão Fechar"
                             class="img-fechar"></a>
                 </div>
                 <div class="container">
@@ -37,7 +37,7 @@
                             </div>
                             <p class="texto">Você receberá um email no endereço informado para continuar a redefinir sua senha.</p>
                             <div class="buttons">
-                                <input class="btn" type="submit" value="Enviar">
+                                <input class="btn" type="submit" value="Enviar" onclick="alert('Função não implementada!\nEntre em contato com os administradores\npelo email: LocalizeJahu@gmail.com');">
                             </div>
                     </form>
                 </div>

@@ -14,9 +14,9 @@
         <!--Nome do Evento-->
         <form action="/localize-jahu/evento-cadastro" method="post" enctype="multipart/form-data">
 
-            <div class="container">
-                <label for="titulo">Titulo: </label>
-                <input type="text" name="titulo" id="titulo" required>
+        <div class="container">
+                <label for="Nome">Nome: </label>
+                <input type="text" name="Nome" id="Nome" required>
             </div>
 
 

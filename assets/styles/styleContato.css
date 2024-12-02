@@ -1,15 +1,5 @@
-.container {
-    width: 100%;
-    margin: 50px auto;
-    border-radius: 25px;
-    box-shadow: 0 0 10px #ad88c6(53, 0, 102, 0.301);
-    border: 2px solid #ad88c6;
-    /* Adicionando a borda */
-}
-
-.container h1 {
-    text-align: center;
-    padding: 3%;
+h1 {
+    margin-bottom: 32px;
 }
 
 form {
@@ -17,75 +7,317 @@ form {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 95%;
+    box-sizing: border-box;
+}
+
+
+.container {
+    display: flex;
+    width: 60%;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--cor2);
+    border-radius: 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-bottom: 8px;
+}
+
+
+
+.container .container {
+    margin: 0;
+    width: 50%;
+    align-self: flex-start;
 }
 
 label {
-    display: block;
-    margin-bottom: 4px;
-    font-weight: bold;
-    /* Adicionando negrito */
+    white-space: nowrap;
+    min-width: auto;
+    padding: 0 10px;
+    background-color: var(--cor2);
+    border-radius: 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    color: white;
+    font-weight: 400;
 }
 
+
 input[type="text"],
-input[type="tel"],
 input[type="email"],
-input [type="Assunto"],
-textarea {
-    width: 98%;
-    padding: 10px 0px;
-    margin-bottom: 3%;
-    border: 1px solid #ad88c6;
-    border-radius: 10px;
-    border-radius: 25px;
-    /* Adicionando o border-radius */
+input[type="url"],
+input[type="file"],
+input[type="date"],
+input[type="time"],
+select {
+    border: 2px solid var(--cor2);
+    border-radius: 0%;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    width: 100%;
+    padding: 3px;
+    color: var(--cor3);
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.botao-imagem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    height: 100%;
+    color: var(--cor3);
+    border: 2px solid var(--cor2);
+    box-sizing: border-box;
+}
+
+.botao-imagem:hover {
+    cursor: pointer;
+    background-color: var(--cor3);
+    color: white;
+    border-color: var(--cor3);
+}
+
+#texto-imagem {
+    border-right: 0;
+    color: white;
+}
+
+select {
+    appearance: none;
+    color: var(--cor3);
+    width: 100%;
+    text-align: right;
+    border: 2px solid var(--cor2);
+    padding-right: 6px;
+}
+
+select:hover {
+    cursor: pointer;
+}
+
+.div-dia-quebra {
+    display: flex;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+@media (max-width: 1500px) {
+    .quebra {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-width: 30%;
+
+    }
+
+    input[type="time"] {
+        width: 140px;
+    }
+
+    .div-dia {
+        width: 100% !important;
+        justify-content: space-between;
+    }
+
+}
+
+
+.div-dia {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+input[type="date"],
+input[type="time"] {
+    border-radius: 0%;
+    text-align: center;
+    padding: 3px;
+    color: var(--cor3);
+}
+
+input[type="date"] {
+    margin-top: 1px;
+}
+
+.alerta{
+    margin-bottom: 3px;
+    color: var(--cor3);
+}
+
+.botao {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.botao:hover {
+    cursor: pointer;
+    scale: 1.5;
+
+}
+
+.img-mais {
+    padding-top: 2px;
+    width: 20px;
+    box-sizing: border-box;
+    transform: rotate(45deg);
+
+
+}
+
+.img-fechar {
+    width: 20px;
+    padding: 2px;
+}
+
+.label-mais {
+    display: none;
+}
+
+
+.dias-adicionados {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.dias-adicionados input {
+    color: white;
+}
+
+.div-descricao {
+    background-color: transparent;
+    width: 80%;
+    border-color: var(--cor2);
+    height: auto;
+    color: var(--cor3);
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    justify-items: start;
+    align-items: start;
+}
+
+
+.label-descricao {
+    padding: 10px;
+
+    padding-right: 16px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0px;
+
+
 }
 
 textarea {
     resize: none;
-    height: 200px;
-}
-
-input[type="submit"] {
-    background-color: var(--cor2);
-    color: white;
-    padding: 10px 30px;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    margin-right: 25px;
-    /* Adicionando margem à direita */
-}
-
-input[type="reset"] {
-    background-color: var(--cor2);
-    /* Cor vermelha para o botão de limpar */
-    color: white;
-    padding: 10px 20px;
-    border: none;
+    width: 99.5%;
+    height: 70vh;
+    border: 2px solid var(--cor2);
+    color: var(--cor3);
+    padding: 6px;
     border-radius: 5px;
+    border-top-left-radius: 0;
+    box-sizing: border-box;
+}
+
+
+
+.btns {
+    width: 100%;
+    margin: 16px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    margin: 12px;
+    border: 2px solid var(--cor1);
+    padding: 6px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    width: 120px;
+    height: 50px;
+    text-decoration: none;
+}
+
+.btn:hover {
     cursor: pointer;
 }
 
-input[type="submit"]:hover {
+.btn1 {
+    background-color: var(--cor2);
+
+    font-weight: 500;
+    border: 1px solid #FFFFFF;
+    border-radius: 30px;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.btn1:hover {
     background-color: var(--cor3);
+    color: #FFFFFF;
+    border-color: var(--cor3);
+    cursor: pointer;
 }
 
-input[type="submit"]:focus {
-    outline: none;
+.btn2 {
+
+    color: var(--cor1);
+    font-weight: 700;
+    border: 3px solid var(--cor1);
+    border-radius: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
 }
 
-input[type="text"] {
-    width: 98%;
-    /* Define a largura da caixa de texto como 300 pixels */
+.btn2:hover {
+    background-color: var(--cor1);
+    color: #FFFFFF;
+    border-color: var(--cor1);
+    cursor: pointer;
 }
 
-@media (max-width:400px) {
+@media (max-width: 600px) {
     .container {
-        padding: 0;
-        width: 98%;
+        width: 90%;
     }
-}
 
-.button {
-    padding-bottom: 3%;
+    .div-descricao {
+        width: 90%;
+    }
+
+    .img-mais,
+    .img-fechar {
+        height: 30px;
+        width: auto;
+        transform: rotate(45deg);
+    }
+
+    .label-mais {
+        display: block;
+    }
 }
