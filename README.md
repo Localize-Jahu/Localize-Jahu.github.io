@@ -78,7 +78,7 @@ Certifique-se de que você tem os seguintes pré-requisitos instalados:
 ### 3. Importar o Banco de Dados
 
 1. Acesse o phpMyAdmin ou outro gerenciador de banco de dados.
-2. Crie um banco de dados chamado **`localize_jahu`**.
+2. Crie um banco de dados chamado **`localizejahu`**.
 3. Importe o arquivo SQL disponível na pasta `database` do projeto.
 
 ### 4. Configurar os Arquivos
