@@ -51,24 +51,14 @@ class UsuarioController
             header("location:/localize-jahu/");
             die();
         }
+        
         $mensagem = array("", "");
         $erro = false;
         $usuarioDAO = new usuarioDAO();
-        $usuario = new Usuario(id_usuario: $_SESSION["id"]);
-        $retorno = $usuarioDAO->pesquisarPorId($usuario);
-        $usuario = $retorno[0];
 
         if ($_POST) {
             $usuarioAlterado = new Usuario(id_usuario: $_SESSION["id"], nome: $_POST["nome"], email: $_POST["email"], telefone: $_POST["telefone"]);
-            $usuarioDAO = new usuarioDAO();
-            $retorno = $usuarioDAO->verificarEmail($usuarioAlterado);
 
-            if ($usuarioAlterado->getEmail() != $usuario->email) {
-                if ($retorno[0]->qtd > 0) {
-                    $mensagem[0] = "E-mail já cadastrado!";
-                    $erro = true;
-                }
-            }
 
             $usuarioDAO = new usuarioDAO();
             $retorno = $usuarioDAO->login($usuarioAlterado);    
@@ -90,7 +80,13 @@ class UsuarioController
                     }
                 }
             }
+
         }
+
+        $usuarioDAO = new usuarioDAO();
+        $usuario = new Usuario(id_usuario: $_SESSION["id"]);
+        $retorno = $usuarioDAO->pesquisarPorId($usuario);
+        $usuario = $retorno[0];
         require_once "views/usuarioConfiguracoes.php";
     }
 
