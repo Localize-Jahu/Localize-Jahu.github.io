@@ -8,105 +8,101 @@ class EventoController
             session_start();
         }
 
-        if (isset($_SESSION["logado"])) {
-
-            if (isset($_SESSION["id_promotor"])) {
-
-
-
-                $mensagem = "";
-                $erro = false;
-                $imagemNome = '';
-
-                $diretorio = "uploads/";
-
-                if ($_POST) {
-
-                    if (isset($_FILES["imagem"]) && $_FILES["imagem"]["name"] != "") {
-                        $extensao = pathinfo($_FILES["imagem"]["name"], PATHINFO_EXTENSION);
-                        $imagemNome = uniqid() . "." . $extensao;
-
-                        if (!is_dir($diretorio)) {
-                            mkdir($diretorio, 0755, true);
-                        }
-
-                        if (file_exists($diretorio . $imagemNome)) {
-                            unlink($diretorio . $imagemNome);
-                        }
-                        if (!file_exists($diretorio . $imagemNome)) {
-                            if (!move_uploaded_file($_FILES["imagem"]["tmp_name"], $diretorio . $imagemNome)) {
-                                $mensagem = "Erro ao fazer upload da imagem!";
-                                $erro = true;
-                            }
-                        }
-                    } else {
-                        $imagemNome = "sem-imagem.png";
-                    }
-
-
-                    if (!$erro) {
-
-                        $promotor = new Promotor($_SESSION["id_promotor"]);
-                        $categoria = new Categoria($_POST["categoria"]);
-
-                        $evento = new Evento(
-                            titulo: $_POST["titulo"],
-                            cep: $_POST["cep"],
-                            bairro: $_POST["bairro"],
-                            logradouro: $_POST["logradouro"],
-                            cidade: "Jaú",
-                            uf: "SP",
-                            imagem: $imagemNome,
-                            descricao: $_POST["descricao"],
-                            situacao: "Pendente",
-                            categoria: $categoria,
-                            promotor: $promotor
-                        );
-
-                        for ($i = 0; $i < count($_POST["data"]); $i++) {
-                            if ($_POST["data"][$i] != "") {
-                                $evento->setOcorrencias(
-                                    0,
-                                    $_POST["data"][$i],
-                                    $_POST["hora_inicio"][$i],
-                                    $_POST["hora_termino"][$i]
-                                );
-                            }
-                        }
-
-                        $eventoDAO = new EventoDAO();
-                        $retorno = $eventoDAO->inserir($evento);
-
-                        if ($retorno) {
-                            header("location:/localize-jahu/eventos?idevento=$retorno");
-                            die();
-                        } else {
-                            unlink($diretorio . $imagemNome);
-                            $mensagem = "Não foi possível cadastrar o evento!";
-                        }
-                    }
-                }
-
-                $categoriaDAO = new CategoriaDAO();
-                $retorno = $categoriaDAO->listar();
-
-
-                $titulo = ' - Cadastrar Evento';
-                $style = array("assets/styles/styleEventoCadastro.css");
-                $script = array("assets/scripts/scriptEventoCadastro.js");
-
-
-                require_once "views/cabecalho.php";
-                require_once "views/eventoCadastro.php";
-                require_once "views/rodape.html";
-            } else {
-                header("location:/localize-jahu/cadastro-promotor");
-                die();
-            }
-        } else {
+        if (!isset($_SESSION["logado"])) {
             header("location:/localize-jahu/login");
             die();
         }
+        if (!isset($_SESSION["id_promotor"])) {
+            header("location:/localize-jahu/");
+            die();
+        }
+
+
+        $mensagem = "";
+        $erro = false;
+        $imagemNome = '';
+
+        $diretorio = "uploads/";
+
+        if ($_POST) {
+
+            if (isset($_FILES["imagem"]) && $_FILES["imagem"]["name"] != "") {
+                $extensao = pathinfo($_FILES["imagem"]["name"], PATHINFO_EXTENSION);
+                $imagemNome = uniqid() . "." . $extensao;
+
+                if (!is_dir($diretorio)) {
+                    mkdir($diretorio, 0755, true);
+                }
+
+                if (file_exists($diretorio . $imagemNome)) {
+                    unlink($diretorio . $imagemNome);
+                }
+                if (!file_exists($diretorio . $imagemNome)) {
+                    if (!move_uploaded_file($_FILES["imagem"]["tmp_name"], $diretorio . $imagemNome)) {
+                        $mensagem = "Erro ao fazer upload da imagem!";
+                        $erro = true;
+                    }
+                }
+            } else {
+                $imagemNome = "sem-imagem.png";
+            }
+
+
+            if (!$erro) {
+
+                $promotor = new Promotor($_SESSION["id_promotor"]);
+                $categoria = new Categoria($_POST["categoria"]);
+
+                $evento = new Evento(
+                    titulo: $_POST["titulo"],
+                    cep: $_POST["cep"],
+                    bairro: $_POST["bairro"],
+                    logradouro: $_POST["logradouro"],
+                    cidade: "Jaú",
+                    uf: "SP",
+                    imagem: $imagemNome,
+                    descricao: $_POST["descricao"],
+                    situacao: "Pendente",
+                    categoria: $categoria,
+                    promotor: $promotor
+                );
+
+                for ($i = 0; $i < count($_POST["data"]); $i++) {
+                    if ($_POST["data"][$i] != "") {
+                        $evento->setOcorrencias(
+                            0,
+                            $_POST["data"][$i],
+                            $_POST["hora_inicio"][$i],
+                            $_POST["hora_termino"][$i]
+                        );
+                    }
+                }
+
+                $eventoDAO = new EventoDAO();
+                $retorno = $eventoDAO->inserir($evento);
+
+                if ($retorno) {
+                    header("location:/localize-jahu/eventos?idevento=$retorno");
+                    die();
+                } else {
+                    unlink($diretorio . $imagemNome);
+                    $mensagem = "Não foi possível cadastrar o evento!";
+                }
+            }
+        }
+
+        $categoriaDAO = new CategoriaDAO();
+        $retorno = $categoriaDAO->listar();
+
+
+        $titulo = ' - Cadastrar Evento';
+        $style = array("assets/styles/styleEventoCadastro.css");
+        $script = array("assets/scripts/scriptEventoCadastro.js");
+
+
+        require_once "views/cabecalho.php";
+        require_once "views/eventoCadastro.php";
+        require_once "views/rodape.html";
     } //fim cadastro
 
     public function calendario()
@@ -201,14 +197,13 @@ class EventoController
             die();
         }
         if (isset($_GET["idevento"]) && isset($_GET["situacao"])) {
-            
+
             $evento = new Evento(id_evento: $_GET["idevento"], situacao: $_GET["situacao"]);
             $eventoDAO = new EventoDAO();
             $eventoDAO->mudarSituacao($evento);
             header("location:/localize-jahu/eventos?idevento={$evento->getId_evento()}");
             die();
-        }
-        else{
+        } else {
             header("location:/localize-jahu/pagina-nao-encontrada");
             die();
         }
@@ -226,7 +221,7 @@ class EventoController
         }
 
 
-        
+
         $mensagem = "";
         $erro = false;
         $imagemNome = '';
@@ -443,28 +438,27 @@ class EventoController
             header("location:/localize-jahu/pagina-nao-encontrada");
             die();
         }
-      
+
         $idPromotor = $_SESSION['id_promotor'];
-        
+
         $promotor = new Promotor();
         $promotor->setID($idPromotor);
-        
-       
+
+
         $evento = new Evento();
         $evento->setPromotor($promotor);
-        
-      
+
+
         $titulo = ' - Gerenciar Evento';
         $style = array("assets/styles/styleEventoAutorizar.css");
         $script = array();
-        
+
         $eventoDAO = new eventoDAO();
         $retorno = $eventoDAO->gerenciarEvento($evento);
-    
-       
+
+
         require_once "views/cabecalho.php";
         require_once "Views/eventoGerenciar.php";
         require_once "views/rodape.html";
     }
-    
 }

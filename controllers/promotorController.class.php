@@ -106,6 +106,10 @@ class PromotorController
                 header("location:/localize-jahu/promotor_perfil");
                 die();
             }
+            if (isset($_SESSION["adm"])) {
+                header("location:/localize-jahu/pagina-nao-encontrada");
+                die();
+            }
 
             $mensagem = "";
 

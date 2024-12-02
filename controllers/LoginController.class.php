@@ -34,6 +34,7 @@ class LoginController
 
                     $promotor = new Promotor(id_usuario: $retorno[0]->id_usuario);
                     $promotorDAO = new PromotorDAO();
+                    
                     $retorno = $promotorDAO->pesquisarPorIdUsuario($promotor);
 
                     if (count($retorno) == 1) {
