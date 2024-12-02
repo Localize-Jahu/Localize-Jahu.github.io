@@ -356,6 +356,7 @@ class EventoDAO extends Conexao
     public function adicionarAcesso(Evento $evento)
 
     {
+        
 
         $sql = "UPDATE evento
                 SET acessos = acessos + 1
@@ -377,7 +378,24 @@ class EventoDAO extends Conexao
 
     public function gerenciarEvento(Evento $evento)
     {
-        $sql = "SELECT * FROM evento e INNER JOIN promotor p ON (p.id_promotor=e.id_promotor) inner join ocorrencia o ON (o.id_evento=e.id_evento) WHERE situacao = 'ativo' OR situacao = 'pendente' AND p.id_promotor = ?  GROUP BY e.id_evento ORDER BY O.dia ASC";
+        $sql = 'SET lc_time_names = ?;';
+        try {
+            $stm = $this->db->prepare($sql);
+            $stm->bindValue(1, 'pt_BR');
+            $stm->execute();
+        } catch (PDOException $e) {
+            echo "Código: " . $e->getCode();
+            echo " .Mensagem: " . $e->getMessage();
+            die();
+        }
+        $sql = 'SELECT *, 
+                        DATE_FORMAT(o.dia,"%M, %d") as dia, 
+                        TIME_FORMAT(o.hora_inicio,"%H:%i") as hora_inicio 
+                        FROM evento e INNER JOIN promotor p ON (p.id_promotor=e.id_promotor) 
+                        inner join ocorrencia o ON (o.id_evento=e.id_evento) 
+                        WHERE situacao = "ativo" OR situacao = "pendente" AND p.id_promotor = ?  
+                        GROUP BY e.id_evento 
+                        ORDER BY O.dia ASC';
     
         try {
             $stm = $this->db->prepare($sql);

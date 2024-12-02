@@ -11,12 +11,12 @@
     <article>
         <h1>Cadastro de Eventos</h1>
 
-        <!--Nome do Evento-->
+        <!--titulo do Evento-->
         <form action="/localize-jahu/evento-cadastro" method="post" enctype="multipart/form-data">
 
         <div class="container">
-                <label for="Nome">Nome: </label>
-                <input type="text" name="Nome" id="Nome" required>
+                <label for="titulo">Título: </label>
+                <input type="text" name="titulo" id="titulo" required>
             </div>
 
 

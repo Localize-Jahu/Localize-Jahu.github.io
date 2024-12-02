@@ -69,15 +69,17 @@ if (!isset($_SESSION)) {
                                 if (isset($_SESSION['id_promotor']) && $_SESSION['id_promotor'] != 0) {
                                 ?>
 
+                                    <a class="a-dropdown" href="/localize-jahu/evento-cadastro">Adicionar Evento</a>
+                                    <a class="a-dropdown" href="/localize-jahu/gerenciarEventos">Meus Eventos</a>
 
-                                    <a class="a-dropdown" href="evento-cadastro">Adicionar Evento</a>
-                                    <a class="a-dropdown" href="/localize-jahu/promotor_perfil">Editar Perfil</a>
+
+                                    <a class="a-dropdown" href="/localize-jahu/promotor_perfil">Perfil Público</a>
                                 <?php
                                 } else if (isset($_SESSION['adm']) && $_SESSION['adm'] == 'nao') {
                                 ?>
                                     <a class="a-dropdown" href="/localize-jahu/cadastro-promotor">Vire Promotor</a>
                                 <?php
-                                } ?>    
+                                } ?>
                                 <a class="a-dropdown" href="/localize-jahu/configuracoes">Configurações</a>
                                 <?php
                                 if (isset($_SESSION['adm']) && $_SESSION['adm'] == 'sim') {
@@ -136,8 +138,10 @@ if (!isset($_SESSION)) {
                     <div class="celular-dropdown selecionado" id="celular-dropdown" onclick="abrirDropdown('navGerenciarDropdown');">
                         <a id="dropbtn" class="overlay-link dropbtn">Gerenciar</a>
                         <div id="navGerenciarDropdown" class="celular-dropdown-content">
-                            <a class="overlay-link" href="evento-cadastro"> <img class="baixo-direita" src="assets/images/baixo-direita.png" alt="">Novo Evento</a>
-                            <a class="overlay-link" href="/localize-jahu/promotor_perfil"> <img class="baixo-direita" src="assets/images/baixo-direita.png" alt="">Editar Perfil</a>
+                            
+                            <a class="overlay-link" href="/localize-jahu/evento-cadastro"> <img class="baixo-direita" src="assets/images/baixo-direita.png" alt="">Novo Evento</a>
+                            <a class="overlay-link" href="/localize-jahu/gerenciarEventos"> <img class="baixo-direita" src="assets/images/baixo-direita.png" alt="">Meus Eventos</a>
+                            <a class="overlay-link" href="/localize-jahu/promotor_perfil"> <img class="baixo-direita" src="assets/images/baixo-direita.png" alt="">Perfil Público</a>
                         </div>
                     </div>
                 <?php

@@ -224,7 +224,6 @@ nav {
     display: none;
     position: absolute;
     width: auto;
-    min-width: 100%;
     height: fit-content;
     top: 50px;
     z-index: 1;
@@ -234,7 +233,7 @@ nav {
 
 
 .dropdown-content a {
-    min-width: 120px;
+    min-width: 130px;
     width: max-content;
     display: block;
     color: white;
