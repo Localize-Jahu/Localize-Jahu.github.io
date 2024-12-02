@@ -56,7 +56,9 @@ class LoginController
 
     public function logout()
     {
-        session_start();
+        if (!isset($_SESSION)) {
+            session_start();
+        }
         $_SESSION = array();
         session_destroy();
         self::esquecer();
@@ -64,16 +66,16 @@ class LoginController
         die();
     }
 
-    private static function lembrarMim($user){
-        
+    private static function lembrarMim($user)
+    {
+
         $validade = strtotime("+1 month");
 
         setcookie("sisgen_user", $user, $validade, "/", "", false, true);
-
     }
 
-    private static function esquecer(){
-        setcookie("sisgen_user", "", time()-3600, "/", "", false, true);
-
+    private static function esquecer()
+    {
+        setcookie("sisgen_user", "", time() - 3600, "/", "", false, true);
     }
 }

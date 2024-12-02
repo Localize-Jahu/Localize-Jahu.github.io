@@ -79,6 +79,12 @@ class PromotorController
         $promotor = new Promotor($_SESSION["id_promotor"]);
         $promotorDAO = new PromotorDAO();
         $retorno = $promotorDAO->pesquisarPorIdPromotor($promotor);
+
+        if (count($retorno) == 0) {
+            header("location:/localize-jahu/pagina-nao-encontrada");
+            die();
+        }
+
         $promotor = $retorno[0];
         $titulo = '- Perfil Editar';
         $style = array("assets/styles/stylePromotorEditar.css");
