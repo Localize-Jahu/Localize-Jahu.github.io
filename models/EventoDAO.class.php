@@ -253,6 +253,7 @@ class EventoDAO extends Conexao
                 FROM evento e
                 INNER JOIN ocorrencia o ON (e.id_evento = o.id_evento)
                 WHERE situacao = ? AND o.dia > (CURDATE()-1)
+                GROUP BY e.id_evento
                 ORDER BY acessos DESC 
                 LIMIT 3";
         try {
