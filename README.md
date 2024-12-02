@@ -31,9 +31,17 @@ O Projeto Interdisciplinar é uma iniciativa avaliativa do primeiro semestre do 
 
 ## Requisitos
 
+### Primeiro Semestre:
 - Desenvolver o front-end de uma aplicação web utilizando **HTML** e **CSS**.
 - Utilizar ferramentas de controle de versão como **Git** e **GitHub**.
 - É permitido o uso de linguagens de programação adicionais, frameworks e bibliotecas.
+
+### Segundo Semestre:
+- Desenvolvimento e implementação de um banco de dados relacional.
+- Construção do back-end da aplicação.
+- Aplicação dos modelos de desenvolvimento MVC e DAO.
+- Integração dos conceitos de programação orientada a objetos.
+
 
 ## Documentação
 
