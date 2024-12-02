@@ -97,12 +97,12 @@ Certifique-se de que você tem os seguintes pré-requisitos instalados:
 
 ### 6. Usuários
 
-| Tipo Usuário  | Email | Senhas |
+| Tipo Usuário  | Email | Senha |
 | ------------- | ------------- | ------------- |
 | Administrador  | adm@adm.com  | adm |
 | Promotor | promotor@promotor.com  | promo  |
 | Usuário | usuario@usuario.com | usuario |
-------------- | ------------- |------------- | 
+
 
 ## 📜 Licença
 
