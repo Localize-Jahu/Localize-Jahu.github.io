@@ -13,8 +13,7 @@ Aplicação Web que destaca artistas locais e eventos da comunidade na região d
 - [Alissa Gabriel](https://github.com/AlissaGabriel), 
 - [Evelyn Nataly Aparecida Cassinotte](https://github.com/Evelyn-Cass),
 - [Lara Nicoly Ronchesel Ramos](https://github.com/llnick),
-- [Raissa Geovana Araujo](https://github.com/raissaaraujo1),
-- [Thais Silva de Lima](https://github.com/Thaislima96) (ex-integrante).
+- [Raissa Geovana Araujo](https://github.com/raissaaraujo1).
 
 ## Introdução
 
@@ -95,6 +94,15 @@ Certifique-se de que você tem os seguintes pré-requisitos instalados:
    ```
    http://localhost/localize-jahu
    ```
+
+### 6. Usuários
+
+| Tipo Usuário  | Email | Senha |
+| ------------- | ------------- | ------------- |
+| Administrador  | adm@adm.com  | adm |
+| Promotor | promotor@promotor.com  | promo  |
+| Usuário | usuario@usuario.com | usuario |
+
 
 ## 📜 Licença
 
