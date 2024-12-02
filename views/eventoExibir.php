@@ -111,14 +111,9 @@
 
             <div class="container">
                 <label for="promotor">Promotor:</label>
-                <?php echo "<a href='/localize-jahu/promotor?idpromotor={$evento->id_promotor}' class='promotor'>"?>
-
-                    <?php
-
-                    echo $evento->nome_publico;
-
-                    ?>
-
+               <?php echo "<a href='/localize-jahu/promotor?idpromotor={$evento->id_promotor}' class='promotor'>"?>
+                    <?php echo $evento->nome_publico; ?>
+                </a>
             </div>
 
             <div class="container">

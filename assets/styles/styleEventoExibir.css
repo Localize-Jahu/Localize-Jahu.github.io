@@ -115,17 +115,6 @@ select {
     background-color: transparent;
 }
 
-.promotor{
-    border: none;
-    border-radius: 0%;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    width: 100%;
-    padding: 3px;
-    color: white;
-    font-weight: 500;
-    background-color: transparent;
-}
 
 
 select {
@@ -232,6 +221,18 @@ input[type="date"] {
     align-items: center;
     justify-content: space-between;
     width: 100%;
+}
+
+.promotor{
+    border: none;
+    border-radius: 0%;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    width: 100%;
+    padding: 3px;
+    color: white;
+    font-weight: 500;
+    background-color: transparent;
 }
 
 .situacao {
