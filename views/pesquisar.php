@@ -4,6 +4,7 @@
         <form action="/localize-jahu/pesquisar" method="get">
 
             <div class='container column'>
+                <label for="texto">Pesquisar:</label>
                 <div class="container barra">
                     <a id="opcoes" class='a-opcoes btn' href="">
                         <img class="img-opcoes" src="assets/images/search2.png" alt="">
