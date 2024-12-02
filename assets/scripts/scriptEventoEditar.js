@@ -62,29 +62,15 @@ cep.addEventListener('input', () => {
 
 const btnLimpar = document.getElementById('reset');
 
-btnLimpar.addEventListener('click', () => {
-    document.getElementById('titulo').value = '';
-
-    cep.value = '';
-    document.getElementById('logradouro').value = '';
-    document.getElementById('bairro').value = '';
-    document.getElementById('categoria').value = '0';
-    document.getElementById("texto-imagem").value = '';
-    document.getElementById("imagem").value = '';
-
-    document.getElementById("descricao").value = '';
-
+btnLimpar.addEventListener('click', (event) => {
+    event.preventDefault();
+    window.location.reload();
     document.getElementById('titulo').focus();
-
-    alerta.innerHTML = '';
-    hora_inicio.value = '';
-    hora_termino.value = '';
-    data.value = '';
-
-    document.getElementById('div-clone').innerHTML = '';
-
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    titulo.focus();
+});
 
 
 

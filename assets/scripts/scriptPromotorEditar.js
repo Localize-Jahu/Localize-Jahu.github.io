@@ -27,15 +27,15 @@ telefone.addEventListener('input', () => {
 })
 
 
-document.getElementById('reset').addEventListener('click', () => {
-    document.getElementById('nome_publico').value = '';
-    document.getElementById('nome_publico').focus();
-    document.getElementById('email_contato').value = '';
-    telefone.value = '';
-    document.getElementById('biografia').value = '';
-    document.getElementById('website').value = '';
-    document.getElementById("alerta").innerHTML = '';
+document.getElementById('reset').addEventListener('click', (event) => {
+
+    window.location.href = '/localize-jahu/editar_perfil';
+
 });
+
+
+
+
 
 document.getElementById('btn-submit').addEventListener('click', (event) => {
 

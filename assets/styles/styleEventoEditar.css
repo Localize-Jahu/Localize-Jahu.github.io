@@ -15,7 +15,7 @@ form {
 
 .container {
     display: flex;
-    width: 60%;
+    width: 80%;
     align-items: center;
     justify-content: center;
     background-color: var(--cor2);
