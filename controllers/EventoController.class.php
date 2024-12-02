@@ -155,7 +155,7 @@ class EventoController
             $event = new Evento($_GET["idevento"]);
             $eventoDAO = new EventoDAO();
             $ocorrencias = $eventoDAO->pesquisarOcorrencias($event);
-    
+
 
 
             if (count($retorno) == 0) {
@@ -170,7 +170,11 @@ class EventoController
                     die();
                 }
             }
-            $titulo = ' - '.$evento->titulo;
+
+
+            self::adicionarAcesso($evento->id_evento);
+
+            $titulo = ' - ' . $evento->titulo;
             $style = array("assets/styles/styleEventoExibir.css");
             $script = array();
             require_once "views/cabecalho.php";
@@ -375,5 +379,40 @@ class EventoController
         require_once "views/cabecalho.php";
         require_once "Views/pesquisar.php";
         require_once "views/rodape.html";
+    }
+
+
+    private static function armazenarAcessos(array $ids_evento)
+    {
+        $validade = strtotime("+1 day");
+        $ids_evento_str = implode(",", $ids_evento);
+        setcookie(
+            "eventos_acessados",
+            $ids_evento_str,
+            $validade,
+            "/",
+            "",
+            false,
+            true
+        );
+    }
+
+    private static function adicionarAcesso($id_evento)
+    {
+        if (isset($_COOKIE["eventos_acessados"])) {
+            $eventos_acessados = explode(",", $_COOKIE["eventos_acessados"]);
+            if (in_array($id_evento, $eventos_acessados)) {
+                return;
+            }
+        }
+        self::armazenarAcessos(array_merge($eventos_acessados, array($id_evento)));
+
+
+
+        $evento = new Evento(id_evento: $id_evento);
+        $eventoDAO = new EventoDAO();
+        $eventoDAO->adicionarAcesso($evento);
+
+
     }
 }

@@ -90,7 +90,6 @@ class EventoDAO extends Conexao
             $stm->bindValue(9, $evento->getCategoria()->getId_categoria());
             $stm->bindValue(10, $evento->getId_evento());
             $stm->execute();
-
         } catch (PDOException $e) {
             echo $e->getCode();
             echo $e->getMessage();
@@ -142,7 +141,6 @@ class EventoDAO extends Conexao
         }
     }
 
-
     public function pesquisarId($evento)
     {
         $sql = "SELECT *
@@ -163,10 +161,6 @@ class EventoDAO extends Conexao
             die();
         }
     }
-
-
-
-
 
     public function buscarTodasCategorias()
     {
@@ -199,7 +193,6 @@ class EventoDAO extends Conexao
             die();
         }
     }
-
 
     public function pesquisarPorMes($mes, $ano)
     {
@@ -298,7 +291,6 @@ class EventoDAO extends Conexao
         }
     }
 
-
     public function pesquisar(Evento $evento)
     {
 
@@ -358,4 +350,28 @@ class EventoDAO extends Conexao
             die();
         }
     }
-}//fim da classe
+
+
+    public function adicionarAcesso(Evento $evento)
+
+    {
+
+        $sql = "UPDATE evento
+                SET acessos = acessos + 1
+                WHERE id_evento = ?";
+        try {
+            $stm = $this->db->prepare($sql);
+            $stm->bindValue(1, $evento->getId_evento());
+            $stm->execute();
+
+            $this->db = null; // Fecha a conexão
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            echo "Código: " . $e->getCode();
+            echo " .Mensagem: " . $e->getMessage();
+            die();
+        }
+
+    }
+
+}//fecha classe
