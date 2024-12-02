@@ -15,10 +15,12 @@
 
     <div class="fundo"></div>
     <div class="containers">
-        <a href="/localize-jahu/login" class="botao-voltar"><img src="assets/images/fechar-login.png" alt="Botão Fechar"
-                class="img-fechar"></a>
-        <h1>Cadastro de Usuário</h1>
+        <div class="topo">
 
+            <h1 class="titulo">Cadastro</h1>
+            <a href="/localize-jahu/login" class="botao-voltar"><img src="assets/images/fechar-login.png" alt="Botão Fechar"
+                    class="img-fechar"></a>
+        </div>
         <form id="form" action="/localize-jahu/cadastro" method="post">
             <div class="erro">
                 <?php
@@ -50,24 +52,24 @@
             <?php echo "<span id='email-aviso'>{$mensagem[0]}</span>"; ?>
             <div class="div-input">
                 <label for="telefone">Telefone</label>
-                <input class="input-tipo" type="text" id="telefone" name="telefone" OnKeyPress="formatar('(##) ####-#####',this)" 
-                <?php
+                <input class="input-tipo" type="text" id="telefone" name="telefone" OnKeyPress="formatar('(##) ####-#####',this)"
+                    <?php
                     if (isset($usuario)) {
                         echo "value='{$usuario->getTelefone()}'";
                     }
                     ?>
-                required>
+                    required>
             </div>
             <span id="telefone-aviso">Telefone inválido!</span>
             <div class="div-input">
                 <label for="cpf">CPF:</label>
-                <input class="input-tipo" type="text" id="cpf" name="cpf" OnKeyPress="formatar('###.###.###-##',this)" 
-                <?php
+                <input class="input-tipo" type="text" id="cpf" name="cpf" OnKeyPress="formatar('###.###.###-##',this)"
+                    <?php
                     if (isset($usuario)) {
                         echo "value='{$usuario->getCpf()}'";
                     }
                     ?>
-                required>
+                    required>
             </div>
             <?php echo "<span id='cpf2-aviso'>{$mensagem[1]}</span>"; ?>
             <span id="cpf-aviso">CPF inválido!</span>
@@ -82,7 +84,7 @@
                 <input class="input-tipo" type="password" id="confirmar_senha" name="confirmar_senha" required>
             </div>
             <div class="buttons">
-                <button id="btn-submit" class="botao-acessar"  type="submit" >Cadastrar</button>
+                <button id="btn-submit" class="botao-acessar" type="submit">Cadastrar</button>
                 <a type="reset" class="botao-cadastro" id="reset">Limpar</a>
             </div>
 

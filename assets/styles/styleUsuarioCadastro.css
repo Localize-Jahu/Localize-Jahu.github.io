@@ -54,11 +54,41 @@ body {
     min-height: 450px;
     background-color: var(--cor2);
     display: flex;
-    border: 5px solid rgba(173, 136, 198, 1);
+
     border-radius: 36px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+.topo{
+    display: flex;
+    width: 100%;
+    min-height: 60px;
+
+    display: relative;
+    
+
+    justify-content: space-between;
+    align-items: center;
+
+    background: rgb(173, 136, 198);
+    background: linear-gradient(45deg, rgba(173, 136, 198, 1) 0%, rgba(76, 68, 82, 1) 80%);
+   
+    padding: 10px 10px 10px 0px;
+    text-align: center;
+    background-color: var(--cor2);
+    border-radius: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    color: white;
+    font-weight: 400;
+    z-index: 1;
+    box-sizing: border-box;
+}
+
+.titulo {
+padding-left: 32px;
 }
 
 form {

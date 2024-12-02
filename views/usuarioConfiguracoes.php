@@ -15,9 +15,12 @@
 
     <div class="fundo"></div>
     <div class="containers">
-        <a href="/localize-jahu/" class="botao-voltar"><img src="assets/images/fechar-login.png" alt="Botão Fechar"
-                class="img-fechar"></a>
-        <h1>Configurações</h1>
+    <div class="topo">
+                
+                <h1 class="titulo">Configurações</h1>    
+                <a href="/localize-jahu/login" class="botao-voltar"><img src="assets/images/fechar-login.png" alt="Botão Fechar"
+                            class="img-fechar"></a>
+                </div>
 
         <form id="form" action="/localize-jahu/configuracoes" method="post">
             <div class="erro">

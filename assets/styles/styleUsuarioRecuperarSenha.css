@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+#telefone-aviso {
+    display: none;
+}
+
+#cpf-aviso {
+    display: none;
+}
+
+:root {
+    --cor1: #B2A7B8;
+    --cor2: #AD88C6;
+    --cor3: #4C4452;
+}
+
+/* Cor de fundo do autocomplete */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px var(--cor2) inset;
+}
+
+/* Cor do texto do autocomplete */
+input:-webkit-autofill {
+    -webkit-text-fill-color: white !important;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.fundo {
+    background: rgb(76, 68, 82);
+    background: linear-gradient(180deg, rgba(76, 68, 82, 1) 0%, rgba(173, 136, 198, 1) 100%);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    right: 0;
+}
+
+
+
+.containers {
+    width: 50vw;
+    min-height: 450px;
+    background-color: var(--cor2);
+    display: flex;
+    border-radius: 36px;
+    align-items: center;
+    flex-direction: column;
+    border-top-right-radius: 0;
+}
+
+.topo{
+    display: flex;
+    width: 100%;
+    min-height: 60px;
+
+    display: relative;
+    
+
+    justify-content: space-between;
+    align-items: center;
+
+    background: rgb(173, 136, 198);
+    background: linear-gradient(45deg, rgba(173, 136, 198, 1) 0%, rgba(76, 68, 82, 1) 80%);
+   
+    padding: 10px 10px 10px 0px;
+    text-align: center;
+    background-color: var(--cor2);
+    border-radius: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    color: white;
+    font-weight: 400;
+    z-index: 1;
+    box-sizing: border-box;
+}
+
+.titulo {
+padding-left: 32px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 32px;
+    width: 80%;
+    min-height: 30vh;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 32px;
+    width: 100%;
+    height: 100%;
+}
+
+label {
+    font-size: 24px;
+    margin-right: 6px;
+}
+
+
+.texto{
+    font-size: 20px;
+    margin: 26px 0;
+    text-align: center;
+}
+
+.div-email,
+.div-lembrar,
+.div-senha {
+    width: 90%;
+}
+
+.div-input {
+    border-image: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%) 1;
+    border-width: 1px;
+    border-style: solid;
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 16px 0;
+}
+
+
+
+.input-tipo {
+    width: 100%;
+
+    height: 24px;
+    font-size: 24px;
+    border: none;
+    background-color: unset;
+    color: #FFFFFF;
+    outline: none;
+}
+
+
+
+
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 32px;
+    margin-top: 16px;
+}
+
+.btn {
+    font-family: "Roboto", sans-serif;
+    text-decoration: none;
+    color: var(--cor3);
+    font-weight: 700;
+    border: 1px solid #FFFFFF;
+    border-radius: 30px;
+    width: 120px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    margin-right: 32px;
+}
+
+.btn:hover {
+    background-color: var(--cor3);
+    color: #FFFFFF;
+    border-color: var(--cor3);
+    cursor: pointer;
+}
+
+.botao-voltar {
+    align-self: flex-end;
+    place-self: flex-end start;
+    justify-self: start;
+    position: relative;
+    left: 0;
+    top: -0;
+}
+
+.botao-voltar:hover {
+    scale: 1.1;
+    cursor: pointer;
+}
+
+.img-fechar {
+    width: 50px;
+    height: 50px;
+    margin: 4px;
+}

@@ -93,4 +93,26 @@ class UsuarioController
         }
         require_once "views/usuarioConfiguracoes.php";
     }
+
+    public function recuperarSenha(){
+        if(!isset($_SESSION)){
+            session_start();
+        }
+        if (isset($_SESSION["logado"])) {
+            header("location:/localize-jahu/");
+            die();
+        }
+        $mensagem = "";
+        $erro = false;
+
+        $style = array("assets/styles/styleSobreNos.css");
+        $script = array();
+
+
+        require_once "views/UsuarioRecuperaSenha.php";
+
+        
+
+
+    }
 }
