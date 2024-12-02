@@ -3,7 +3,7 @@
 
     <div class="btns">
 
-<a class="btn gerenciar" href="/localize-jahu/evento/gerenciar">Gerenciar Eventos</a>
+<a class="btn gerenciar" href="/localize-jahu/gerenciarEventos">Gerenciar Eventos</a>
 <a class="btn editar" href="/localize-jahu/editar_perfil">Editar Perfil</a>
 
 </div>

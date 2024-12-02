@@ -425,12 +425,8 @@ class EventoController
         if (!isset($_SESSION)) {
             session_start();
         }
-        if (!isset($_SESSION["adm"]) || $_SESSION["adm"] != 'sim') {
-            header("location:/localize-jahu/pagina-nao-encontrada");
-            die();
-        }
 
-        $titulo = ' - Autorizar Evento';
+        $titulo = ' - Gerenciar Evento';
         $style = array("assets/styles/styleEventoAutorizar.css");
         $script = array();
         $eventoDAO = new eventoDAO;
@@ -438,7 +434,7 @@ class EventoController
 
 
         require_once "views/cabecalho.php";
-        require_once "Views/eventoAutorizar.php";
+        require_once "Views/eventoGerenciar.php";
         require_once "views/rodape.html";
     }
 }

@@ -21,7 +21,6 @@ class Promotor extends Usuario
        
     }
 
-
     public function getID(): int
     {
         return $this->id_promotor;

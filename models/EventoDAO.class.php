@@ -374,9 +374,22 @@ class EventoDAO extends Conexao
 
     }
 
-    public function gerenciarEvento()
+    public function gerenciarEvento(Promotor $promotor)
     {
-        $sql = "SELECT * FROM evento e INNER JOIN  ";
+        $sql = "SELECT * FROM evento e INNER JOIN promotor p ON (p.id_promotor=e.id_promotor) inner join ocorrencia o ON (o.id_evento=e.id_evento) WHERE situacao = 'ativo' OR situacao = 'pendente' AND p.id_promotor = ?  GROUP BY e.id_evento ";
+    
+        try {
+            $stm = $this->db->prepare($sql);
+            $stm->bindValue(1, $promotor->getID());
+            $stm->execute();
+            $this->db = null;
+            //retorna a forma que o banco de dados irá funcionar
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            echo "Código: " . $e->getCode();
+            echo " .Mensagem: " . $e->getMessage();
+            die();
+        }
     }
 
 }//fecha classe
