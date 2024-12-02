@@ -406,8 +406,9 @@ class EventoController
             }
             self::armazenarAcessos(array_merge($eventos_acessados, array($id_evento)));
         }
+        else {
         self::armazenarAcessos(array($id_evento));
-
+        }
         $evento = new Evento(id_evento: $id_evento);
         $eventoDAO = new EventoDAO();
         $eventoDAO->adicionarAcesso($evento);
