@@ -223,6 +223,18 @@ input[type="date"] {
     width: 100%;
 }
 
+.promotor{
+    border: none;
+    border-radius: 0%;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    width: 100%;
+    padding: 3px;
+    color: white;
+    font-weight: 500;
+    background-color: transparent;
+}
+
 .situacao {
     width: 100%;
     height: 0;
