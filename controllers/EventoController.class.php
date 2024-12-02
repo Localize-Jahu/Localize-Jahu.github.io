@@ -163,6 +163,11 @@ class EventoController
                 die();
             }
 
+            if (!isset($_SESSION["id_promotor"]) && (!isset($_SESSION["adm"]))) {
+                header("location:/localize-jahu/pagina-nao-encontrada");
+                die();
+            }
+
 
             if ($retorno[0]->situacao == "pendente") {
                 if (isset($_SESSION["id_promotor"]) && $retorno[0]->id_promotor != $_SESSION["id_promotor"]) {
@@ -405,9 +410,8 @@ class EventoController
                 return;
             }
             self::armazenarAcessos(array_merge($eventos_acessados, array($id_evento)));
-        }
-        else {
-        self::armazenarAcessos(array($id_evento));
+        } else {
+            self::armazenarAcessos(array($id_evento));
         }
         $evento = new Evento(id_evento: $id_evento);
         $eventoDAO = new EventoDAO();

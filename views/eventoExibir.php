@@ -1,22 +1,56 @@
 <main>
     <article>
-        <input disabled='true' type="hidden" name="imagem_antiga" value="<?php echo $retorno[0]->imagem; ?>">
 
         <?php
+        $evento = $retorno[0];
+
+
+        if ($evento->situacao == 'pendente') {
+            $color = 'orange';
+        } else if ($evento->situacao == 'ativo') {
+            $color = 'green';
+        } else {
+            $color = 'red';
+        }
+
         ?>
 
-        <h1><?php
-            $evento = $retorno[0];
-            echo $retorno[0]->titulo;
+        <div class="btns">
+            <?php
+            if (isset($_SESSION["adm"]) && $_SESSION["adm"] == "sim") {
+                if ($retorno[0]->situacao == "pendente") {
+                    echo "<a href='/localize-jahu/alterarSituacao?idevento={$retorno[0]->id_evento}&situacao=ativo' class='btn btn1' onclick=\"return confirm('Confirmar a ativação?')\">Autorizar</a>";
+                    echo "<a href='/localize-jahu/alterarSituacao?idevento={$retorno[0]->id_evento}&situacao=desativado' class='btn btn2' onclick=\"return confirm('Confirmar a não autorização?')\">Não autorizar</a>";
+                }
+            }
+            ?>
 
+            <?php
+            if ($retorno[0]->situacao == "pendente") {
+                if (isset($_SESSION["id_promotor"]) && $_SESSION["id_promotor"] == $retorno[0]->id_promotor) {
+                    echo "<a href='/localize-jahu/alterarEvento?id={$retorno[0]->id_evento}' class='btn btn1'>Alterar</a>&nbsp;&nbsp;";
+                    echo "<a href='/localize-jahu/alterarSituacao?idevento={$retorno[0]->id_evento}&situacao=cancelado' class='btn btn2' onclick=\"return confirm('Confirmar o cancelamento do evento?')\">Cancelar Evento</a>";
+                }
+            }
+            ?>
+        </div>
 
-        $imagem = $evento->imagem === NULL ? "sem-imagem.png" : $evento->imagem;
-        if (!file_exists("uploads/{$imagem}")) {
-        $imagem = "sem-imagem.png";
-        }
-        ?> </h1>
-        <img class='banner' src="uploads/<?php echo $imagem; ?>" id="img" width="300" height="400">
+        <div class="container-img">
+            <h1><?php
+                echo $retorno[0]->titulo;
 
+                $imagem = $evento->imagem === NULL ? "sem-imagem.png" : $evento->imagem;
+                if (!file_exists("uploads/{$imagem}")) {
+                    $imagem = "sem-imagem.png";
+                }
+                ?> </h1>
+            <img class='banner' src="uploads/<?php echo $imagem; ?>" id="img" width="300" height="400">
+            <div class="situacao">
+                <span style='background-color: <?php echo $color ?>;'>
+                    <?php echo $evento->situacao; ?>
+                </span>
+            </div>
+        </div>
         <div class="box">
 
             <div class="container">
@@ -69,6 +103,9 @@
             <div class="container">
                 <label for="cep">CEP:</label>
                 <input disabled='true' type="text" name="cep" id="cep"
+                    <?php
+                    echo "value='{$evento->cep}'";
+                    ?>
                     required OnKeyPress="divatar('#####-###',this)">
             </div>
 
@@ -113,27 +150,13 @@
                 }
                 ?>
             </div>
+            <div class="descricao">
+                <label class="label-descricao" for="descricao">Descrição:</label>
 
-            <label class="label-descricao" for="descricao">Descrição:</label>
-            <textarea name="descricao" id="descricao" maxlength="5000" placeholder="Conte um pouco sobre o evento..."><?php echo $evento->descricao; ?></textarea>
-        </div>
-        <?php
-        if (isset($_SESSION["adm"]) && $_SESSION["adm"] == "sim") {
-            if ($retorno[0]->situacao == "pendente") {
-                echo "<a href='/localize-jahu/alterarSituacao?idevento={$retorno[0]->id_evento}&situacao=ativo' class='alterar' onclick=\"return confirm('Confirmar a ativação?')\">Autorizar</a>";
-                echo "<a href='/localize-jahu/alterarSituacao?idevento={$retorno[0]->id_evento}&situacao=desativado' class='cancelar' onclick=\"return confirm('Confirmar a não autorização?')\">Não autorizar</a>";
-            }
-        }
-        ?>
+            </div>
 
-        <?php
-        if ($retorno[0]->situacao == "pendente") {
-            if (isset($_SESSION["id_promotor"]) && $_SESSION["id_promotor"] == $retorno[0]->id_promotor) {
-                echo "<a href='/localize-jahu/alterarEvento?id={$retorno[0]->id_evento}' class='alterar'>Alterar</a>&nbsp;&nbsp;";
-                echo "<a href='/localize-jahu/alterarSituacao?idevento={$retorno[0]->id_evento}&situacao=cancelado' class='cancelar' onclick=\"return confirm('Confirmar o cancelamento do evento?')\">Cancelar</a>";
-            }
-        }
-        ?>
+            <textarea disabled='true' name="descricao" id="descricao" maxlength="5000" placeholder="Conte um pouco sobre o evento..."><?php echo $evento->descricao; ?></textarea>
         </div>
+
     </article>
 </main>
