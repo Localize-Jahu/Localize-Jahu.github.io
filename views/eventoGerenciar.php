@@ -7,7 +7,7 @@
 			echo "<div class='alert alert-success' role='alert'>{$_GET["msg"]}</div>";
 		}
 		?>
-		<h1>Eventos Pendentes</h1>
+		<h1>Meus Eventos</h1>
 		<div class="container">
 
 			<?php
