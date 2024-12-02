@@ -53,6 +53,8 @@ $route->get("/sobre-nos", array(SobreNosController::class, "inicio"));
 
 //Contato
 $route->get("/contato", array(ContatoController::class, "inicio"));
+$route->post("/contato", array(ContatoController::class, "inicio"));
+
 
 //Evento
 $route->get("/evento-cadastro", array(EventoController::class, "cadastrar"));
