@@ -375,13 +375,13 @@ class EventoDAO extends Conexao
 
     }
 
-    public function gerenciarEvento(Promotor $promotor)
+    public function gerenciarEvento(Evento $evento)
     {
         $sql = "SELECT * FROM evento e INNER JOIN promotor p ON (p.id_promotor=e.id_promotor) inner join ocorrencia o ON (o.id_evento=e.id_evento) WHERE situacao = 'ativo' OR situacao = 'pendente' AND p.id_promotor = ?  GROUP BY e.id_evento ";
     
         try {
             $stm = $this->db->prepare($sql);
-            $stm->bindValue(1, $promotor->getID());
+            $stm->bindValue(1, $evento->getPromotor()->getID());
             $stm->execute();
             $this->db = null;
             //retorna a forma que o banco de dados irá funcionar

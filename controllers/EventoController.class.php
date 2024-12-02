@@ -426,11 +426,12 @@ class EventoController
             session_start();
         }
 
+
         $titulo = ' - Gerenciar Evento';
         $style = array("assets/styles/styleEventoAutorizar.css");
         $script = array();
         $eventoDAO = new eventoDAO;
-        $retorno = $eventoDAO->gerenciarEvento();
+        $retorno = $eventoDAO->gerenciarEvento($evento);
 
 
         require_once "views/cabecalho.php";
