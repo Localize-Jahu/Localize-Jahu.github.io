@@ -110,7 +110,7 @@ select:hover {
     box-sizing: border-box;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 800px) {
     .quebra {
         flex-direction: column;
         align-items: center;

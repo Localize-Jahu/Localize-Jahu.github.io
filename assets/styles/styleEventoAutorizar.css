@@ -43,7 +43,7 @@ h1 {
 
 .cards {
   display: flex;
-  width: 95%;
+  width: 100%;
   
   justify-content: center;
   flex-wrap: wrap;
@@ -56,8 +56,8 @@ h1 {
   grid-template-rows: auto;
   grid-gap: 0;
   text-decoration: none;
-  width: 23%;
-  height: 450px;
+  min-width: 25%;
+  min-height: 450px;
   background: linear-gradient(white, white) padding-box,
       linear-gradient(to bottom, var(--cor2), var(--cor3)) border-box;
   color: #313149;
@@ -230,7 +230,7 @@ h1 {
   }
 
   .card {
-      width: 25%;
+      width: 30%;
   }
 }
 
