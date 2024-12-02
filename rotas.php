@@ -80,6 +80,10 @@ $route->post("/evento/excluir", array(OcorrenciaController::class, "excluir"));
 $route->get("/autorizarEventos", [EventoController::class, "autorizar_evento"]);
 $route->post("/autorizarEventos", [EventoController::class, "autorizar_evento"]);
 
+$route->get("/gerenciarEventos", [EventoController::class, "gerenciar_evento"]);
+$route->post("/gerenciarEventos", [EventoController::class, "gerenciar_evento"]);
+
+
 //promotor
 $route->get("/promotor_perfil", [PromotorController::class, "mostrar_info"]);
 $route->post("/promotor_perfil", [PromotorController::class, "mostrar_info"]);

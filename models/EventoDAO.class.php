@@ -374,4 +374,9 @@ class EventoDAO extends Conexao
 
     }
 
+    public function gerenciarEvento()
+    {
+        $sql = "SELECT * FROM evento e INNER JOIN  ";
+    }
+
 }//fecha classe

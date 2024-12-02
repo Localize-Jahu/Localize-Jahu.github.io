@@ -417,4 +417,26 @@ class EventoController
         $eventoDAO = new EventoDAO();
         $eventoDAO->adicionarAcesso($evento);
     }
+
+    public function gerenciar_evento()
+    {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        if (!isset($_SESSION["adm"]) || $_SESSION["adm"] != 'sim') {
+            header("location:/localize-jahu/pagina-nao-encontrada");
+            die();
+        }
+
+        $titulo = ' - Autorizar Evento';
+        $style = array("assets/styles/styleEventoAutorizar.css");
+        $script = array();
+        $eventoDAO = new eventoDAO;
+        $retorno = $eventoDAO->gerenciarEvento();
+
+
+        require_once "views/cabecalho.php";
+        require_once "Views/eventoAutorizar.php";
+        require_once "views/rodape.html";
+    }
 }
