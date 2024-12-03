@@ -13,6 +13,8 @@ class LoginController
         }
         $mensagem = "";
         if ($_POST) {
+
+       
             //verificar no BD
             $usuario = new Usuario(email: $_POST["email"]);
 

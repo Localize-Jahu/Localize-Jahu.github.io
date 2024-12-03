@@ -6,11 +6,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Localize Jahu - Cadastro</title>
+    <title>Localize Jahu - Recuperar Senha</title>
 
     <link rel="shortcut icon" type="imagex/png" href="assets/images/logo_4C4452.ico">
     <link rel="stylesheet" href="assets/styles/styleUsuarioRecuperarSenha.css">
-    <!-- <script src="assets/scripts/scriptUsuarioRecuperarSenha.js" defer></script> -->
 </head>
 
 <body>
@@ -27,7 +26,7 @@
                 </div>
                 <div class="container">
 
-                    <form id="form" action="/localize-jahu/login" method="post">
+                    <form id="form" action="/localize-jahu/recuperar-senha" method="post">
                         <div class="esqueceu">
                             <p class="texto">Preencha o seu email abaixo para solicitar a recuperação de senha.</p>
                             <div class="div-input">

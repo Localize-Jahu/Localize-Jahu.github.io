@@ -101,8 +101,6 @@ class UsuarioController
         $mensagem = "";
         $erro = false;
 
-        $style = array("assets/styles/styleSobreNos.css");
-        $script = array();
 
 
         require_once "views/UsuarioRecuperaSenha.php";

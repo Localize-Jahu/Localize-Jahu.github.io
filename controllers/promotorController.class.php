@@ -106,7 +106,7 @@ class PromotorController
                 header("location:/localize-jahu/promotor_perfil");
                 die();
             }
-            if (isset($_SESSION["adm"])) {
+            if (isset($_SESSION["adm"])  && $_SESSION["adm"] == 'sim') {
                 header("location:/localize-jahu/pagina-nao-encontrada");
                 die();
             }

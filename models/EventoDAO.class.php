@@ -393,9 +393,9 @@ class EventoDAO extends Conexao
                         TIME_FORMAT(o.hora_inicio,"%H:%i") as hora_inicio 
                         FROM evento e INNER JOIN promotor p ON (p.id_promotor=e.id_promotor) 
                         inner join ocorrencia o ON (o.id_evento=e.id_evento) 
-                        WHERE situacao = "ativo" OR situacao = "pendente" AND p.id_promotor = ?  
+                        WHERE p.id_promotor = ? AND (situacao = "ativo" OR situacao = "pendente") 
                         GROUP BY e.id_evento 
-                        ORDER BY O.dia ASC';
+                        ORDER BY o.dia ASC';
     
         try {
             $stm = $this->db->prepare($sql);
