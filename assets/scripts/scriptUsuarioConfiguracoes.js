@@ -4,6 +4,11 @@ function esconderAviso(element) {
 }
 
 
+const cpfAviso = document.getElementById('cpf-aviso');
+const telefoneAviso = document.getElementById('telefone-aviso');
+
+const cpf = document.getElementById('cpf');
+
 function formatar(mascara, documento) {
     documento.value = documento.value.replace(/[a-zA-Z]/g, '');
     let i = documento.value.length;
@@ -29,6 +34,9 @@ telefone.addEventListener('input', () => {
     telefone.value = telefone.value.replace(/[a-zA-Z]/g, '');
 });     
 
+
+const btnSubmit = document.getElementById('btn-alterar');
+
 btnSubmit.addEventListener('click', (event) => {
 
 
@@ -45,17 +53,7 @@ btnSubmit.addEventListener('click', (event) => {
 });
 
 document.getElementById('reset').addEventListener('click', () => {
-    document.getElementById('nome').value = '';
-    document.getElementById('email').value = '';
-    cpf.value = '';
-    telefone.value = '';
-    document.getElementById('senha').value = '';
-    document.getElementById('confirmar_senha').value = '';
-    document.getElementById('email-aviso').style.display = 'none';
-    document.getElementById('cpf-aviso').style.display = 'none';
-    document.getElementById('cpf2-aviso').style.display = 'none';
-    cpfAviso.style.display = 'none';
-    telefoneAviso.style.display = 'none';
+    window.location.href = '/localize-jahu/configuracoes';
     document.getElementById('nome').focus();
 }); 
 
